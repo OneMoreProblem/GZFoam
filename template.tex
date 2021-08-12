@@ -37,6 +37,13 @@
 %---------
 % The option pdftex is for use with pdfLaTeX. If eps figures are used, remove the option pdftex and use LaTeX and dvi2pdf.
 
+%%%% ДЛЯ РУССКОГО ТЕКСТА закомментировать потом!
+\usepackage{inputenc}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage{cmap}
+%%%%
+
 %=================================================================
 % MDPI internal commands
 \firstpage{1} 
@@ -72,30 +79,31 @@
 \TitleCitation{Title}
 
 % Author Orchid ID: enter ID or remove command
-\newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
-%\newcommand{\orcidauthorB}{0000-0000-0000-000X} % Add \orcidB{} behind the author's name
+\newcommand{\orcidauthorA}{0000-0001-5273-2471} % Add \orcidA{} behind the author's name
+\newcommand{\orcidauthorB}{0000-0002-8736-0652} % Add \orcidB{} behind the author's name
+%\newcommand{\orcidauthorC}{0000-0002-4013-2329} % Add \orcidB{} behind the author's name
 
 % Authors, for the paper (add full first names)
-\Author{Firstname Lastname $^{1,\dagger,\ddagger}$\orcidA{}, Firstname Lastname $^{1,\ddagger}$ and Firstname Lastname $^{2,}$*}
+\Author{Konstantin Barkalov $^{1}$*\orcidA{} and Ilya Lebedev $^{1}$\orcidB{}}
 
 % MDPI internal command: Authors, for metadata in PDF
-\AuthorNames{Firstname Lastname, Firstname Lastname and Firstname Lastname}
+\AuthorNames{Konstantin Barkalov and Ilya Lebedev}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{Lastname, F.; Lastname, F.; Lastname, F.}
+\AuthorCitation{Barkalov, K.; Lebedev, I.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
-$^{1}$ \quad Affiliation 1; e-mail@e-mail.com\\
+$^{1}$ \quad Department of Mathematical Software and Supercomputing Technologies, Lobachevsky University, 603950 Nizhni Novgorod, Russia; ilya.lebedev@itmm.unn.ru (I.L.)\\
 $^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 
 % Contact information of the corresponding author
 \corres{Correspondence: e-mail@e-mail.com; Tel.: (optional; include country code; if there are multiple corresponding authors, add author initials) +xx-xxxx-xxx-xxxx (F.L.)}
 
 % Current address and/or shared authorship
-\firstnote{Current address: Affiliation 3} 
-\secondnote{These authors contributed equally to this work.}
+%\firstnote{Current address: Affiliation 3} 
+%\secondnote{These authors contributed equally to this work.}
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
 
 %\simplesumm{} % Simple summary
@@ -140,124 +148,147 @@ $^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{section}{-1} %% Remove this when starting to work on the template.
-\section{How to Use this Template}
-
-The template details the sections that can be used in a manuscript. Note that the order and names of article sections may differ from the requirements of the journal (e.g., the positioning of the Materials and Methods section). Please check the instructions on the authors' page of the journal to verify the correct order and names. For any questions, please contact the editorial office of the journal or support@mdpi.com. For LaTeX-related questions please contact latex@mdpi.com.
-%The order of the section titles is: Introduction, Materials and Methods, Results, Discussion, Conclusions for these journals: aerospace,algorithms,antibodies,antioxidants,atmosphere,axioms,biomedicines,carbon,crystals,designs,diagnostics,environments,fermentation,fluids,forests,fractalfract,informatics,information,inventions,jfmk,jrfm,lubricants,neonatalscreening,neuroglia,particles,pharmaceutics,polymers,processes,technologies,viruses,vision
-
 \section{Introduction}
 
-The introduction should briefly place the study in a broad context and highlight why it is important. It should define the purpose of the work and its significance. The current state of the research field should be reviewed carefully and key publications cited. Please highlight controversial and diverging hypotheses when necessary. Finally, briefly mention the main aim of the work and highlight the principal conclusions. As far as possible, please keep the introduction comprehensible to scientists outside your particular field of research. Citing a journal paper \cite{ref-journal}. Now citing a book reference \cite{ref-book1,ref-book2} or other reference types \cite{ref-unpublish,ref-communication,ref-proceeding}. Please use the command \citep{ref-thesis,ref-url} for the following MDPI journals, which use author--date citation: Administrative Sciences, Arts, Econometrics, Economies, Genealogy, Histories, Humanities, IJFS, Journal of Intelligence, Journalism and Media, JRFM, Languages, Laws, Religions, Risks, Social Sciences.
+Во введении -- охарактеризовать проблему, дать обзор методов ее решения.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problem Statement}
+
+%ИСП
+Содержательная постановка задачи -- описание исследуемого объекта, его параметров. 
+Описание математической модели объекта как ДУЧП
+Параметры дифференциального уравнения
+Подчеркнуть важность исследования и сложность анализа математической модели объекта
+
+%ННГУ
+Формальная постановка задачи оптимизации.
+Подчеркнуть сложность оптимизационных задач с функциями вида ``черный ящик''
+Использование аппроксимаций функций -- способ ускорения решения задачи с трудоемкими целевыми функциями
+
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Materials and Methods}
+\section{Methods}
+%ИСП
+\subsection{Используемый численный метод решения ДУЧП}
 
-Materials and Methods should be described with sufficient details to allow others to replicate and build on published results. Please note that publication of your manuscript implicates that you must make all materials, data, computer code, and protocols associated with the publication available to readers. Please disclose at the submission stage any restrictions on the availability of materials or information. New methods and protocols should be described in detail while well-established methods can be briefly described and appropriately cited.
+\subsection{}
 
-Research manuscripts reporting large datasets that are deposited in a publicly avail-able database should specify where the data have been deposited and provide the relevant accession numbers. If the accession numbers have not yet been obtained at the time of submission, please state that they will be provided during review. They must be provided prior to publication.
+%ННГУ
+\subsection{Метод глобального поиска}
 
-Interventionary studies involving animals or humans, and other studies require ethical approval must list the authority that provided approval and the corresponding ethical approval code.
-\begin{quote}
-This is an example of a quote.
-\end{quote}
+\subsection{Построение аппроксимаций целевой функции}
+
+\subsection{Использование аппроксимаций при решении задачи оптимизации}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
-This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
-\subsection{Subsection}
-\subsubsection{Subsubsection}
+Описание оборудования и программного обеспечения, которое было задействовано при проведении экспериментов.
 
-Bulleted lists look like this:
-\begin{itemize}
-\item	First bullet;
-\item	Second bullet;
-\item	Third bullet.
-\end{itemize}
+Результаты расчетов
 
-Numbered lists can be added as follows:
-\begin{enumerate}
-\item	First item; 
-\item	Second item;
-\item	Third item.
-\end{enumerate}
+Иллюстрации
 
-The text continues here. 
+Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-\subsection{Figures, Tables and Schemes}
-
-All figures and tables should be cited in the main text as Figure~\ref{fig1}, Table~\ref{tab1}, etc.
-
-\begin{figure}[H]
-\includegraphics[width=10.5 cm]{Definitions/logo-mdpi}
-\caption{This is a figure. Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.\label{fig1}}
-\end{figure}   
-
-% The MDPI table float is called specialtable
-\begin{specialtable}[H] 
-\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
-%%% \tablesize{} %% You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
-\begin{tabular}{ccc}
-\toprule
-\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-\midrule
-Entry 1		& Data			& Data\\
-Entry 2		& Data			& Data\\
-\bottomrule
-\end{tabular}
-\end{specialtable}
-
-%\begin{listing}[H]
-%\caption{Title of the listing}
-%\rule{\columnwidth}{1pt}
-%\raggedright Text of the listing. In font size footnotesize, small, or normalsize. Preferred format: left aligned and single spaced. Preferred border format: top border line and bottom border line.
-%\rule{\columnwidth}{1pt}
-%\end{listing}
-
-Text.
-
-Text.
-
-\subsection{Formatting of Mathematical Components}
-
-This is the example 1 of equation:
-\begin{equation}
-a = 1,
-\end{equation}
-the text following an equation need not be a new paragraph. Please punctuate equations as regular text.
-%% If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph.
-
-This is the example 2 of equation:
-\end{paracol}
-\nointerlineskip
-\begin{equation}
-a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z
-\end{equation}
-
-% Example of a figure that spans the whole page width (the commands \widefigure and \begin{paracol}{2}, \linenumbers, and\switchcolumn need to be present). The same concept works for tables, too.
-\begin{figure}[H]	
-\widefigure
-\includegraphics[width=15 cm]{Definitions/logo-mdpi}
-\caption{This is a wide figure.\label{fig2}}
-\end{figure}  
-\begin{paracol}{2}
-\linenumbers
-\switchcolumn
-
-Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows:
-%% Example of a theorem:
-\begin{Theorem}
-Example text of a theorem.
-\end{Theorem}
-
-The text continues here. Proofs must be formatted as follows:
-
-%% Example of a proof:
-\begin{proof}[Proof of Theorem 1]
-Text of the proof. Note that the phrase ``of Theorem 1'' is optional if it is clear which theorem is being referred to.
-\end{proof}
-The text continues here.
+%This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
+%\subsection{Subsection}
+%\subsubsection{Subsubsection}
+%
+%Bulleted lists look like this:
+%\begin{itemize}
+%\item	First bullet;
+%\item	Second bullet;
+%\item	Third bullet.
+%\end{itemize}
+%
+%Numbered lists can be added as follows:
+%\begin{enumerate}
+%\item	First item; 
+%\item	Second item;
+%\item	Third item.
+%\end{enumerate}
+%
+%The text continues here. 
+%
+%\subsection{Figures, Tables and Schemes}
+%
+%All figures and tables should be cited in the main text as Figure~\ref{fig1}, Table~\ref{tab1}, etc.
+%
+%\begin{figure}[H]
+%\includegraphics[width=10.5 cm]{Definitions/logo-mdpi}
+%\caption{This is a figure. Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.\label{fig1}}
+%\end{figure}   
+%
+%% The MDPI table float is called specialtable
+%\begin{specialtable}[H] 
+%\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
+%%%% \tablesize{} %% You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
+%\begin{tabular}{ccc}
+%\toprule
+%\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+%\midrule
+%Entry 1		& Data			& Data\\
+%Entry 2		& Data			& Data\\
+%\bottomrule
+%\end{tabular}
+%\end{specialtable}
+%
+%%\begin{listing}[H]
+%%\caption{Title of the listing}
+%%\rule{\columnwidth}{1pt}
+%%\raggedright Text of the listing. In font size footnotesize, small, or normalsize. Preferred format: left aligned and single spaced. Preferred border format: top border line and bottom border line.
+%%\rule{\columnwidth}{1pt}
+%%\end{listing}
+%
+%Text.
+%
+%Text.
+%
+%\subsection{Formatting of Mathematical Components}
+%
+%This is the example 1 of equation:
+%\begin{equation}
+%a = 1,
+%\end{equation}
+%the text following an equation need not be a new paragraph. Please punctuate equations as regular text.
+%%% If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph.
+%
+%This is the example 2 of equation:
+%\end{paracol}
+%\nointerlineskip
+%\begin{equation}
+%a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z
+%\end{equation}
+%
+%% Example of a figure that spans the whole page width (the commands \widefigure and \begin{paracol}{2}, \linenumbers, and\switchcolumn need to be present). The same concept works for tables, too.
+%\begin{figure}[H]	
+%\widefigure
+%\includegraphics[width=15 cm]{Definitions/logo-mdpi}
+%\caption{This is a wide figure.\label{fig2}}
+%\end{figure}  
+%\begin{paracol}{2}
+%\linenumbers
+%\switchcolumn
+%
+%Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows:
+%%% Example of a theorem:
+%\begin{Theorem}
+%Example text of a theorem.
+%\end{Theorem}
+%
+%The text continues here. Proofs must be formatted as follows:
+%
+%%% Example of a proof:
+%\begin{proof}[Proof of Theorem 1]
+%Text of the proof. Note that the phrase ``of Theorem 1'' is optional if it is clear which theorem is being referred to.
+%\end{proof}
+%The text continues here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -270,9 +301,9 @@ Authors should discuss the results and how they can be interpreted from the pers
 This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Patents}
-
-This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
+%\section{Patents}
+%
+%This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
@@ -288,22 +319,20 @@ This section is not mandatory, but may be added if there are patents resulting f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
 
-\funding{Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.}
+\funding{This research was funded by the Ministry of Science and Higher Education of the Russian Federation, agreement number 075-15-2020-808.}
 
-\institutionalreview{In this section, please add the Institutional Review Board Statement and approval number for studies involving humans or animals. Please note that the Editorial Office might ask you for further information. Please add ``The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical review and approval were waived for this study, due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans or animals. You might also choose to exclude this statement if the study did not involve humans or animals.}
+\institutionalreview{Not applicable.}
 
-\informedconsent{Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans.
-
-Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
+\informedconsent{Not applicable.}
 
 \dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.} 
 
-\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
+%\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
 
-\conflictsofinterest{Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript, or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the decision to publish the~results''.} 
+\conflictsofinterest{The authors declare no conflict of interest.} 
 
 %% Optional
-\sampleavailability{Samples of the compounds ... are available from the authors.}
+%\sampleavailability{Samples of the compounds ... are available from the authors.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Only for journal Encyclopedia
@@ -311,41 +340,41 @@ Written informed consent for publication must be obtained from participating pat
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optional
-\abbreviations{The following abbreviations are used in this manuscript:\\
+%\abbreviations{The following abbreviations are used in this manuscript:\\
 
-\noindent 
-\begin{tabular}{@{}ll}
-MDPI & Multidisciplinary Digital Publishing Institute\\
-DOAJ & Directory of open access journals\\
-TLA & Three letter acronym\\
-LD & Linear dichroism
-\end{tabular}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Optional
-\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
-\appendixstart
-\appendix
-\section{}
-\subsection{}
-The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
-
-\begin{specialtable}[H] 
-%\tablesize{\scriptsize}
-\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
-%\tablesize{} % You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
-\begin{tabular}{ccc}
-\toprule
-\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-\midrule
-Entry 1		& Data			& Data\\
-Entry 2		& Data			& Data\\
-\bottomrule
-\end{tabular}
-\end{specialtable}
-
-\section{}
-All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc. 
+%\noindent 
+%\begin{tabular}{@{}ll}
+%MDPI & Multidisciplinary Digital Publishing Institute\\
+%DOAJ & Directory of open access journals\\
+%TLA & Three letter acronym\\
+%LD & Linear dichroism
+%\end{tabular}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Optional
+%\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+%\appendixstart
+%\appendix
+%\section{}
+%\subsection{}
+%The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
+%
+%\begin{specialtable}[H] 
+%%\tablesize{\scriptsize}
+%\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
+%%\tablesize{} % You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
+%\begin{tabular}{ccc}
+%\toprule
+%\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+%\midrule
+%Entry 1		& Data			& Data\\
+%Entry 2		& Data			& Data\\
+%\bottomrule
+%\end{tabular}
+%\end{specialtable}
+%
+%\section{}
+%All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{paracol}
