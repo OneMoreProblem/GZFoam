@@ -217,9 +217,27 @@ D={a_i \leq y_i \leq b_i, \; 1 \leq i \leq N}.
 \]
 Предположение такого рода является достаточно естественным для многих прикладных задач, поскольку относительные вариации функции, характеризующей моделируемый процесс, обычно не могут превышать некоторый порог, определяемый ограниченной энергией изменений. Возникающий при этом вопрос об оценке априори неизвестных значений Lipschitz constant может решаться путем введения адаптивных схем \cite{Strongin2020,Strongin2020_1}.
 
-%Общая идея редукции размерности и решения одномерной задачи
+There is a number of ways to adapt effective one-dimensional algorithms for solving multidimensional problems; see, for example, the diagonal partitions method \cite{Sergeyev2017} or the simplicial partitions method \cite{Zilinskas2014}. In this study, we will use the approach based on the idea of dimension reduction by means of a Peano curve $y(x)$, which continuously and unambiguously maps the unit interval [0,1] onto the $n$-dimensional cube
+\[
+\left\{y\in R^N: -2^{-1}\leq y_i \leq 2^{-1}, 1 \leq i \leq N\right\}=\left\{y(x):0\leq x \leq 1 \right\}.
+\]
+Problems of numerical construction of Peano-type space filling curves and the corresponding theory are considered in detail in \cite{Strongin2000,Sergeyev2013}.
 
+By using this kind of mapping it is possible to reduce the multidimensional problem~(\ref{main_problem}) to a univariate problem
+\[
+\varphi(y^\ast)=\varphi(y(x^\ast))=\min{\left\{\varphi(y(x)): x\in[0,1]\right\}}.
+\]
+An important property of such mapping is that if the function $\varphi(y)$ in the domain $D$ satisfies the Lipschitz condition, then the function $\varphi(y(x))$ on the interval $[0,1]$ will satisfy a uniform H{\"o}lder condition
+\[
+\left|\varphi(y(x_1))-\varphi(y(x_2))\right|\leq H\left|x_1-x_2\right|^{1/N},
+\]
+where the H{\"o}lder constant $H$ is linked to the Lipschitz constant $L$ by the relation $H=2L\sqrt{N+3}$ \cite{Strongin2000}.
 
+Therefore, it is possible, without loss of generality, to consider minimization of univariate function
+\[
+f(x)=\varphi(y(x)), \;\; x\in[0,1],
+\]
+satisfying the H{\"o}lder condition.
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,9 +248,55 @@ D={a_i \leq y_i \leq b_i, \; 1 \leq i \leq N}.
 \subsection{}
 
 %ННГУ
-\subsection{Метод глобального поиска}
+\subsection{The global search algorithm}
 
-%Описание редуцированного одномерного алгоритма
+The algorithm for solving the problem \ref{main_problem} involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(x^k, z^k)$, the ``trial result''. The set of pairs $\left\{(x^k, z^k)\right\}, 1\leq k\leq n,$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
+
+The first two trials are performed at the boundary points of the segment $[0,1]$, i.e., $x^0 = 0$ and $x^1 = 1$. The values $z^0 = f(x^0)$ and $z^1 = f(x^1)$ of the objective function are calculated, and the counter $k = 1$ is set. A next trial point $x^{k+1}, k \geq 1,$ is chosen using the following rules.
+
+Step 1. Renumber points of the set $X_k=\{x^0,\dots,x^k\} $ with subscripts in increasing order of coordinate values, i.e.,
+\[
+0=x_0<x_1<\dots <x_k<x_{k}=1.
+\]
+Note that hereinafter superscripts are used to denote the iteration number, and subscripts are used to number the points in order.
+
+Step 2. Supposing that  $z_i=f(x_i), \; 1\leq i \leq k$, calculate values 
+\begin{equation}\label{mu}
+\mu = \max_{1\leq i \leq k}\frac{\left|z_i-z_{i-1}\right|}{\Delta_i},
+\end{equation}
+\[
+M = \left\{
+   \begin{array}{lr}
+     r\mu, & \mu > 0,\\
+     1, & \mu = 0,
+   \end{array}
+\right.
+ \]
+where $r>1$ is a preset parameter of the method, and $\Delta_i=\left(x_i-x_{i-1}\right)^{1/N}$.
+
+Step 3. Calculate a \textit{characteristic} for every interval $(x_{i-1}, x_i), \; 1\leq i \leq k,$   according to the following formula
+\begin{equation}\label{R}
+R(i)=\Delta_i+\frac{(z_i-z_{i-1})^2}{M^2\Delta_i}-2\frac{z_i+z_{i-1}}{M},1 \leq i \leq k.
+\end{equation}
+
+Step 4. Find interval $(x_{t-1},x_t)$ with the maximum characteristic
+\begin{equation}\label{MaxR}
+R(t)=\max{\left\{R(i): 1 \leq i \leq k \right\}}.
+\end{equation}
+
+Step 5. Carry out a trial at the point $x^{k+1}\in(x_{t-1},x_t)$, calculated using the following formula
+\begin{equation}\label{NewX}
+x^{k+1} = \frac{x_t+x_{t-1}}{2} - \mathrm{sign}(z_t-z_{t-1})\frac{1}{2r}\left[\frac{\left|z_t-z_{t-1}\right|}{\mu}\right]^N.
+\end{equation}
+
+The algorithm terminates if the condition $\Delta_t<\epsilon$ is satisfied; here $\epsilon>0$ is the preset accuracy. For estimation of the global solution, values
+\[
+f_k^\ast=\min_{0\leq i \leq k}f(x^i), \ x_k^\ast=\arg \min_{0\leq i \leq k}f(x^i),
+\]
+are selected.
+
+The rigorous proof of convergence of this algorithm is provided in \cite{Strongin2000}. The modifications taking into account (ссылки на модификации) 
+%existence of inequality constraints in the problem and the information about the objective function derivative are given in \cite{RefBarkalov,RefGergel1996,RefGergel1997}
 
 \subsection{Построение аппроксимаций целевой функции}
 
