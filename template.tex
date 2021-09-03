@@ -248,9 +248,9 @@ satisfying the H{\"o}lder condition.
 \subsection{}
 
 %ННГУ
-\subsection{The global search algorithm}
+\subsection{The global search algorithm}\label{GSA}
 
-The algorithm for solving the problem \ref{main_problem} involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(x^k, z^k)$, the ``trial result''. The set of pairs $\left\{(x^k, z^k)\right\}, 1\leq k\leq n,$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
+The algorithm for solving the problem \ref{main_problem} involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(y^k, z^k)$, the ``trial result''. The set of pairs $\left\{(y^k, z^k), 1\leq k\leq n,\right\}$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
 
 The first two trials are performed at the boundary points of the segment $[0,1]$, i.e., $x^0 = 0$ and $x^1 = 1$. The values $z^0 = f(x^0)$ and $z^1 = f(x^1)$ of the objective function are calculated, and the counter $k = 1$ is set. A next trial point $x^{k+1}, k \geq 1,$ is chosen using the following rules.
 
@@ -295,40 +295,41 @@ f_k^\ast=\min_{0\leq i \leq k}f(x^i), \ x_k^\ast=\arg \min_{0\leq i \leq k}f(x^i
 \]
 are selected.
 
-The rigorous proof of convergence of this algorithm is provided in \cite{Strongin2000}. The modifications taking into account (ссылки на модификации) 
+The rigorous proof of convergence of this algorithm is provided in \cite{Strongin2000}. The modifications taking into account ... (ссылки на модификации) 
 %existence of inequality constraints in the problem and the information about the objective function derivative are given in \cite{RefBarkalov,RefGergel1996,RefGergel1997}
 
 \subsection{Построение аппроксимаций целевой функции}
 
-
+%дать краткое описание двух способов построения аппроксимации - SVR и NN, привести иллюстрации (можно - одномерные, можно - двумерные), сказать, что SVR нам тут не подходит, и мы будем использовать NN.
 
 \subsection{Использование аппроксимаций при решении задачи оптимизации}
 
-В проведенном исследовании мы применяли простой способ использования аппроксимации целевой функции в задачах оптимизации.
-\begin{enumerate}
-	\item используя накопленную поисковую информацию построить аппроксимацию $p(y)$;
-	\item найти ee минимум $\overline{y} = \arg \min_{y \in D} p(y)$;
-	\item провести очередное испытание в найденной точке $\overline{y}$;
-	\item добавить результаты испытания к поисковой информации, и повторить процесс либо до исчерпания вычислительного ресурса, либо до достижения сходимости.
-\end{enumerate}
+В проведенном исследовании мы применяли следующий способ использования аппроксимации целевой функции в задачах оптимизации. Используя накопленную поисковую информацию, построить аппроксимацию целевой функции, найти минимум минимум аппроксимации, и повторить процесс либо до исчерпания вычислительного ресурса, либо до достижения сходимости.
 
 Предложенный способ будет иметь смысл либо в случае, когда объем накопленной поисковой информации достаточно велик (что позволяет построить относительно точную аппроксимацию многоэкстремальной функции), либо в случае, когда задача подобна задаче на поиск локального экстремума. 
-Первый случай соответствует заключительной фазе поиска, и его можно интерпретировать как способ уточнения текущего решения. Однако если целевая функция является вычислительно-трудоемкой, то провести достаточно много испытаний не представляется возможным, здесь мы столкнемся с исчерпанием вычислительного ресурса.
+Первый случай соответствует заключительной фазе поиска, и его можно интерпретировать как способ уточнения текущего решения. Однако если целевая функция является вычислительно-трудоемкой, то провести достаточно много испытаний не представляется возможным; здесь мы столкнемся с исчерпанием вычислительного ресурса.
 
 Второй случай подразумевает построение хорошей аппроксимации по относительно небольшому числу испытаний и фактически включает предположение о слабой многоэкстремальности целевой функции, что хорошо соответствует задаче, рассматриваемой в рамках данного исследования.
 
 Алгоритм глобального поиска с использованием аппроксимации целевой функции можно сформулировать следующим образом. 
 Пусть имеющиеся ресурсы позволяют провести $K_{max} = K_1 + K_2$ испытаний. 
 
-На первом этапе проводится $k = K_1$ испытаний с использованием core global search algorithm из section .
-Во время выполнения первого этапа происходит накопление поисковой информации, необходимой для построения аппроксимации функции.
+На первом этапе проводится $k = K_1$ испытаний с использованием core global search algorithm from section \ref{GSA}.
+Во время выполнения первого этапа происходит накопление множества результатов испытаний $\Omega = \left\{(y^k, \varphi(y^k)), 1\leq k\leq K_1\right\}$, необходимого для построения аппроксимации функции.
 
 На втором этапе алгоритм работает с использованием аппроксимации. Для вычисления точки $y^{k+1}$ очередного $k+1$-го испытания выполняются следующие действия.
 
 %Описание работы алгоритма
+Шаг 1. Используя множество результатов испытаний $\Omega$, сформированное в ходе работы алгоритма, построить аппроксимацию целевой функции $\overline{\varphi}(y)$;
 
-Алгоритм прекращает свою работу, если выполнено $k>K_{max}$, или же если выполнено условие $\left\|y^k - y^{k+1}\right\| \leq \epsilon$.
+Шаг 2. Используя core global search algorithm from section \ref{GSA}, найти глобальный минимум функции $\overline{\varphi}(y)$ и использовать данное значение как точку следующего испытания, т.е. $y^{k+1} = \arg \min_{y \in D} \overline{\varphi}(y)$.
 
+Шаг 4. Если выполнено условие $k>K_{max}$, или же выполнено условие $\left\|y^k - y^{k+1}\right\| \leq \epsilon$, то завершить работу алгоритма. 
+Иначе провести испытание в точке $y^{k+1}$, занести его результаты в множество $\Omega$, увеличить счетчик испытаний $k = k+1$ и перейти на Шаг 1.
+
+Предложенный алгоритм будет обеспечивать сходимость к глобальному решению в случае, если $K_1$ испытаний, выполненных на первом этапе, будет достаточно для построения аппроксимации целевой функции, адекватно отражающей основные особенности ее поведения. 
+
+%нужен ли здесь пример работы алгоирмта на тестовой задаче?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
