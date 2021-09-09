@@ -370,6 +370,103 @@ model = MLPRegressor(activation='logistic',
 %нужен ли здесь пример работы алгоирмта на тестовой задаче?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experiment for turbulence model calibration}
+
+To calibrate the $k-\omega\ SST$ turbulence model coefficients, we used an experiment set up at the Research Institute of Mechanics, Lomonosov Moscow State University. During the experiment, a turbulent fluid flow descended along a chute with a constant slope angle; the experiment was carried out for several different slope angles. The used chute had the following geometry: length is 1~m, width is 12~cm, height of sides is 10~cm. The area of the chute which is calculated, is located between two points of velocity and depth measurement, located at a distance of 23~cm and 82~cm from the top edge. The scheme of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment. The chute is made entirely of 4~mm acrylic glass. The experiment is carried out in a stationary mode with a closed fluid circuit. A pitot tube connected to a pressure transducer is used to measure the flow velocity profile.
+
+\begin{figure}[H]	
+\widefigure
+\includegraphics[width=10 cm]{NIIMexLinearUProfileInlet.png}
+\caption{Experiment chute scheme\label{NIIMexLinearUProfileInlet}}
+\end{figure}
+
+Three series of experiments were carried out, in which the slope angle, the initial flow depth, the initial flow profile were changed, as shown in the Table~\ref{tabNIIMexLinear}.
+
+\begin{specialtable}[H] 
+\caption{Experiments parameters\label{tabNIIMexLinear}}
+\begin{tabular}{ | c | c | c | }
+\toprule
+\textbf{$\boldsymbol{u_0}$ (depth-averaged), m/s}	& \textbf{$\boldsymbol{h_0}$, mm}	& \textbf{$\boldsymbol{\theta}$}\\
+\midrule
+1.63 & 4.20 & 25$^\circ$\\
+2.00 & 4.95 & 28$^\circ$\\
+1.78 & 3.45 & 33$^\circ$\\
+\bottomrule
+\end{tabular}
+\end{specialtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mathematical model}
+
+The flow is considered as an incompressible multiphase flow of air and flow material (snow or mud-stone mixture), both phases have the same speed. The $k-\omega\ SST$ turbulence model is used, based on the works of Menter et al. \cite{Menter1993, Menter1994, MenterKuntzLangtry2003}.
+
+This work uses the VOF (Volume of Fluid) method to find the shape of the free surface, which was proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. This method does not define the interface as a sharp boundary (it is one of the interface-capturing methods). The computation is performed on a fixed grid, which extends beyond the free surface. A transport equation for the fraction of the cell occupied by the liquid phase is solved, so a threshold value for the volume fraction of the phase determines the free surface.
+
+The system of equations for describing a two-phase flow model, in which each of the phases is considered incompressible and both phases have the same velocity \eqref{vofKWSST} consists of: the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy equation and turbulent kinetic energy dissipation equation.
+
+\end{paracol}
+\nointerlineskip
+\begin{equation}
+	\label{vofKWSST}
+	\left\{
+		\begin{aligned}
+			&\boldsymbol{\nabla} \cdot \bar{\boldsymbol{u}} = 0,\\
+			&\frac{\partial \alpha}{\partial t} + \boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha) = 0,\\
+			&\frac{\partial (\rho \bar{\boldsymbol{u}})}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}}) = -\boldsymbol{\nabla} \bar{p} + \boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}} + \rho \bar{\boldsymbol{f}},\\
+			&\frac{\partial (\rho k)}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k) = \widetilde{P}_k - \beta^*\rho k \omega + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_k \mu_t) \boldsymbol{\nabla} k \right),\\
+			&\frac{\partial (\rho \omega)}{\partial t}  + \boldsymbol{\nabla} \cdot ( \rho \bar{\boldsymbol{u}} \omega) = \gamma \rho \dot{s}^2 - \beta \rho \omega^2 + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_\omega \mu_t) \boldsymbol{\nabla} \omega \right) + 2 (1 - F_1) \rho \alpha_{\omega 2} \frac{1}{\omega} \boldsymbol{\nabla} k \cdot \boldsymbol{\nabla} \omega.
+		\end{aligned}
+	\right.
+\end{equation} 
+\begin{paracol}{2}
+\linenumbers
+\switchcolumn
+
+Here $\bar{\boldsymbol{u}}$~is the speed of the mixture; $ \alpha $~--- the volume fraction of the selected phase; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- the stress tensor, which is function of the strain rate tensor $\bar{\boldsymbol{s}} = 0.5 \left[ \boldsymbol{\nabla} \bar{\boldsymbol{u}} + (\boldsymbol{\nabla} \bar{\boldsymbol{u}})^T\right]$; $\mu_{eff} = \mu + \mu_t$~--- the effective viscosity, which is sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $a_1$ and $b_1$~--- the turbulence model constants; $\rho$~--- the mixture density; $\bar{p}$~--- the pressure; $ \bar{\boldsymbol{f}} $~--- the density of body forces; $ k $~--- the turbulent kinetic energy; $ \omega $~--- turbulence frequency; $ \widetilde{P}_k $~--- production rate of turbulent kinetic energy by an average flow; $F_1$~--- the blending function; turbulent model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$ are calculated according to the principle of the weighted average: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$.
+
+The following closing relations are used
+
+\begin{equation}
+	F_1 = \tanh \left( \left( \min\left( \max \left( \frac{\sqrt{k}}{\beta^* \omega y},\ \frac{500 \nu}{y^2 \omega} \right),\ \frac{4 \rho \alpha_{\omega 2} k}{CD_{k \omega} y^2} \right) \right)^4 \right).
+\end{equation}
+
+Where $CD_{k\omega} = \max \left( 2 \rho \alpha_{\omega 2} \frac{1}{\omega} \boldsymbol{\nabla} k \cdot \boldsymbol{\nabla} \omega,\ 10^{-10} \right)$; $y$ sets the distance to the nearest wall ($F_1$ equals zero away from the wall and turns into $k-\varepsilon$ model, and switches to one inside the boundary layer, realizing $k-\omega$ model); $\dot{s} = \sqrt{2 \bar{\boldsymbol{s}} \cdot \bar{\boldsymbol{s}}}$~--- strain rate (invariant of $\overline{\boldsymbol{s}}$); $F_2$~--- second blending function
+
+\begin{equation}
+	F_2 = \tanh \left( \left( \max \left( \frac{2 \sqrt{k}}{\beta^* \omega y},\ \frac{500 \nu}{y^2 \omega} \right) \right)^2 \right).
+\end{equation}
+
+Also, the limiter on the growth of turbulence is used in stagnation modes
+
+\begin{equation}
+	\widetilde{P}_k = \min (P_k,\ 10 \cdot \beta^* \rho k \omega),\ \ \ P_k = \mu_t \boldsymbol{\nabla} \bar{\boldsymbol{u}} \cdot \left[ \boldsymbol{\nabla} \bar{\boldsymbol{u}} + (\boldsymbol{\nabla} \bar{\boldsymbol{u}})^T\right].
+\end{equation}
+ 
+The following rheological model is implemented. Two incompressible and immiscible phases are represented in the computational domain by a certain mixture with physical characteristics calculated according to the principle of the weighted average \eqref{rho}, \eqref{mu}:
+
+\begin{equation}
+	\label{rho}
+	\rho = \rho_1 \alpha + \rho_0 (1 - \alpha),
+\end{equation}
+
+\begin{equation}
+	\label{mu}
+	\mu = \nu \rho,\ \ \ \nu = \nu_1 \alpha + \nu_0 (1 - \alpha).
+\end{equation}
+
+$\rho_0$ and $\nu_0$, $\rho_1$ and $\nu_1$ are the density and effective kinematic viscosity of each phase, respectively.
+
+The viscosity of the material of a slope flow (snow, mud-stone or water-snow mixture) is not a constant, but depends on the shear rate $\dot{s}$ (Herschel Bulkley rheological model):
+
+\begin{equation}
+	\label{muHB}
+	\nu_1 = \nu_1 (\dot{s}) = \min (\nu_{ref}, \frac{\tau_{ref}}{\dot{s}} + K\dot{s}^{n-1}).
+\end{equation}
+
+Here $K$ is the consistency index, $\tau_{ref}$ is the yield stress, $n$ is the power index, $\nu_{ref}$ is limiting viscosity.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
 Описание оборудования и программного обеспечения, которое было задействовано при проведении экспериментов.
