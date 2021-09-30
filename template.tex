@@ -158,18 +158,18 @@ $^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 Сложность исследуемых явлений и процессов отражается в сложности соответствующих математических моделей и численных методов их анализа. В настоящее время основным (и зачастую единственно возможным) инструментом подобного анализа является суперкомпьютерное моделирование поведения объекта, для чего широко используются автоматизированные CAD/CAM/CAE-системы. Известным примером открытого программного обеспечения подобного рода является OpenFOAM -- открытая платформа для численного моделирования задач механики сплошных сред [ссылка]). 
 
 %ННГУ
-Growth of performance of modern supercomputer systems goes in parallel with complication of complication of mathematical models of the processes considered that makes performing even a single model calculation (a \textit{trial}) a computation-costly operation. Consequently, the choice of the optimal values of the model parameters in reasonable time cannot be completed by trying all possible variants by «trial and error» method i. e. by uniform search on some regular grid in a range of variation of the parameters.
+Growth of performance of modern supercomputer systems goes in parallel with complication of complication of mathematical models of the processes considered that makes performing even a single model calculation (a \textit{trial}) a computation-costly operation. Consequently, the choice of the optimal values of the model parameters in reasonable time cannot be completed by trying all possible variants by grid method, i.e. by search on some regular grid in a range of variation of the parameters.
 Impossibility of performing a large number of search trials requires applying efficient search algorithms, which would provide an acceptable estimate of a problem solution at relatively small number of trials using available computational resources.
 
 It is worth noting that majority of existing methods for search of the optimum of time-consuming black-box functions have some drawbacks. Gradient-based algorithms cannot be used in many cases just because the derivatives of an objective function are unknown while the finite-difference approximations of these ones are too computation costly. At the same time, in general, the gradient-based methods provide the finding of a local optimal problem solution only.
-Classical direct search methods, which don't require the derivatives e. g. Nelder-Mead method \cite{NelderMead} or Hooke-Jeeves one \cite{HookJeeves} are the local ones as well. As a rule, the application of these methods for solving the global optimization problems involves several restarts from nodes of a random grid that requires a large number of trials. 
+Classical direct search methods, which don't require the derivatives, e.g. Nelder-Mead method \cite{NelderMead} or Hooke-Jeeves method \cite{HookJeeves}, are the local ones as well. As a rule, the application of these methods for solving the global optimization problems involves several restarts from nodes of a random grid that requires a large number of trials. 
 
 Deterministic methods of Lipschitz global optimization, such as DIRECT \cite{Jones2009}, non-uniform coverages method \cite{Evtushenko2009, Evtushenko2013}, diagonal \cite{Sergeyev2017}, and simplicial \cite{Zilinskas2014} methods guarantee (in the limit) convergence to the global solution of the problem but may require a large number of the search trials.
-Finally, heuristic methods e. g. evolution algorithms and annealing also require very large number of computations of the functions to obtain good estimates of the solutions in the global optimization problems and loose in quality to the deterministic algorithms at the same time \cite{Sergeyev2018,Kvasov2018}.
+Finally, heuristic methods, e.g. differential evolution or simulated annealing, also require very large number of computations of the functions to obtain good estimates of the solutions in the global optimization problems and loose in quality to the deterministic algorithms at the same time \cite{Sergeyev2018,Kvasov2018}.
 
 So far, direct application of the optimization algorithms to the search of the minima of the time-consuming function may appear too computation-costly when the performing of a single trial takes much computation time.
 A construction of an approximation of the objective function (also known as a response surface model or a metamodel or a surrogate model), computing the values of which is an inexpensive operation is a well known method to overcome this problem. The approximation is used further to find the minimum.
-There are many variants of constructing the approximations for multivariate functions. These are e. g. various interpolation methods utilizing polynomials, splines, radial basis functions, Kriging, as well as various regression models. Many of these algorithms are used in developing the global optimization methods.
+There are many variants of constructing the approximations for multivariate functions. These are various interpolation methods utilizing polynomials, splines, radial basis functions, Kriging, as well as various regression models. Many of these algorithms are used in developing the global optimization methods.
 
 For example, the use of the radial basis functions has been considered in details in \cite{Gutmann2001,Regis2005}. In \cite{Jones1998,UrRehman2014,Ollar2017_1}, Kriging-based methods have been proposed. A novel approach to constructing the metamodels and trust-region methods based on these ones has been presented in \cite{Polynkin2012,Ollar2017_2,Toropov2018}. 
 
@@ -214,7 +214,7 @@ The multiextremal optimization problems have much higher computation costs of so
 
 An assumption that the objective function $\varphi(y)$ satisfies the Lipschitz condition
 \[
-\left|\varphi(y_1)-\varphi(y_2)\right|\leq L\left\|y_1-y_2\right\|,\; y_1,y_2 \in D, 0<L<\infty.
+\left|\varphi(y_1)-\varphi(y_2)\right|\leq L\left\|y_1-y_2\right\|,\; y_1,y_2 \in D, 0<L<\infty,
 \]
 is a typical one, which is used in many global optimization methods \cite{Sergeyev2013,Evtushenko2013,Jones2009,Zilinskas2010}.
 The assumption of this kind is natural enough for many applied problems since the relative variations of the function characterizing the process being simulated cannot exceed some threshold imposed by limited energy of variations usually. A question of estimating the Lipschitz constant values unknown {\textit a priori} arising here can be resolved by introducing some additive schemes \cite{Strongin2020,Strongin2020_1}.
@@ -252,7 +252,7 @@ satisfying the H{\"o}lder condition.
 %ННГУ
 \subsection{The global search algorithm}\label{GSA}
 
-The algorithm for solving the problem (\ref{main_problem}0 involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(y^k, z^k)$, the ``trial result''. The set of pairs $\left\{(y^k, z^k), 1\leq k\leq n,\right\}$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
+The algorithm for solving the problem (\ref{main_problem}) involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(y^k, z^k)$, the ``trial result''. The set of pairs $\left\{(y^k, z^k), 0\leq k\leq n\right\}$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
 
 The first two trials are performed at the boundary points of the segment $[0,1]$, i.e., $x^0 = 0$ and $x^1 = 1$. The values $z^0 = f(x^0)$ and $z^1 = f(x^1)$ of the objective function are calculated, and the counter $k = 1$ is set. A next trial point $x^{k+1}, k \geq 1,$ is chosen using the following rules.
 
@@ -319,7 +319,11 @@ A MLP with one hidden layer with a scalar output is shown in Figure \ref{fig1}.
 \end{center}
 \end{figure}   
 
-The left layer called the \textit{input} one consists of a set of neurons $x_i, \; i=\overline{1,n}$ representing the input signals (the values of variables). Each neuron in the hidden layer transforms the values from the previous layer with weighted linear summing $w_1 x_1 + w_2 x_2+...+w_n x_n+bias$ where $w_i$ is the weights of the neurons and $bias$ is a special weight, which doesn't include a factor in the form of an input value. Next, the value obtained is transformed into an output one (predicted) value of the layer with a transmission function (the \textit{activation function}). The output layer receives the values from the last hidden layer and transforms these ones onto the output values. The network was trained by the error backpropagation method.
+The left layer called the \textit{input} one consists of a set of neurons $x_i, \; i=\overline{1,n}$ representing the input signals (the values of variables). Each neuron in the hidden layer transforms the values from the previous layer with weighted linear summing 
+\[
+w_1 x_1 + w_2 x_2+...+w_n x_n+bias,
+\]
+where $w_i$ are the weights of the neurons and $bias$ is a special weight, which doesn't include a factor in the form of an input value. Next, the value obtained is transformed into an output one (predicted) value of the layer with a transmission function (the \textit{activation function}). The output layer receives the values from the last hidden layer and transforms these ones onto the output values. The network was trained by the error backpropagation method.
 
 \subsubsection{Selection of the Model Parameters}
 
@@ -353,7 +357,7 @@ The global search algorithm using the objective function approximation can be fo
 Let us assume the resources available to allow performing $K_{max} = K_1 + K_2$ trials.
 
 At the first stage, $k = K_1$ trials are performed using core global search algorithm from section \ref{GSA}.
-In the course of performing the first stage, a set of the trial results $\Omega = \left\{(y^k, \varphi(y^k)), 1\leq k\leq K_1\right\}$ necessary to construct the objective function approximation is accumulated.
+In the course of performing the first stage, a set of the trial results $\Omega = \left\{(y^k, \varphi(y^k)), 0\leq k\leq K_1\right\}$ necessary to construct the objective function approximation is accumulated.
 
 At the second stage, the algorithm works using the approximation. To compute the point $y^{k+1}$ of the next $(k+1)^{\rm th}$ trial, the following operations are performed.
 
