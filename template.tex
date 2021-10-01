@@ -81,21 +81,21 @@
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0001-5273-2471} % Add \orcidA{} behind the author's name
 \newcommand{\orcidauthorB}{0000-0002-8736-0652} % Add \orcidB{} behind the author's name
-%\newcommand{\orcidauthorC}{0000-0002-4013-2329} % Add \orcidB{} behind the author's name
+\newcommand{\orcidauthorC}{0000-0002-0722-6884} % Add \orcidC{} behind the author's name
 
 % Authors, for the paper (add full first names)
-\Author{Konstantin Barkalov $^{1}$*\orcidA{} and Ilya Lebedev $^{1}$\orcidB{}}
+\Author{Konstantin Barkalov $^{1}$\orcidA{} and Ilya Lebedev $^{1}$\orcidB{} and Marina Usova$^{1}$\orcidC{}}
 
 % MDPI internal command: Authors, for metadata in PDF
-\AuthorNames{Konstantin Barkalov and Ilya Lebedev}
+\AuthorNames{Konstantin Barkalov and Ilya Lebedev and Marina Usova}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{Barkalov, K.; Lebedev, I.}
+\AuthorCitation{Barkalov, K.; Lebedev, I., Usova, M.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
-$^{1}$ \quad Department of Mathematical Software and Supercomputing Technologies, Lobachevsky University, 603950 Nizhni Novgorod, Russia; ilya.lebedev@itmm.unn.ru (I.L.)\\
+$^{1}$ \quad Department of Mathematical Software and Supercomputing Technologies, Lobachevsky University, 603950 Nizhni Novgorod, Russia; konstantin.barkalov@itmm.unn.ru (K.B.), ilya.lebedev@itmm.unn.ru (I.L.), marina.usova@itmm.unn.ru (M.U.)\\
 $^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 
 % Contact information of the corresponding author
@@ -114,7 +114,7 @@ $^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 \abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
 
 % Keywords
-\keyword{keyword 1; keyword 2; keyword 3 (List three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.)} 
+\keyword{global optimization; artificial neural network; function approximation} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -344,7 +344,7 @@ model = MLPRegressor(activation='logistic',
 \end{verbatim}
 
 
-\subsection{The Use of Approximations in Solving the Optimization Problem}
+\subsection{The Use of Approximations in Solving the Optimization Problem}\label{GSA_Appr}
 
 In the present study, we applied the following method of using the objective function approximation in the optimization problems: to construct the objective function approximation using the accumulated search information, to find the minimum of the approximation, and to repeat this process either until the computation resources is exhausted or until the convergence is achieved.
 
@@ -429,7 +429,7 @@ When optimizing the coefficients of the turbulent model, the Root Mean Square Er
 Here $h$~--- flow depth at the outlet plane.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Mathematical model}
+\section{Mathematical model}\label{math_model}
 
 %Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году \cite{HirtNichols1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
 The Reynolds-averaged Navier-Stokes equations were used to calculate the experiment carried out at the Research Institute of Mechanics, Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of the water phase $\alpha$ in the cell uses to determine the free surface in such a way that for $\alpha>0.6$ it is considered that the cell is filled with liquid, otherwise it is filled with air.
@@ -509,71 +509,63 @@ The turbulence model description details are presented in the works \cite{Menter
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-Вычислительные эксперименты проводились на одном из узлов вычислительного кластера ННГУ им. Н.И. Лобачевского (под управлением операционной системы CentOS 7.2). Узел кластера располагает 2-я процессорами Intel Sandy Bridge E5-2660 2.2 GHz, 64 Gb RAM. Центральный процессор является 8-х ядерным. Рассмотренные в данной работе методы глобальной оптимизации были реализованы на языке с++, компилятор использовался компилятор GCC 5.5.0 и openMPI 4.1.1, для построения нейросети использовалась библиотека машинного обучения Scikit-learn на python 3.9 
-
-Для численного решения задачи, описанной в разделе 5, использовалась программная система OpenFOAM 2012.
-Оптимизационная задача имеет 12 параметров, физическое значение этих параметров описаны в разделе 5. Ниже перечислены параметры и начальные значения.
-\begin{equation}
-	\label{kOmegaSstConstantsInit}
-	\begin{aligned}
-		\gamma_1 = 5 / 9,\ \ \ \beta_1 = 3 / 40,\ \ \ \alpha_{k1} = 0.85,\ \ \ \alpha_{\omega1} = 0.5,\\
-		\gamma_2 = 0.44,\ \ \ \beta_2 = 0.0828,\ \ \ \alpha_{k2} = 1,\ \ \ \alpha_{\omega 2} = 0.856,\\
-		\beta^* = 0.09,\ \ \ a_1 = 0.31,\ \ \ b_1 = 1.0,\ \ \ c_1 = 10.0.
-	\end{aligned}
-\end{equation}
-
-При решении задачи оптимизации, один расчет целевой функции занимал в среднем 15 минут и производился параллельно на 8 mpi процессах. Решение исходной задачи производилось последовательно, парами по 2 параметра, при этом остальные параметры фиксировались. 
-
-В начале была выбрана пара наиболее важных параметров: $beta^*$ и $a_1$. Для решения возникающей задачи оптимизации использовался АГП описанный в разделе 3,3 с параметрами $r = 3$ и $\epsilon = 0.001$. в силу ограничений по времени было выполнено 100 итераций алгоритма и произошла остановка. Далее для решение этой задачи использовался подход, описанный в разделе 3.5, в начале было выполнено 30 итераций алгоритма глобального поиска после чего начал работать алгоритм с использованием аппроксимации нейросетью, параметр метода $r = 3$ и $\epsilon = 0.001$, было сделано 65 итераций алгоритма, произошла остановка по точности. В результате значение целевой функции было уменьшено до значения 0.375174. 
-
-На рисунке ~\ref{NN_100_point} приведено изображение функции, полученной с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания (варьировались параметры $beta^*$ и $a_1$). Как можно видеть функция имеет несколько локальных минимумов.
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=1.0\linewidth]{NN_100_point_.png}
-\caption{Изображение функции, полученной с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания (варьировались параметры $beta^*$ и $a_1$)}
-\label{NN_100_point}
-\end{center}
-\end{figure}
-
-Второй парой оптимизируемых параметров были выбраны $\alpha_{k1} $ и $\alpha_{\omega1} $. Третьей парой были выбраны параметры $\alpha_{k2} $ и $\alpha_{\omega2} $. Оптимизация по этим параметрам не дала значительного улучшения целевой функции, было получено значение 0.364464.
-
-На рисунках ~\ref{NN_100_point1} и ~\ref{NN_100_point2} приведены изображение функций, полученные с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались соответсвенно пары параметров $\alpha_{k1} $,  $\alpha_{\omega1} $ и $\alpha_{k2} $, $\alpha_{\omega2} $.
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=1.0\linewidth]{ NN_100_point_1.png}
-\caption{Изображение функции, полученной с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались параметры $\alpha_{k1} $ и $\alpha_{\omega1} $}
-\label{NN_100_point1}
-\end{center}
-\end{figure}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=1.0\linewidth]{ NN_100_point_tanh_alpha2_0.0001_.png}
-\caption{Изображение функции, полученной с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались параметры $\alpha_{k2} $ и $\alpha_{\omega2} $}
-\label{NN_100_point2}
-\end{center}
-\end{figure}
-
-
+Вычислительные эксперименты проводились на вычислительном кластере ННГУ им. Н.И. Лобачевского (работает под управлением операционной системы CentOS 7.2). Узел кластера располагает 2-я процессорами Intel Sandy Bridge E5-2660 2.2 GHz, 64 Gb RAM. Центральный процессор является 8-х ядерным. Рассмотренные в данной работе методы глобальной оптимизации были реализованы на языке C++, использовался компилятор GCC 5.5.0 и openMPI 4.1.1, для построения аппроксимации целевой функции с помощью нейросети использовалась библиотека машинного обучения Scikit-learn из Python 3.9. Для численного решения задачи, описанной в Section \ref{math_model}, использовалась программная система OpenFOAM 2012.
 
 
 %В процессе оптимизации исследовались такие константы, как $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$, которые регулируют скорость диссипации турбулентной кинетической энергии, напряжения Рейнольдса, поток диффузии турбулентной кинетической энергии, поток диффузии диссипации турбулентной кинетической энергии, соответственно.
 Such constants of the turbulence model as $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$ have been optimized. They regulate the turbulent kinetic energy dissipation rate, Reynolds stress, turbulent kinetic energy diffusion flow, diffusion flow of turbulent kinetic energy dissipation, respectively.
 
 %Начальные значения коэффициентов были заданы следующими:
-The initial values of the coefficients:
-
+The initial values of the coefficients are
 \begin{equation}
 	\begin{aligned}
 		\beta^* = 0.09;\ \ \ a_1 = 0.31;\ \ \ \alpha_{k 1} = 0.85;\ \ \ \alpha_{\omega 1} = 0.5; \ \ \ \alpha_{k 2} = 1.0;\ \ \ \alpha_{\omega 2} = 0.856.
 	\end{aligned}
 \end{equation}
 
-%После калибровки значения коэффициентов стали следующими:
-The optimized values of the coefficients:
+Один расчет целевой функции при заданных значениях параметров занимал в среднем 15 минут с использованием 8 MPI-процессов на узле. 
+Подбор оптимальных значений параметров проводился парами, при этом значения остальных параметров -- фиксировались. 
 
+Вначале была выбрана пара наиболее важных параметров $\beta^*$ и $a_1$. 
+Для исследования возникающей задачи оптимизации мы применяли оба возможных подхода к ее решению: без использования аппроксимации целевой функции и с использованием аппроксимации.
+
+В первом эксперименте использовался global search alogithm, описанный в subsection \ref{GSA}, без использования аппроксимации. Были заданы параметры методы  $r = 3$ и $\epsilon = 10^{-3}$. За 24 часа было выполнено 100 итераций алгоритма, требуемой точности достичь не удалось. 
+
+Во втором эксперименте для решения этой же задачи использовался подход, описанный в subsection \ref{GSA_Appr}. Вначале было выполнено $K_1 = 30$ итераций алгоритма глобального поиска, после чего начал работать алгоритм с использованием аппроксимации нейросетью. Всего было выполнено $K_1 + K_2 = 65$ итераций алгоритма, после чего произошла остановка по точности. В результате было найдено лучшее значение целевой функции 0.375174. При этом общее время поиска решения сократилось до 16 часов, что обеспечило получение более точного решения задачи за приемлемое время.
+
+На рисунке ~\ref{NN_100_point} приведены точки испытаний и график аппроксимирующей функции, построенной по ним с использованием нейросети (варьировались параметры $\beta^*$ и $a_1$). Наглядно видно наличие нескольких локальных минимумов.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\linewidth]{NN_100_point_.png}
+\caption{Значения целевоф функции  и ее аппроксимация, построенная с помощью нейросети (варьировались параметры $\beta^*$ и $a_1$)}
+\label{NN_100_point}
+\end{center}
+\end{figure}
+
+Найденные лучшие значения параметров $\beta^*$ и $a_1$ были зафиксированы, и затем проводилась оптимизация по параметрам $\alpha_{k1}, \alpha_{\omega1}$ и $\alpha_{k2}, \alpha_{\omega2}$. Оптимизация по этим параметрам не дала значительного улучшения целевой функции, было получено значение 0.364464.
+
+%На рисунках ~\ref{NN_100_point1} и ~\ref{NN_100_point2} приведены изображение функций, полученные с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались соответсвенно пары параметров $\alpha_{k1} $,  $\alpha_{\omega1} $ и $\alpha_{k2} $, $\alpha_{\omega2} $.
+%
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=1.0\linewidth]{ NN_100_point_1.png}
+%\caption{Изображение функции, полученной с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались параметры $\alpha_{k1} $ и $\alpha_{\omega1} $}
+%\label{NN_100_point1}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=1.0\linewidth]{ NN_100_point_tanh_alpha2_0.0001_.png}
+%\caption{Изображение функции, полученной с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались параметры $\alpha_{k2} $ и $\alpha_{\omega2} $}
+%\label{NN_100_point2}
+%\end{center}
+%\end{figure}
+
+%После калибровки значения коэффициентов стали следующими:
+%The optimized values of the coefficients:
+As a final result, the following values of the coefficients of the model were obtained:
 \begin{equation}
 	\begin{aligned}
 		\beta^* = 0.117432;\ \ \ a_1 = 1.84082;\ \ \ \alpha_{k 1} = 1.999023;\\
