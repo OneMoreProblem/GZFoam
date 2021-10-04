@@ -73,33 +73,37 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Title}
+\Title{Turbulence Model Optimization for Slope Flow with AI}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{Title}
+\TitleCitation{Turbulence Model Optimization for Slope Flow with AI}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0001-5273-2471} % Add \orcidA{} behind the author's name
 \newcommand{\orcidauthorB}{0000-0002-8736-0652} % Add \orcidB{} behind the author's name
 \newcommand{\orcidauthorC}{0000-0002-0722-6884} % Add \orcidC{} behind the author's name
 
+\newcommand{\orcidauthorD}{0000-0002-0722-6884} % Add \orcidD{} behind the author's name
+\newcommand{\orcidauthorF}{0000-0002-0722-6884} % Add \orcidF{} behind the author's name
+\newcommand{\orcidauthorG}{0000-0002-0722-6884} % Add \orcidG{} behind the author's name
+
 % Authors, for the paper (add full first names)
-\Author{Konstantin Barkalov $^{1}$\orcidA{} and Ilya Lebedev $^{1}$\orcidB{} and Marina Usova$^{1}$\orcidC{}}
+\Author{Konstantin Barkalov $^{1}$\orcidA{} and Ilya Lebedev $^{1}$\orcidB{} and Marina Usova$^{1}$\orcidC{} and Daria Romanova\orcidE{} and Sergei Strijak\orcidF{} and Daniil Ryazanov\orcidG{}}
 
 % MDPI internal command: Authors, for metadata in PDF
-\AuthorNames{Konstantin Barkalov and Ilya Lebedev and Marina Usova}
+\AuthorNames{Konstantin Barkalov and Ilya Lebedev and Marina Usova and Daria Romanova and Sergei Strijak and Daniil Ryazanov}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{Barkalov, K.; Lebedev, I., Usova, M.}
+\AuthorCitation{Barkalov, K.; Lebedev, I., Usova, M.; Romanova D.; Strijak S.; Ryazanov D.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
 $^{1}$ \quad Department of Mathematical Software and Supercomputing Technologies, Lobachevsky University, 603950 Nizhni Novgorod, Russia; konstantin.barkalov@itmm.unn.ru (K.B.), ilya.lebedev@itmm.unn.ru (I.L.), marina.usova@itmm.unn.ru (M.U.)\\
-$^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
+$^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109004, Moscow, Russia; ryazanov@ispras.ru}
 
 % Contact information of the corresponding author
-\corres{Correspondence: e-mail@e-mail.com; Tel.: (optional; include country code; if there are multiple corresponding authors, add author initials) +xx-xxxx-xxx-xxxx (F.L.)}
+\corres{Correspondence: Ryazanov Daniil, ryazanov@ispras.ru;}
 
 % Current address and/or shared authorship
 %\firstnote{Current address: Affiliation 3} 
@@ -111,10 +115,11 @@ $^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
+\abstract{При помощи глобальной оптимизации подбираются коэффициенты модели турбулентности для склоновых потоков. Склоновый поток моделируется при помощи метода конечного объема и $k-\omega\ SST$-модели турбулентности. Калибровка коэффициентов модели турбулентности осуществлялась методом КАКИМ?. Для ускорения процедуры оптимизации целявая функция аппроксимировалась при помощи нейронной сети. Получены оптимальные для склоновых потоков коэфициенты турбулентности, проведено сравнение с эксперементальными данными. %A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.
+}
 
 % Keywords
-\keyword{global optimization; artificial neural network; function approximation} 
+\keyword{global optimization; artificial neural network; function approximation, finite volume method, CFD} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -150,45 +155,25 @@ $^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Оползни, сели и лавины относятся к опасным геологическим явлениям. Они являются склоновыми процессами, связанными с отрывом горных пород, перемещением их по склону под влиянием силы тяжести и приводящим к необратимым преобразованиям в рельефе. Оползни различают по основным причинам возникновения.
+Оползни, сели и лавины относятся к опасным геологическим процессам. Они являются склоновыми процессами, связанными с отрывом горных пород, перемещением их по склону под влиянием силы тяжести и приводящим к необратимым преобразованиям в рельефе. Оползни различают по основным причинам возникновения. Они бывают абразионные, эрозионные, техногенные и естественно-техногенные. По механизму смещения различают соответственно оползни блоковые, сдвига, растяжения, разжижения \cite{Pendin2015}.
 
-Проблема изучения схода оползней, селей и лавин, их предсказание, моделирование и обнаружение является актуальной задачей в связи с влиянием этого опасного явления на жизнь людей и инфраструктуру.
+Изучение схода оползней, селей и лавин, их предсказания и обнаружения является актуальной задачей в связи с влиянием этих опасных явлений на жизнь людей и городскую инфраструктуру. The data show that in total $55 997$ people were killed in $4862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
 
-В мире ежегодно происходят десятки оползней и лавин, в результате схода которых гибнут более ста человек. 
+Большое количество оползней, обвалов и селей происходит на территории Европейских стран (Швейцария, Австрия, Италия, Франция, Исландия). Подобные опасные явления происходят в России, например в Краснодарском крае РФ и на Северном Кавказе, в связи с обильными осадками в этих регионах, с наличием горного рельефа и в связи с застройкой территории (линейные и площадные объекты) в последние годы \cite{hungr2005landslide}.
 
-Много оползней, обвалов и селей происходит на территории РФ, в том числе в Краснодарском крае РФ и на Северном Кавказе, в связи с обильными осадками в этих регионах, с наличием горного рельефа и в связи со стихийной застройкой территории (линейные и площадные объекты) в последние годы.
+Сели – это один из наиболее сложных экзогенных геологических процессов интегрирующих действия других геологических процессов. Селевой поток это сложная гетерогенная структура, состоящая из жидкого и твердого компонентов. Твердый элемент состоит из неоднородных в гранулометрическом отношении минеральных частиц.
 
-Сели --- это один из наиболее сложных экзогенных геологических процессов интегрирующих действия других геологических процессов. Селевой поток это сложная гетерогенная структура, состоящая из жидкого и твердого компонентов. Твердый элемент состоит из неоднородных в гранулометрическом отношении минеральных частиц.
-Оползневые деформации имеют площадное развитие на пологих склонах в долинах рек Белая, Кубань, Лаба, Уруп, а также на юго-западных склонах Ставрапольской возвышенности.
+Наиболее известная задача с оползнем связана с оценкой устойчивости оползневого склона для статических условий и сейсмического воздействия. Моделирование же схода склонового потока позволяет предсказать разрушения вызванные этим явлением, грамотно расположить защитные сооружения и жизненно-важные объекты.
 
-20 апреля 2017 года в районе “Роза Хутор” и русла реки Мзымта отмечены катастрофические сходы селевых масс, приведшие к гибели людей, повреждению дорожной техники и перекрытию дорожного полотна.
+Такие задачи решаеются с помощью конечно-разностных методов \cite{Bernander2016}, метода контрольного объема \cite{liu2007application}, дискретных элементов \cite{Liu2020} клеточных автоматов \cite{piegari2006cellular} и гибридных методов. Сели можно моделировать с помощью двухжидкостной модели в основе которой используется модель объема в жидкости – Volume of Fluid \cite{Hirt1981}. Перечисленные методы реализованы в различных коммерческих и открытых программных комплексах: MN2D \cite{Naaim2002}, TITAN2D \cite{Pitman2003}, RAMMS.
 
-Перечислим несколько характерных событий в Краснодарском крае:
-\begin{itemize}
-    \item 24.06.2019 в Адлерском районе Сочи в поселке Красная Поляна произошел сход грязекаменной массы на автомобильную дорогу в районе ручья Сулимовский, в районе курорта "Роза Хутор". При помощи специальной техники убрали 800 кубических метров грязи. Ликвидировали последствия 57 человек на 25 специализированных машинах. Затопленной оказалась и канализационная насосная станция \textnumero 7, она обслуживает горную Олимпийскую деревню. Позже в администрации Сочи сообщили, что в итоге объем селя составил около четырех тысяч кубических метров;
-    \item 11.05.2021 в сочинском поселке Вардане произошел сход оползня, развитие которого спровоцировали обильные осадки, наблюдаемые в Лазаревском в последние дни. Огромная масса грунта, повредила сразу 2 водовода с d=200 мм;
-    \item 05.07.2021 в районе пос. Гизель-Дере в Краснодарском крае сошел сель длиной 40 метров и высотой 2 метра, вследствие чего движение по федеральной трассе Джубга – Сочи перекрыто;
-    \item 05.07.2021 на трассе А-149 Адлер - Красная Поляна сель вышел на проезжую часть. Утилизировано 90 кубических метров селевых масс;
-    \item 07.02.2019 обрушился участок дороги в станице Бакинской под Горячим Ключом Краснодарского края. Причиной обрушения дороги, которая ведет к ряду улиц станицы Бакинской и соединяет населенный пункт с несколькими хуторами, стал сход оползня.
-\end{itemize}
+Ранее проводилось изучения снежных лавин с использованием методов вычислительной гидродинамики для неньютоновских сред  и данных лабораторного эксперимента, в том числе с использованием исторических данных по лавинам на территории Японии \cite{Oda2011, Yamaguchi2017}. Аналогичные работы проводились по снежным лавинам на территории Швейцарии, Австрии и Италии. В Университете Исландии проводилась серия работ по изучению снежных лавин с помощью лабораторного эксперимента в специальных лотках и измерительного оборудования для изучения лавин в Исландии  \cite{IceThesKatr, IceThesJon}. В работе \cite{Jaedicke2006} представлен эксперимент со спуском водоснежного потока в Давосе, Швейцария. Проводились измерения глубина потока для лавины из сухого снега и для водоснежного потока.
 
-Моделирование оползней, селей и лавин выполняется  с помощью численных методов и методов машинного обучения. Различают математические модели на базе конечных элементов, конечно-разностных методов, метода контрольного объема, дискретных частиц, отдельных элементов, клеточных автоматов и гибридных методов.
+С помощью байесовского классификатора уже выполнялась калибровка коэффициентов в $\kappa-\epsilon$ модели турбулентности при изучении процесса распространения примесей в городской застройке \cite{Guillas2014}.
 
-Наиболее известная задача с оползнем связана с оценкой устойчивости оползневого склона для статических условий и сейсмического воздействия. Задача решается с помощью трехмерного моделирования, конечно-элементной модели, методов, основанных на теории предельного равновесия,  механики сплошной среды и модели дискретной среды в различных коммерческих и открытых программных комплексах.  
+Для моделирования и предсказания склоновых потоков используется широкий круг анализа климатических, геологических и гидрологических данных. В свете последних тенденций огромные потоки данных получаемых со спутников из эксперементов и математического моделирования обрабатываются при помощи машинного обучения, что позволяет разработать эффективные модели этих процессов \cite{GeoML, Ma2020}.
 
-Сели можно моделировать с помощью двухжидкостной модели в основе которой используется модель объема в жидкости – Volume of Fluid.
-
-Машинное обучение это современный инструмент аналитики, который широко используется для предотвращения оползней, селей, лавин. Различают подходы, основанные на определение оползней по спутниковым снимкам, оценки территории подверженности оползням, селям и лавинам, развитие систем оповещения населения. Различные факторы, включая литологию, морфологию склонов и внеплановые городские застройки, могут предрасполагать склоны к оползням. Серьезные экстремальные явления, вызванные изменением климата, включая проливные дожди и быстрое таяние снегов, также могут вызывать оползни и сели. Обычные методы предотвращения оползней, селей и лавин можно разделить на две категории: обнаружение и прогноз.
-
-Одна из основных задач машинного обучения заключается в построении модели для представления сложных, неизвестных или не до конца понятых соотношений между данными (климатические, геологические, гидрологические) и целевыми переменными.
-
-Алгоритмы машинного обучения можно условно разделить на две основные категории в соответствии с их назначением: обучение с учителем и алгоритм обучения без учителя. Например, для выявления потенциальных оползней, подходы классификации проблемы могут пометить каждый пиксель изображения как «оползень» или «не оползень». Задачи регрессии направлены на то, чтобы предсказать непрерывную переменную. Общие алгоритмы машинного обучения включают в себя логистическую регрессию, дерево решений, алгоритм “случайный лес”, метод опорных векторов, наивный байесовский классификатор, глубокие нейронные сети. 
-
-Методы обучения без учителя направлены на то, чтобы найти закономерности в немаркированных данных. Один из самых распространенны алгоритмы обучения~--- это кластеризация, где образцы сгруппированы по сходству. Другим примером является понижение размерности, направленное на уменьшение разброса в наборе данных.
-
-Методы, основанные на глубоком обучении (CNN), способны извлекать устойчивые пространственные и спектральные особенности. Комбинация спутникового изображения и топографических данных может быть использована для того чтобы обобщить высокоуровневые признаки на основе низкоуровневых признаков, чтобы лучше отличить оползни от других объекты.
-
-В данной работе рассматривается задача о моделировании схода модельной лавины. Математическая модель сформулирована в двухжидкостной постановке с учетом подхода URANS и k-omega модели турбулентности. Выполнена оптимизации эмпирических коэффициентов в модели турбулентности на основе данных лабораторного эксперимента.
+Методы, основанные на глубоком обучении (CNN), способны извлекать устойчивые пространственные и спектральные особенности \cite{Maggiori2017}. Комбинация спутникового изображения и топографических данных может быть использована для того чтобы обобщить высокоуровневые признаки на основе низкоуровневых признаков, чтобы лучше отличить склоновые потоки от других объектов \cite{Qin2021, Prakash2021}.
 
 
 %Во введении -- охарактеризовать проблему, дать обзор методов ее решения.
@@ -316,7 +301,7 @@ The following approximation schemes are used:
 \end{itemize}
 
 %Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
-To obtain a system of linear algebraic equations, the PIMPLE algorithm is used, which is a combination of the PISO \cite{Holzmann2019, Yin2003} (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) \cite{Issa1986_1} algorithms.
+To obtain a system of linear algebraic equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm is used, which is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
 
 %ННГУ
 \subsection{The global search algorithm}\label{GSA}
@@ -806,7 +791,12 @@ Authors should discuss the results and how they can be interpreted from the pers
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
-This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
+В работе проведен расчет двухфазного течения в лотке с использованием решателя interFoam, математической модели URANS и k-omega SST модели турбулентности. Выполнено сравнение результатов расчета профиля скорости с данными эксперимента НИИ Механики МГУ в различных сечения при изменении угла наклона лотка. Выполнен поиск оптимальных коэфициентов модели турбулентности путем минимизации целевая функция расхождения профиля скорости в лотке - RMSE.
+
+MLPRegressor класс из Scikit-learn библиотеки был использован для построения  целевой функции аппроксимации. Выполнена оптимизация целевой функции с использованием критерия Липшица и ПО Globalizer Software, разработанного в ННГУ им. Лобачевского. При этом дополнительно была использована полносвязанная нейронная сеть с одним скрытым слоем для нахождения целевой функции в качестве выходного параметра.
+
+Минимальное значение для целевой функции получилось для случая угла лотка в 33 градусов. Один расчет целевой функции при заданных значениях параметров занимал в  среднем 15 минут с использованием 8 MPI-процессов на узле вычислительного кластера ЦКП Лобачевский.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Patents}
@@ -825,7 +815,7 @@ This section is not mandatory, but can be added to the manuscript if the discuss
 % \supplementary{The following are available at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title. A supporting video article is available at doi: link.} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
+\authorcontributions{``Conceptualization, Konstantin Barkalov. and Daniil Ryazanov; methodology, Romanova Daria and Konstantin Barkalov; software, Ilya Lebedev, Daniil Ryazanov, Marina Usova and  Romanova Daria; validation,  Romanova Daria and Ilya Lebedev; formal analysis, Sergei Strijak, Marina Usova; investigation, Sergei Strijak; resources, Ilya Lebedev; data curation, Romanova Daria and Marina Usova; writing---original draft preparation, Konstantin Barkalov, Sergei Strijak and Romanova Daria; writing---review and editing, Ryazanov Daniil; visualization, Ilya Lebedev; supervision, Sergei Strijac; project administration, Konstantin Barkalov; funding acquisition, Konstantin Barkalov All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
 
 \funding{This research was funded by the Ministry of Science and Higher Education of the Russian Federation, agreement number 075-15-2020-808.}
 
