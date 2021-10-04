@@ -576,7 +576,9 @@ The turbulence model description details are presented in the works \cite{Menter
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-Вычислительные эксперименты проводились на вычислительном кластере ННГУ им. Н.И. Лобачевского (работает под управлением операционной системы CentOS 7.2). Узел кластера располагает 2-я процессорами Intel Sandy Bridge E5-2660 2.2 GHz, 64 Gb RAM. Центральный процессор является 8-ми ядерным. Рассмотренные в данной работе методы глобальной оптимизации были реализованы на языке C++, использовался компилятор GCC 5.5.0 и openMPI 4.1.1, для построения аппроксимации целевой функции с помощью нейросети использовалась библиотека машинного обучения Scikit-learn из Python 3.9. Для численного решения задачи, описанной в Section \ref{math_model}, использовалась программная система OpenFOAM v2012.
+The experiments were conducted using a computer cluster at Lobachevsky University of Nizhni Novgorod (operated under CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
+The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and openMPI 4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
+For the numerical solving of the problem described in Section \ref{math_model}, open source CFD software OpenFOAM v2012 was used.
 
 
 %В процессе оптимизации исследовались такие константы, как $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$, которые регулируют скорость диссипации турбулентной кинетической энергии, напряжения Рейнольдса, поток диффузии турбулентной кинетической энергии, поток диффузии диссипации турбулентной кинетической энергии, соответственно.
@@ -589,28 +591,36 @@ The initial values of the coefficients are
 		\beta^* = 0.09;\ \ \ a_1 = 0.31;\ \ \ \alpha_{k 1} = 0.85;\ \ \ \alpha_{\omega 1} = 0.5; \ \ \ \alpha_{k 2} = 1.0;\ \ \ \alpha_{\omega 2} = 0.856.
 	\end{aligned}
 \end{equation}
+One calculation of the objective function at given values of parameters took 15 minutes in average with the use of 8 MPI-processes per a node. 
 
-Один расчет целевой функции при заданных значениях параметров занимал в среднем 15 минут с использованием 8 MPI-процессов на узле. 
-Подбор оптимальных значений параметров проводился парами, при этом значения остальных параметров -- фиксировались. 
+The optimal values of parameters were adjusted for pairs, the values of the rest parameters were fixed. 
+First, a pair of the most important parameters $\beta^*$ and $a_1$ was selected. 
+To investigate the optimization problem arising, both possible approaches to solving the one were applied: without the use of the objective function approximation  and with the use of the approximation.
 
-Вначале была выбрана пара наиболее важных параметров $\beta^*$ и $a_1$. 
-Для исследования возникающей задачи оптимизации применялись оба возможных подхода к ее решению: без использования аппроксимации целевой функции и с использованием аппроксимации.
+In the first experiment, the global search algorithm described in subsection \ref{GSA} was applied without the use of approximation. 
+The parameters of the method were set $r = 3$ and $\epsilon = 10^{-3}$. 
+In 24 hours, 100 iterations of the algorithm were performed; the required accuracy was not achieved. 
 
-В первом эксперименте использовался global search alogithm, описанный в subsection \ref{GSA}, без использования аппроксимации. Были заданы параметры методы  $r = 3$ и $\epsilon = 10^{-3}$. За 24 часа было выполнено 100 итераций алгоритма, требуемой точности достичь не удалось. 
+In the second experiment, the approach described in subsection \ref{GSA_Appr} was applied to solve the same problem.
+First, $K_1 = 30$ iterations of global search algorithm were performed. 
+Afterwards, the algorithm employing the approximation with the neural network was started. 
+Total $K_1 + K_2 = 65$ iterations of the algorithm were performed, after that the algorithm stopped on accuracy. 
+As a result, the best value  of the objective function 0.375174 was found. 
+Total solution search time was reduced down to 16 hours that provided obtaining more accurate solution of the problem in acceptable time.
 
-Во втором эксперименте для решения этой же задачи использовался подход, описанный в subsection \ref{GSA_Appr}. Вначале было выполнено $K_1 = 30$ итераций алгоритма глобального поиска, после чего начал работать алгоритм с использованием аппроксимации нейросетью. Всего было выполнено $K_1 + K_2 = 65$ итераций алгоритма, после чего произошла остановка по точности. В результате было найдено лучшее значение целевой функции 0.375174. При этом общее время поиска решения сократилось до 16 часов, что обеспечило получение более точного решения задачи за приемлемое время.
-
-На рисунке ~\ref{NN_100_point} приведены точки испытаний и график аппроксимирующей функции, построенной по ним с использованием нейросети (варьировались параметры $\beta^*$ и $a_1$). Наглядно видно наличие нескольких локальных минимумов.
+The trial points and the approximating function plotted according to these points using the neural network are presented in Figure~\ref{NN_100_point} (the parameters $\beta^*$ and $a_1$ were varied). One can see clearly several local minima to be present.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.8\linewidth]{NN_100_point_.png}
-\caption{Значения целевоф функции  и ее аппроксимация, построенная с помощью нейросети (варьировались параметры $\beta^*$ и $a_1$)}
+\caption{Objective function values (red points) and approximation plot constructed using the neural network (parameters $\beta^*$ and $a_1$ were varied)}
 \label{NN_100_point}
 \end{center}
 \end{figure}
 
-Найденные лучшие значения параметров $\beta^*$ и $a_1$ были зафиксированы, и затем проводилась оптимизация по параметрам $\alpha_{k1}, \alpha_{\omega1}$ и $\alpha_{k2}, \alpha_{\omega2}$. Оптимизация по этим параметрам не дала значительного улучшения целевой функции, было получено значение 0.364464.
+The best values of parameters $\beta^*$ and $a_1$ found were fixed, and then optimization in parameters $\alpha_{k1}, \alpha_{\omega1}$, and $\alpha_{k2}, \alpha_{\omega2}$ was performed. 
+The optimization in these parameters didn't result in a considerable improvement of the objective function: the value of 0.364464 was obtained.
+
 
 %На рисунках ~\ref{NN_100_point1} и ~\ref{NN_100_point2} приведены изображение функций, полученные с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались соответсвенно пары параметров $\alpha_{k1} $,  $\alpha_{\omega1} $ и $\alpha_{k2} $, $\alpha_{\omega2} $.
 %
