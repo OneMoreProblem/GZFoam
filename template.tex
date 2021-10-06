@@ -100,7 +100,7 @@
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
 $^{1}$ \quad Department of Mathematical Software and Supercomputing Technologies, Lobachevsky University, 603950 Nizhni Novgorod, Russia; konstantin.barkalov@itmm.unn.ru (K.B.), ilya.lebedev@itmm.unn.ru (I.L.), marina.usova@itmm.unn.ru (M.U.)\\
-$^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109004, Moscow, Russia; ryazanov@ispras.ru}
+$^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109004, Moscow, Russia; Ryazanov Daniil ryazanov@ispras.ru (R.D.), Sergei Strijhak s.strijhak@ispras.ru (S.S.), Romanova Daria romanova.d@ispras.ru (Rom.D.)}
 
 % Contact information of the corresponding author
 \corres{Correspondence: Ryazanov Daniil, ryazanov@ispras.ru;}
@@ -115,7 +115,8 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{При помощи глобальной оптимизации подбираются коэффициенты модели турбулентности для склоновых потоков. Склоновый поток моделируется при помощи метода конечного объема и $k-\omega\ SST$-модели турбулентности. Выбор оптимальных значений коэффициентов модели турбулентности осуществлялся с использованием global search algorithm. Для ускорения процедуры оптимизации целевая функция аппроксимировалась при помощи нейронной сети. Были получены оптимальные для склоновых потоков коэфициенты турбулентности, проведено сравнение расчетных данных с эксперементальными. 
+\abstract{При помощи глобальной оптимизации подбираются коэффициенты модели турбулентности для склоновых потоков. Склоновый поток моделируется при помощи метода конечного объема и $k-\omega\ SST$-модели турбулентности. Выбор оптимальных значений коэффициентов модели турбулентности осуществлялся с использованием global search algorithm. Для ускорения процедуры оптимизации целевая функция аппроксимировалась при помощи нейронной сети. Были получены оптимальные для склоновых потоков коэфициенты турбулентности, проведено сравнение расчетных данных с эксперементальными.
+
 }
 
 % Keywords
@@ -155,13 +156,15 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Изменению климата сопуствуют опасные природныя явления, которые в последнее время наблюдаются все чаще, что неизбежно влияет на жизнь человека и его повседневную деятельность. Изучение этих вопросов состоит в построении математических моделей, анализу геофизических данных, данных численных и натурных эксперементов. Современный тренд к активному использованию методов машинного обучения и искусственных нейронных сетей.
+Изменению климата сопуствуют опасные природныя явления, которые в последнее время наблюдаются все чаще, что неизбежно влияет на жизнь человека и его повседневную деятельность. Изучение этих вопросов состоит в построении математических моделей, анализе геофизических данных, данных численных и натурных эксперементов. Современный тренд анализа геоданных связан с использованием методов машинного обучения и искусственных нейронных сетей.
 
-Оползни, сели и лавины относятся к опасным геологическим процессам. Они являются склоновыми процессами, связанными с отрывом горных пород, перемещением их по склону под влиянием силы тяжести и приводящим к необратимым преобразованиям в рельефе. Оползни различают по основным причинам возникновения. Они бывают абразионные, эрозионные, техногенные и естественно-техногенные. По механизму смещения различают соответственно оползни блоковые, сдвига, растяжения, разжижения \cite{Pendin2015}.
+Оползни, сели и лавины относятся к опасным геологическим явлениям. Они являются склоновыми процессами, связанными с отрывом горных пород, перемещением их по склону под влиянием силы тяжести и приводящим к необратимым преобразованиям в рельефе. Изучение схода оползней, селей и лавин, их предсказания и обнаружения является актуальной задачей в связи с влиянием этих опасных явлений на жизнь людей и городскую инфраструктуру.
 
-Изучение схода оползней, селей и лавин, их предсказания и обнаружения является актуальной задачей в связи с влиянием этих опасных явлений на жизнь людей и городскую инфраструктуру. The data show that in total $55\;997$ people were killed in $4862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
+Оползни различают по основным причинам возникновения. Они бывают абразионные, эрозионные, техногенные и естественно-техногенные. По механизму смещения различают соответственно оползни блоковые, сдвига, растяжения, разжижения \cite{Pendin2015}.
 
-Большое количество оползней, обвалов и селей происходит на территории Европейских стран (Швейцария, Австрия, Италия, Франция, Исландия). Подобные опасные явления происходят в России, например в Краснодарском крае РФ и на Северном Кавказе, в связи с обильными осадками в этих регионах, с наличием горного рельефа и в связи с застройкой территории (линейные и площадные объекты) в последние годы \cite{hungr2005landslide}. 2021 год является аномальным по количеству выпавших осадков на обозначенных выше территориях России (Сочи, Красная Поляна), что приводит к разливу горзных рек и повышению риска схода склоновых потоков. Отмечены катастрофические сходы селевых масс, приведшие к повреждению дорожной техники и перекрытию дорожного полотна[?]0579-9414.%поправить ссылку!
+The data show that in total $55\;997$ people were killed in $4862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
+
+Большое количество оползней, обвалов и селей происходит на территории Европейских стран (Швейцария, Австрия, Италия, Франция, Исландия). Подобные опасные явления происходят в России, например в Краснодарском крае РФ и на Северном Кавказе, в связи с обильными осадками в этих регионах, с наличием горного рельефа и в связи с застройкой территории (линейные и площадные объекты) в последние годы \cite{hungr2005landslide}. 2021 год является аномальным по количеству выпавших осадков на обозначенных выше территориях России (Сочи, Красная Поляна), что приводит к разливу горзных рек и повышению риска схода склоновых потоков. Отмечены катастрофические сходы селевых масс, приведшие к повреждению дорожной техники и перекрытию дорожного полотна \cite{Harch2020}.
 
 Сели – это один из наиболее сложных экзогенных геологических процессов интегрирующих действия других геологических процессов. Селевой поток это сложная гетерогенная структура, состоящая из жидкого и твердого компонентов. Твердый элемент состоит из неоднородных в гранулометрическом отношении минеральных частиц.
 
@@ -171,17 +174,15 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 
 Ранее проводилось изучения снежных лавин с использованием методов вычислительной гидродинамики для неньютоновских сред  и данных лабораторного эксперимента, в том числе с использованием исторических данных по лавинам на территории Японии \cite{Oda2011, Yamaguchi2017}. Аналогичные работы проводились по снежным лавинам на территории Швейцарии, Австрии и Италии. В Университете Исландии проводилась серия работ по изучению снежных лавин с помощью лабораторного эксперимента в специальных лотках и измерительного оборудования для изучения лавин в Исландии  \cite{IceThesKatr, IceThesJon}. В работе \cite{Jaedicke2006} представлен эксперимент со спуском водоснежного потока в Давосе, Швейцария. Проводились измерения глубина потока для лавины из сухого снега и для водоснежного потока.
 
-С помощью байесовского классификатора уже выполнялась калибровка коэффициентов в $\kappa-\epsilon$ модели турбулентности при изучении процесса распространения примесей в городской застройке \cite{Guillas2014}.
+С помощью наивного байесовского классификатора??? уже выполнялась калибровка коэффициентов в $\kappa-\epsilon$ модели турбулентности при изучении процесса распространения примесей в городской застройке \cite{Guillas2014}.
 
 Для моделирования и предсказания склоновых потоков используется широкий круг анализа климатических, геологических и гидрологических данных. В свете последних тенденций огромные потоки данных получаемых со спутников из эксперементов и математического моделирования обрабатываются при помощи машинного обучения, что позволяет разработать эффективные модели этих процессов \cite{GeoML, Ma2020}.
 
 Методы, основанные на сверточных нейронных сетях (CNN), способны извлекать устойчивые пространственные и спектральные особенности \cite{Maggiori2017}. Комбинация спутникового изображения и топографических данных может быть использована для обобщения извлеченных особенностей, чтобы идентифицировать склоновые потоки на спутниковых снимках \cite{Qin2021, Prakash2021}.
 
-%TODO
-%Здесь нужна фраза-связка о выборе оптимальных перемтров модели: есть сложная модель, надо выбрать оптимальные значения ее параметров. Например, вот такая:
+В модель склоновых потоков, как правило, входят несколько параметров, значения которых нельзя указать заранее, но можно выбрать, исходя из соответствия результатов численного расчета и имеющихся экспериментальных данных. Подобная задача является задачей глобальной оптимизации с целевой функцией вида черный ящик, т.к. конкретный вид целевой функции не известен, есть только алгоритм вычисления ее значений.
 
-% В модель склоновых потоков, как правило, входят несколько параметров, значения которых нельзя указать заранее, но можно выбрать, исходя из соответствия расчета по модели и имеющихся экспериментальных данных. Подобная задача является задачей глобальной оптимизации с целевой функцией вида черный ящик, т.к. конкретный вид целевой функции не известен, есть только алгоритм вычисления ее значений.
-
+Сложность исследуемых явлений и процессов отражается в сложности соответствующих математических моделей и численных методов их анализа. В настоящее время основным (и зачастую единственно возможным) инструментом подобного анализа является суперкомпьютерное моделирование поведения объекта, для чего широко используюется открытое программное оеспечение. Известным примером открытого программного обеспечения подобного рода является OpenFOAM -- открытая платформа для численного моделирования задач механики сплошных сред \cite{OpenFOAM}. 
 
 %ННГУ
 % Если будет предыдущая связка, то вот этот абзац можно и опустить, и начать - со следующего,
@@ -203,27 +204,198 @@ For example, the use of the radial basis functions has been considered in detail
 In the present study, we used efficient global search algorithm (GSA) \cite{Strongin2000,Sergeyev2013} for solving the Lipschitz global optimization problems combined with a function approximations based on the regression models. At the first search stage, GSA worked with the objective function as a direct method. Then, an approximation of the objective function was constructed on the base on the accumulated information. This approximation was used at the second stage of the search.
 To construct the approximations, we applied Neural Network Regression (NNR).
 
+Для изучения параметров склоновых потоков целесообразно использовать междисциплинарные подходы из областей вычислительной и эксперементальной гидродинамики, теории оптимизации, параллельных вычислений и нейронных сетей. В данной работе используются результаты эксперемента в гидролотке с различным углом наклона, математическая модель для моделирования двухфазного потока, методы глобальной оптимизации и искусственная нейронная сеть. В основе математической модели используется осредненное уравнение Рейнольдса и двухпараметрическая модель турбулентности. 
+
+Existing turbulence models contain a number of constants that were calibrated for canonical flows such as air flow around various profiles, flows in pipes and channels, etc. \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. Calibration of turbulence models coefficients for calculating flows of a non-Newtonian media with a free surface on mountain slopes has not been performed. In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute.
+
 The main part of the paper has the following structure. 
-Section 2 contains a description of the ... 
-Section 3 describes ... 
-In Section 4, ways of ... are discussed. 
-Section 5 contains the results of numerical experiments. 
+Section 2 contains a description of the experiment. Section 3 describes mathematical model of turbulent two-phase flows. In Section 4 contains the details of numerical methods. 
+Section 5 describes the results of numerical experiments. 
 Section 6 concludes the paper.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The experiment in chute with slope}
+
+%Произведём оптимизацию коэффициентов $k-\omega\ SST$ модели турбулентности для расчёта турбулентного потока жидкости в лотке. Для этого используем эксперимент, поставленный в НИИ Механики МГУ. В процессе эксперимента в лотке постоянного уклона (эксперимент проведён для нескольких разных углов наклона) производился спуск турбулентного потока жидкости. Использовался лоток следующей геометрии: длина~--- 1~м, ширина~--- 12~см, высота бортиков~--- 10~см. В расчётах использовалась область лотка между двумя точками замера скорости и глубины, находящимися на расстоянии 23~см и 82~см от верхнего края лотка. Схема эксперимента показана на рис. \ref{NIIMexLinearUProfileInlet}. Для проведения эксперимента используется водопроводная вода.
+
+Для изучения параметров склоновых потоков, таких как расход и профиль скорости в различных сечениях используются эксперементальные установки.
+
+An experiment set up at the Research Institute of Mechanics of Lomonosov Moscow State University was used for this task. During the experiment, a turbulent fluid flow descended along a chute with a constant slope angle; the experiment was carried out for several different slope angles. The used chute had the following geometry: length is 1~m, width is 12~cm, height of sides is 10~cm. The area of the chute which is calculated, is located between two points of velocity and depth measurement, located at a distance of 23~cm and 82~cm from the top edge. The scheme of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
+
+\begin{figure}[H]	
+\widefigure
+\includegraphics[width=10 cm]{NIIMexLinearUProfileInlet.png}
+\caption{Experiment chute scheme\label{NIIMexLinearUProfileInlet}}
+\end{figure}
+
+%Было проведено 3 серии экспериментов, в которых менялся угол наклона склона, начальная глубина потока, начальный профиль потока, как показано в таблице \ref{tabNIIMexLinear}
+Three series of experiments were carried out, in which the slope angle, the initial flow depth, the initial flow profile were changed, as shown in the Table~\ref{tabNIIMexLinear}.
+
+%\begin{table}[H]
+%	\caption{Параметры расчётов}
+%	\label{tabNIIMexLinear}
+%	\begin{center}
+%		\begin{tabular}{ | c | c | c | } 
+%			\hline
+%			$u_0$ среднее по глубине, м/с & $h_0$, мм & $\theta$\\
+%			\hline
+%			1.63 & 4.20 & 25$^\circ$\\
+%			2.00 & 4.95 & 28$^\circ$\\
+%			1.78 & 3.45 & 33$^\circ$\\
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+\begin{specialtable}[H]
+	\caption{Experiments parameters\label{tabNIIMexLinear}}
+	\begin{tabular}{ | c | c | c | }
+	\toprule
+	\textbf{$\boldsymbol{u_0}$ (depth-averaged), m/s}	& \textbf{$\boldsymbol{h_0}$, mm}	& \textbf{$\boldsymbol{\theta}$}\\
+	\midrule
+	1.63 & 4.20 & 25$^\circ$\\
+	2.00 & 4.95 & 28$^\circ$\\
+	1.78 & 3.45 & 33$^\circ$\\
+	\bottomrule
+	\end{tabular}
+\end{specialtable}
+	
+
+%%%%%%%%%%%%%%%%%%%%%
+
+%ННГУ
+
+\section{Mathematical model}\label{math_model}
+
+%Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году \cite{HirtNichols1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
+The Reynolds-averaged Navier-Stokes equations were used to calculate the experiment carried out at the Research Institute of Mechanics, Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of the water phase $\alpha$ in the cell uses to determine the free surface in such a way that for $\alpha>0.6$ it is considered that the cell is filled with liquid, otherwise it is filled with air.
+
+%Таким образом для описания потока используется следующая система уравнений \eqref{vofKWSST}, состоящая из уравнения неразрывности, закона сохранения количества движения, уравнения переноса объёмной доли воды, уравнения для расчёта турбулентной кинетической энергии и уравнения для расчёта специальной диссипации турбулентной кинетической энергии.
+To describe the flow, the following system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy equation and turbulent kinetic energy dissipation equation.
+
+\begin{equation}
+	\label{vofKWSST}
+	\left\{
+		\begin{aligned}
+			&\boldsymbol{\nabla} \cdot \bar{\boldsymbol{u}} = 0,\\
+			&\frac{\partial \alpha}{\partial t} + \boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha) = 0,\\
+			&\frac{\partial (\rho \bar{\boldsymbol{u}})}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}}) = -\boldsymbol{\nabla} \bar{p} + \boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}} + \rho \bar{\boldsymbol{f}},\\
+			&\frac{\partial (\rho k)}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k) = \widetilde{P}_k - \beta^*\rho k \omega + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_k \mu_t) \boldsymbol{\nabla} k \right),\\
+			&\frac{\partial (\rho \omega)}{\partial t}  + \boldsymbol{\nabla} \cdot ( \rho \bar{\boldsymbol{u}} \omega) = \gamma \rho \dot{s}^2 - \beta \rho \omega^2 + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_\omega \mu_t) \boldsymbol{\nabla} \omega \right) + \\
+			&+2 (1 - F_1) \rho \alpha_{\omega 2} \frac{1}{\omega} \boldsymbol{\nabla} k \cdot \boldsymbol{\nabla} \omega.
+		\end{aligned}
+	\right.
+\end{equation} 
+
+%Здесь $\boldsymbol{u}$~--- скорость смеси; $\alpha$~--- объёмная доля выбранной фазы; $\rho$~--- плотность смеси, рассчитываемая по принципу весового среднего; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- тензор напряжений, выраженный через тензор скоростей деформации $\bar{\boldsymbol{s}}$, горизонтальной чертой над буквами обозначается осреднение по Рейнольдсу; $\mu_{eff} = \mu + \mu_t$~--- эффективный коэффициент вязкости, сумма молекулярной вязкости и турбулентной, последняя вычисляется по формуле $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\bar{p}$~--- давление; $\bar{\boldsymbol{f}}$~--- плотность массовых сил; $k$ --- плотность турбулентной кинетической энергии; $\omega$ --- скорость диссипации плотности турбулентной кинетической энергии; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- функция перемешивания ($F_1$ равняется нулю вдалеке от стены и получается $k-\varepsilon$ модель, и переключается на единицу внутри пограничного слоя, реализуя $k-\omega$ модель); $\dot{s}$~--- скорость сдвига (инвариантная мера $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- вторая функция перемешивания, $\widetilde{P}_k$~--- ограничитель на нарастание турбулентности в режимах стагнации.
+Here $\bar{\boldsymbol{u}}$~is the speed of the mixture; $\alpha$~--- the volume fraction of the selected phase; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- the stress tensor, which is function of the strain rate tensor $\bar{\boldsymbol{s}}$; $\mu_{eff} = \mu + \mu_t$~--- the effective viscosity, which is sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\rho$~--- the mixture density, calculated according to the principle of the weighted average; $\bar{p}$~--- the pressure; $ \bar{\boldsymbol{f}} $~--- the density of body forces; $k$~--- the turbulent kinetic energy; $\omega$~--- production rate of turbulent kinetic energy by an average flow; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- the blending function ($F_1$ equals zero away from the wall and turns into $k-\varepsilon$ model, and switches to one inside the boundary layer, realizing $k-\omega$ model); $\dot{s}$~--- strain rate (invariant of $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- second blending function; $\widetilde{P}_k$~--- the limiter on the growth of turbulence is used in stagnation modes.
+
+%Все константы турбулентной модели рассчитываются по принципу весового среднего между константами $k-\varepsilon$ и $k-\omega$ моделей по принципу $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$ и т.д. Стандартно константы турбулентной модели задаются следующими значениями \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
+The turbulence model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$ are calculated according to the principle of the weighted average: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. By default, the constants of the turbulent model are set by the following values \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
+
+\begin{equation}
+	\label{kOmegaSstConstantsInit}
+	\begin{aligned}
+		\gamma_1 = 5 / 9,\ \ \ \beta_1 = 3 / 40,\ \ \ \alpha_{k1} = 0.85,\ \ \ \alpha_{\omega1} = 0.5,\\
+		\gamma_2 = 0.44,\ \ \ \beta_2 = 0.0828,\ \ \ \alpha_{k2} = 1,\ \ \ \alpha_{\omega 2} = 0.856,\\
+		\beta^* = 0.09,\ \ \ a_1 = 0.31,\ \ \ b_1 = 1.0,\ \ \ c_1 = 10.0.
+	\end{aligned}
+\end{equation}
+
+A more detailed description of the mathematical model can be found in Ferziger and Peric's book \cite{FerzigerPeric2002}.
+
+%Подробности описания турбулентной модели представлены в работах \cite{Menter1993, MenterKuntzLangtry2003}.
+The turbulence model description details are presented in the works \cite{Menter1993, MenterKuntzLangtry2003}.
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methods}
+%ИСП
+%\subsection{Используемый численный метод решения ДУЧП}
+\subsection{CFD numerical method}
+
+%Для реализации трёхмерного многофазного односкоростного подхода использовался решатель interFoam.
+The interFoam solver was used to implement a three-dimensional multiphase one-rate approach.
+
+%Используются следующие аппроксимационные схемы:
+The following approximation schemes are used:
+\begin{itemize}
+%	\item производные по времени $\frac{\partial}{\partial t}$ аппроксимируются с помощью неявного метода Эйлера;
+	\item time derivatives $\frac{\partial}{\partial t}$ schemes: first order, bounded, implicit Euler scheme;
+%	\item поток объёмной доли фазы $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$ аппроксимируется при помощи схемы Ван Лира;
+	\item the water volume fraction flux $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$: Gaussian finite volume integration with vanLeer interpolation;
+%	\item поток массы смеси $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$ аппроксимируется с помощью противопоточной схемы с весами;
+	\item the convection term $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$: Gaussian finite volume integration with upwind interpolation;
+%	\item дивергенция тензора вязких напряжений $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$ аппроксимируется с помощью центральной разностной схемы;
+	\item the divergence of the stress tensor $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$: Gaussian finite volume integration with upwind interpolation;
+%	\item поток турбулентной кинетической энергии $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$ аппроксимируется противопоточной схемой;
+	\item the turbulent kinetic energy flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$: Gaussian finite volume integration with linear (central differencing) interpolation;
+%	\item поток специальной диссипации турбулентной кинетической энергии $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$ используется противопоточная схема;
+	\item the specific turbulent kinetic energy dissipation flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$: Gaussian finite volume integration with linear (central differencing) interpolation;
+%	\item оператор градиента $\boldsymbol{\nabla}$ аппроксимируется центрально-разностной схемой;
+	\item gradient terms $\boldsymbol{\nabla}$: Gaussian integration with linear interpolation;
+%	\item оператор Лапласа $\boldsymbol{\nabla}^2$ аппроксимируется центрально-разностной схемой с явной неортогональной коррекцией;
+	\item Laplacian terms $\boldsymbol{\nabla}^2$: Gaussian integration with linear interpolation with explicit non-orthogonal correction;
+%	\item другие, не перечисленные выше члены описываются с помощью центрально-разностной схемы.
+	\item other terms not listed above are described using a central difference scheme.
+\end{itemize}
+
+%Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
+To obtain a system of linear algebraic equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm is used, which is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+
+\subsubsection{Definition of the calculation domain}
+
+A part of the experimental chute was calculated, located between two velocity profile and flow depth measurement points. The calculation was carried out for the 10~mm thickness middle region of the chute, where the influence of the side walls is insignificant. The first measured profile was used for the input data of the computational domain. The second was the object of comparison. The geometry of the computational domain is a parallelepiped 590~mm long, 10~mm wide, and 10~mm deep. The number of cells was 590x10x60.
+
+
+
+\subsubsection{Initial and boundary conditions}
+
+%Были выделены следующие границы расчётной области: дно лотка, боковые стенки лотка, верхняя граница лотка, плоскость на входе в лоток, плоскость на выходе из лотка.
+The following boundaries of the computational domain were determined: the chute bottom, the chute sides, the chute upper border, the input plane, the output plane.
+
+%Были заданы следующие граничные условия:
+%\begin{itemize}
+%	\item дно лотка: является твёрдой стенкой с условием прилипания потока; 
+%	\item боковые стенки лотка: задано условие нулевого градиента для реализации отсутствия влияния стенок на поток;
+%	\item верхняя граница лотка: смешанное условие с заданием атмосферного давления, и условия отсутствия притока среды через данную границу, отток происходит по принципу нулевого градиента;
+%	\item входная плоскость: заданы фиксированные значения объёмной доли воды и профиля скорости потока;
+%	\item выходная плоскость: для всех величин установлено условие нулевого градиента.
+%\end{itemize}
+The following boundary conditions were set:
+\begin{itemize}
+	\item the chute bottom: is a solid wall with the no-slip condition;
+	\item the chute sides: the zero gradient condition is set to exclude the influence of sides on the flow;
+	\item the chute upper border: a mixed condition with atmospheric pressure, no inflow through the border and outflow according to zero gradient condition;
+	\item the input plane: fixed values of water volume fraction and flow velocity profile;
+	\item the output plane: all values have a zero gradient condition.
+\end{itemize}
+
+%Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
+The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The flow is considered steady after 5 seconds.
+
+
+%%%%%%%%%%%%%%%%%%%%Перенести в раздел с оптимизацией
+
+
+%При оптимизации коэффициентов турбулентной модели минимизируется корень из среднеквадратического отклонения вычисленного профиля скорости потока на выходной плоскости от экспериментального профиля:
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problem Statement}
 
-%ИСП
-Содержательная постановка задачи -- описание исследуемого объекта, его параметров. 
-Описание математической модели объекта как ДУЧП
-Параметры дифференциального уравнения
-Подчеркнуть важность исследования и сложность анализа математической модели объекта
+
+%Для расчёта эксперимента НИИ Механики МГУ была рассчитана часть экспериментального лотка, находящаяся между двумя точками замера профиля скорости и глубины потока. Расчёт проводился для срединной полоски лотка толщиной 10~мм, где влияние боковых стенок незначительно. Первый измеренный профиль подавался на вход расчётной области, второй являлся объектом сравнения. Геометрия расчётной области представляет собой параллелепипед длинной 590~мм, шириной 40~мм, и глубиной 10~мм. Количество ячеек составило 590х10х60.
+
+
+
+%Более детальное описание математической модели можно найти в книге Ферцигера и Перича \cite{FerzigerPeric2002}.
+
+
 
 %ННГУ
-
+\subsection{OPTIMIZATION OBJECT FUNCTION}
 Let us assume that the choice of some set of values of the model parameters is determined by the values of vector $y=(y_1,y_2,...,y_N)$ and the quality of model corresponding to given value of the vector of parameters is described by the function $\varphi(y)$. Let us call this function \textit{optimization criterion}: the decreasing of the criterion value corresponds to a better mathematical model. Also, let us assume that some requirements guarantying the applicability of the model should be satisfied. The satisfaction of these requirements is formulated usually as the condition for the vector $y$ to belong to the hyperinterval $D$,
 \[
 D={a_i \leq y_i \leq b_i, \; 1 \leq i \leq N}.
@@ -268,43 +440,6 @@ f(x)=\varphi(y(x)), \;\; x\in[0,1],
 \]
 satisfying the H{\"o}lder condition.
 
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Methods}
-%ИСП
-%\subsection{Используемый численный метод решения ДУЧП}
-\subsection{CFD numerical method}
-
-%Для реализации трёхмерного многофазного односкоростного подхода использовался решатель interFoam.
-The interFoam solver was used to implement a three-dimensional multiphase one-rate approach.
-
-%Используются следующие аппроксимационные схемы:
-The following approximation schemes are used:
-\begin{itemize}
-%	\item производные по времени $\frac{\partial}{\partial t}$ аппроксимируются с помощью неявного метода Эйлера;
-	\item time derivatives $\frac{\partial}{\partial t}$ schemes: first order, bounded, implicit Euler scheme;
-%	\item поток объёмной доли фазы $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$ аппроксимируется при помощи схемы Ван Лира;
-	\item the water volume fraction flux $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$: Gaussian finite volume integration with vanLeer interpolation;
-%	\item поток массы смеси $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$ аппроксимируется с помощью противопоточной схемы с весами;
-	\item the convection term $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$: Gaussian finite volume integration with upwind interpolation;
-%	\item дивергенция тензора вязких напряжений $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$ аппроксимируется с помощью центральной разностной схемы;
-	\item the divergence of the stress tensor $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$: Gaussian finite volume integration with upwind interpolation;
-%	\item поток турбулентной кинетической энергии $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$ аппроксимируется противопоточной схемой;
-	\item the turbulent kinetic energy flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$: Gaussian finite volume integration with linear (central differencing) interpolation;
-%	\item поток специальной диссипации турбулентной кинетической энергии $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$ используется противопоточная схема;
-	\item the specific turbulent kinetic energy dissipation flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$: Gaussian finite volume integration with linear (central differencing) interpolation;
-%	\item оператор градиента $\boldsymbol{\nabla}$ аппроксимируется центрально-разностной схемой;
-	\item gradient terms $\boldsymbol{\nabla}$: Gaussian integration with linear interpolation;
-%	\item оператор Лапласа $\boldsymbol{\nabla}^2$ аппроксимируется центрально-разностной схемой с явной неортогональной коррекцией;
-	\item Laplacian terms $\boldsymbol{\nabla}^2$: Gaussian integration with linear interpolation with explicit non-orthogonal correction;
-%	\item другие, не перечисленные выше члены описываются с помощью центрально-разностной схемы.
-	\item other terms not listed above are described using a central difference scheme.
-\end{itemize}
-
-%Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
-To obtain a system of linear algebraic equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm is used, which is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
-
-%ННГУ
 \subsection{The global search algorithm}\label{GSA}
 
 The algorithm for solving the problem (\ref{main_problem}) involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(y^k, z^k)$, the ``trial result''. The set of pairs $\left\{(y^k, z^k), 0\leq k\leq n\right\}$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
@@ -354,6 +489,8 @@ are selected.
 
 The rigorous proof of convergence of this algorithm is provided in \cite{Strongin2000}. 
 %The modifications taking into account existence of inequality constraints in the problem and the information about the objective function derivative are given in \cite{RefBarkalov,RefGergel1996,RefGergel1997}
+
+
 
 \subsection{Construction of the Objective Function Approximation}
 
@@ -429,50 +566,8 @@ The algorithm proposed here ensures the convergence to the global solution in th
 %пример работы алгоирмта на тестовой задаче?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experiment for turbulence model calibration}
 
-%Произведём оптимизацию коэффициентов $k-\omega\ SST$ модели турбулентности для расчёта турбулентного потока жидкости в лотке. Для этого используем эксперимент, поставленный в НИИ Механики МГУ. В процессе эксперимента в лотке постоянного уклона (эксперимент проведён для нескольких разных углов наклона) производился спуск турбулентного потока жидкости. Использовался лоток следующей геометрии: длина~--- 1~м, ширина~--- 12~см, высота бортиков~--- 10~см. В расчётах использовалась область лотка между двумя точками замера скорости и глубины, находящимися на расстоянии 23~см и 82~см от верхнего края лотка. Схема эксперимента показана на рис. \ref{NIIMexLinearUProfileInlet}. Для проведения эксперимента используется водопроводная вода.
-In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute. An experiment set up at the Research Institute of Mechanics of Lomonosov Moscow State University was used for this task. During the experiment, a turbulent fluid flow descended along a chute with a constant slope angle; the experiment was carried out for several different slope angles. The used chute had the following geometry: length is 1~m, width is 12~cm, height of sides is 10~cm. The area of the chute which is calculated, is located between two points of velocity and depth measurement, located at a distance of 23~cm and 82~cm from the top edge. The scheme of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
-
-\begin{figure}[H]	
-\widefigure
-\includegraphics[width=10 cm]{NIIMexLinearUProfileInlet.png}
-\caption{Experiment chute scheme\label{NIIMexLinearUProfileInlet}}
-\end{figure}
-
-%Было проведено 3 серии экспериментов, в которых менялся угол наклона склона, начальная глубина потока, начальный профиль потока, как показано в таблице \ref{tabNIIMexLinear}
-Three series of experiments were carried out, in which the slope angle, the initial flow depth, the initial flow profile were changed, as shown in the Table~\ref{tabNIIMexLinear}.
-
-%\begin{table}[H]
-%	\caption{Параметры расчётов}
-%	\label{tabNIIMexLinear}
-%	\begin{center}
-%		\begin{tabular}{ | c | c | c | } 
-%			\hline
-%			$u_0$ среднее по глубине, м/с & $h_0$, мм & $\theta$\\
-%			\hline
-%			1.63 & 4.20 & 25$^\circ$\\
-%			2.00 & 4.95 & 28$^\circ$\\
-%			1.78 & 3.45 & 33$^\circ$\\
-%			\hline
-%		\end{tabular}
-%	\end{center}
-%\end{table}
-\begin{specialtable}[H]
-	\caption{Experiments parameters\label{tabNIIMexLinear}}
-	\begin{tabular}{ | c | c | c | }
-	\toprule
-	\textbf{$\boldsymbol{u_0}$ (depth-averaged), m/s}	& \textbf{$\boldsymbol{h_0}$, mm}	& \textbf{$\boldsymbol{\theta}$}\\
-	\midrule
-	1.63 & 4.20 & 25$^\circ$\\
-	2.00 & 4.95 & 28$^\circ$\\
-	1.78 & 3.45 & 33$^\circ$\\
-	\bottomrule
-	\end{tabular}
-\end{specialtable}
-	
-
-%При оптимизации коэффициентов турбулентной модели минимизируется корень из среднеквадратического отклонения вычисленного профиля скорости потока на выходной плоскости от экспериментального профиля:
+\subsection{Loss function definition}
 
 When optimizing the coefficients of the turbulent model, the Root Mean Square Error of the calculated flow velocity profile on the exit plane from the experimental profile is minimized:
 
@@ -483,75 +578,6 @@ When optimizing the coefficients of the turbulent model, the Root Mean Square Er
 %где $h$~--- глубина потока на выходной плоскости.
 Here $h$~--- flow depth at the outlet plane.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Mathematical model}\label{math_model}
-
-%Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году \cite{HirtNichols1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
-The Reynolds-averaged Navier-Stokes equations were used to calculate the experiment carried out at the Research Institute of Mechanics, Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of the water phase $\alpha$ in the cell uses to determine the free surface in such a way that for $\alpha>0.6$ it is considered that the cell is filled with liquid, otherwise it is filled with air.
-
-%Таким образом для описания потока используется следующая система уравнений \eqref{vofKWSST}, состоящая из уравнения неразрывности, закона сохранения количества движения, уравнения переноса объёмной доли воды, уравнения для расчёта турбулентной кинетической энергии и уравнения для расчёта специальной диссипации турбулентной кинетической энергии.
-To describe the flow, the following system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy equation and turbulent kinetic energy dissipation equation.
-
-\begin{equation}
-	\label{vofKWSST}
-	\left\{
-		\begin{aligned}
-			&\boldsymbol{\nabla} \cdot \bar{\boldsymbol{u}} = 0,\\
-			&\frac{\partial \alpha}{\partial t} + \boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha) = 0,\\
-			&\frac{\partial (\rho \bar{\boldsymbol{u}})}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}}) = -\boldsymbol{\nabla} \bar{p} + \boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}} + \rho \bar{\boldsymbol{f}},\\
-			&\frac{\partial (\rho k)}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k) = \widetilde{P}_k - \beta^*\rho k \omega + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_k \mu_t) \boldsymbol{\nabla} k \right),\\
-			&\frac{\partial (\rho \omega)}{\partial t}  + \boldsymbol{\nabla} \cdot ( \rho \bar{\boldsymbol{u}} \omega) = \gamma \rho \dot{s}^2 - \beta \rho \omega^2 + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_\omega \mu_t) \boldsymbol{\nabla} \omega \right) + \\
-			&+2 (1 - F_1) \rho \alpha_{\omega 2} \frac{1}{\omega} \boldsymbol{\nabla} k \cdot \boldsymbol{\nabla} \omega.
-		\end{aligned}
-	\right.
-\end{equation} 
-
-%Здесь $\boldsymbol{u}$~--- скорость смеси; $\alpha$~--- объёмная доля выбранной фазы; $\rho$~--- плотность смеси, рассчитываемая по принципу весового среднего; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- тензор напряжений, выраженный через тензор скоростей деформации $\bar{\boldsymbol{s}}$, горизонтальной чертой над буквами обозначается осреднение по Рейнольдсу; $\mu_{eff} = \mu + \mu_t$~--- эффективный коэффициент вязкости, сумма молекулярной вязкости и турбулентной, последняя вычисляется по формуле $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\bar{p}$~--- давление; $\bar{\boldsymbol{f}}$~--- плотность массовых сил; $k$ --- плотность турбулентной кинетической энергии; $\omega$ --- скорость диссипации плотности турбулентной кинетической энергии; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- функция перемешивания ($F_1$ равняется нулю вдалеке от стены и получается $k-\varepsilon$ модель, и переключается на единицу внутри пограничного слоя, реализуя $k-\omega$ модель); $\dot{s}$~--- скорость сдвига (инвариантная мера $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- вторая функция перемешивания, $\widetilde{P}_k$~--- ограничитель на нарастание турбулентности в режимах стагнации.
-Here $\bar{\boldsymbol{u}}$~is the speed of the mixture; $\alpha$~--- the volume fraction of the selected phase; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- the stress tensor, which is function of the strain rate tensor $\bar{\boldsymbol{s}}$; $\mu_{eff} = \mu + \mu_t$~--- the effective viscosity, which is sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\rho$~--- the mixture density, calculated according to the principle of the weighted average; $\bar{p}$~--- the pressure; $ \bar{\boldsymbol{f}} $~--- the density of body forces; $k$~--- the turbulent kinetic energy; $\omega$~--- production rate of turbulent kinetic energy by an average flow; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- the blending function ($F_1$ equals zero away from the wall and turns into $k-\varepsilon$ model, and switches to one inside the boundary layer, realizing $k-\omega$ model); $\dot{s}$~--- strain rate (invariant of $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- second blending function; $\widetilde{P}_k$~--- the limiter on the growth of turbulence is used in stagnation modes.
-
-%Все константы турбулентной модели рассчитываются по принципу весового среднего между константами $k-\varepsilon$ и $k-\omega$ моделей по принципу $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$ и т.д. Стандартно константы турбулентной модели задаются следующими значениями \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
-The turbulence model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$ are calculated according to the principle of the weighted average: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. By default, the constants of the turbulent model are set by the following values \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
-
-\begin{equation}
-	\label{kOmegaSstConstantsInit}
-	\begin{aligned}
-		\gamma_1 = 5 / 9,\ \ \ \beta_1 = 3 / 40,\ \ \ \alpha_{k1} = 0.85,\ \ \ \alpha_{\omega1} = 0.5,\\
-		\gamma_2 = 0.44,\ \ \ \beta_2 = 0.0828,\ \ \ \alpha_{k2} = 1,\ \ \ \alpha_{\omega 2} = 0.856,\\
-		\beta^* = 0.09,\ \ \ a_1 = 0.31,\ \ \ b_1 = 1.0,\ \ \ c_1 = 10.0.
-	\end{aligned}
-\end{equation}
-
-%Для расчёта эксперимента НИИ Механики МГУ была рассчитана часть экспериментального лотка, находящаяся между двумя точками замера профиля скорости и глубины потока. Расчёт проводился для срединной полоски лотка толщиной 10~мм, где влияние боковых стенок незначительно. Первый измеренный профиль подавался на вход расчётной области, второй являлся объектом сравнения. Геометрия расчётной области представляет собой параллелепипед длинной 590~мм, шириной 40~мм, и глубиной 10~мм. Количество ячеек составило 590х10х60.
-A part of the experimental chute was calculated, located between two velocity profile and flow depth measurement points. The calculation was carried out for the 10~mm thickness middle region of the chute, where the influence of the side walls is insignificant. The first measured profile was used for the input data of the computational domain. The second was the object of comparison. The geometry of the computational domain is a parallelepiped 590~mm long, 40~mm wide, and 10~mm deep. The number of cells was 590x10x60.
-
-%Были выделены следующие границы расчётной области: дно лотка, боковые стенки лотка, верхняя граница лотка, плоскость на входе в лоток, плоскость на выходе из лотка.
-The following boundaries of the computational domain were determined: the chute bottom, the chute sides, the chute upper border, the input plane, the output plane.
-
-%Были заданы следующие граничные условия:
-%\begin{itemize}
-%	\item дно лотка: является твёрдой стенкой с условием прилипания потока; 
-%	\item боковые стенки лотка: задано условие нулевого градиента для реализации отсутствия влияния стенок на поток;
-%	\item верхняя граница лотка: смешанное условие с заданием атмосферного давления, и условия отсутствия притока среды через данную границу, отток происходит по принципу нулевого градиента;
-%	\item входная плоскость: заданы фиксированные значения объёмной доли воды и профиля скорости потока;
-%	\item выходная плоскость: для всех величин установлено условие нулевого градиента.
-%\end{itemize}
-The following boundary conditions were set:
-\begin{itemize}
-	\item the chute bottom: is a solid wall with the no-slip condition;
-	\item the chute sides: the zero gradient condition is set to exclude the influence of sides on the flow;
-	\item the chute upper border: a mixed condition with atmospheric pressure, no inflow through the border and outflow according to zero gradient condition;
-	\item the input plane: fixed values of water volume fraction and flow velocity profile;
-	\item the output plane: all values have a zero gradient condition.
-\end{itemize}
-
-%Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
-The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The flow is considered steady after 5 seconds.
-
-%Более детальное описание математической модели можно найти в книге Ферцигера и Перича \cite{FerzigerPeric2002}.
-A more detailed description of the mathematical model can be found in Ferziger and Peric's book \cite{FerzigerPeric2002}.
-
-%Подробности описания турбулентной модели представлены в работах \cite{Menter1993, MenterKuntzLangtry2003}.
-The turbulence model description details are presented in the works \cite{Menter1993, MenterKuntzLangtry2003}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -564,8 +590,8 @@ The turbulence model description details are presented in the works \cite{Menter
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-The experiments were conducted using a computer cluster at Lobachevsky University of Nizhni Novgorod (operated under CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
-The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and openMPI 4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
+The simulations were conducted using a computer cluster at Lobachevsky University of Nizhni Novgorod (operated under CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
+The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and Open MPI v4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
 For the numerical solving of the problem described in Section \ref{math_model}, open source CFD software OpenFOAM v2012 was used.
 
 
@@ -784,10 +810,6 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} and Table~\ref{tabLossFunctionMinimize} sh
 %\end{proof}
 %The text continues here.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
-
-Authors should discuss the results and how they can be interpreted from the perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
@@ -798,7 +820,7 @@ Authors should discuss the results and how they can be interpreted from the pers
 
 MLPRegressor класс из Scikit-learn библиотеки был использован для построения  целевой функции аппроксимации. Выполнена оптимизация целевой функции с использованием критерия Липшица и ПО Globalizer Software, разработанного в ННГУ им. Н.И. Лобачевского. При этом дополнительно была использована полносвязанная нейронная сеть с одним скрытым слоем для аппроксимации значения целевой функции по значениям констант турбулентной модели.
 
-Минимальное значение для целевой функции получилось для случая угла лотка в 33 градусов. Один расчет целевой функции при заданных значениях параметров занимал в  среднем 15 минут с использованием 8 MPI-процессов на узле вычислительного кластера <<ЦКП Лобачевский>>.
+В данной работе использовался междисциплинарный подход, который помог найти оптимальное значение шести с использованием открытой платформы OpenFOAM и ПО Globalizer. Минимальное значение для целевой функции получилось для случая угла лотка в 33 градусов. Один расчет целевой функции при заданных значениях параметров занимал в  среднем 15 минут с использованием 8 MPI-процессов на узле вычислительного кластера <<ЦКП Лобачевский>>.
 
 
 
@@ -820,9 +842,9 @@ MLPRegressor класс из Scikit-learn библиотеки был испол
 % \supplementary{The following are available at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title. A supporting video article is available at doi: link.} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\authorcontributions{``Conceptualization, Konstantin Barkalov. and Daniil Ryazanov; methodology, Romanova Daria and Konstantin Barkalov; software, Ilya Lebedev, Daniil Ryazanov, Marina Usova and  Romanova Daria; validation,  Romanova Daria and Ilya Lebedev; formal analysis, Sergei Strijhak, Marina Usova; investigation, Sergei Strijhak; resources, Ilya Lebedev; data curation, Romanova Daria and Marina Usova; writing---original draft preparation, Konstantin Barkalov, Sergei Strijhak and Romanova Daria; writing---review and editing, Ryazanov Daniil; visualization, Ilya Lebedev; supervision, Sergei Strijac; project administration, Konstantin Barkalov; funding acquisition, Konstantin Barkalov All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
+\authorcontributions{``Conceptualization, K.B. and D.R.; methodology, Rom.D. and K.B.; software, I.L., Daniil Ryazanov, Marina Usova and  Romanova Daria; validation,  Romanova Daria and Ilya Lebedev; formal analysis, S.S., M.U.; investigation, S.S.; resources, I.L.; data curation, Rom.D. and M.U.; writing---original draft preparation, K.B., S.S. and Rom.D.; writing---review and editing, R.D.; visualization, I.L.; supervision, S.S.; project administration, K.B.; funding acquisition, K.B. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
 
-\funding{This research was funded by the Ministry of Science and Higher Education of the Russian Federation, agreement number 075-15-2020-808.}
+\funding{This research was supported by the Ministry of Science and Higher Education of the Russian Federation, agreement No 075-15-2020-808.}
 
 \institutionalreview{Not applicable.}
 
