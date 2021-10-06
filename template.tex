@@ -116,6 +116,7 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 
 % Abstract (Do not insert blank lines, i.e. \\) 
 \abstract{При помощи глобальной оптимизации подбираются коэффициенты модели турбулентности для склоновых потоков. Склоновый поток моделируется при помощи метода конечного объема и $k-\omega\ SST$-модели турбулентности. Выбор оптимальных значений коэффициентов модели турбулентности осуществлялся с использованием global search algorithm. Для ускорения процедуры оптимизации целевая функция аппроксимировалась при помощи нейронной сети. Были получены оптимальные для склоновых потоков коэфициенты турбулентности, проведено сравнение расчетных данных с эксперементальными.
+
 }
 
 % Keywords
@@ -163,10 +164,9 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 
 The data show that in total $55\;997$ people were killed in $4862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
 
+Большое количество оползней, обвалов и селей происходит на территории Европейских стран (Швейцария, Австрия, Италия, Франция, Исландия). Подобные опасные явления происходят в России, например в Краснодарском крае РФ и на Северном Кавказе, в связи с обильными осадками в этих регионах, с наличием горного рельефа и в связи с застройкой территории (линейные и площадные объекты) в последние годы \cite{hungr2005landslide}. 2021 год является аномальным по количеству выпавших осадков на обозначенных выше территориях России (Сочи, Красная Поляна), что приводит к разливу горзных рек и повышению риска схода склоновых потоков. Отмечены катастрофические сходы селевых масс, приведшие к повреждению дорожной техники и перекрытию дорожного полотна \cite{Harch2020}.
 
 Сели – это один из наиболее сложных экзогенных геологических процессов интегрирующих действия других геологических процессов. Селевой поток это сложная гетерогенная структура, состоящая из жидкого и твердого компонентов. Твердый элемент состоит из неоднородных в гранулометрическом отношении минеральных частиц.
-
-Большое количество оползней, обвалов и селей происходит на территории Европейских стран (Швейцария, Австрия, Италия, Франция, Исландия). Подобные опасные явления происходят в России, например в Краснодарском крае РФ и на Северном Кавказе, в связи с обильными осадками в этих регионах, с наличием горного рельефа и в связи с застройкой территории (линейные и площадные объекты) в последние годы \cite{hungr2005landslide}. 2021 год является аномальным по количеству выпавших осадков на обозначенных выше территориях России (Сочи, Красная Поляна), что приводит к разливу горзных рек и повышению риска схода склоновых потоков. Отмечены катастрофические сходы селевых масс, приведшие к повреждению дорожной техники и перекрытию дорожного полотна \cite{Harch2020}.
 
 Наиболее известная задача с оползнем связана с оценкой устойчивости оползневого склона для статических условий и сейсмического воздействия. Моделирование же схода склонового потока позволяет предсказать разрушения вызванные этим явлением, грамотно расположить защитные сооружения и жизненно-важные объекты.
 
@@ -185,9 +185,10 @@ The data show that in total $55\;997$ people were killed in $4862$ distinct land
 Сложность исследуемых явлений и процессов отражается в сложности соответствующих математических моделей и численных методов их анализа. В настоящее время основным (и зачастую единственно возможным) инструментом подобного анализа является суперкомпьютерное моделирование поведения объекта, для чего широко используюется открытое программное оеспечение. Известным примером открытого программного обеспечения подобного рода является OpenFOAM -- открытая платформа для численного моделирования задач механики сплошных сред \cite{OpenFOAM}. 
 
 %ННГУ
-Growth of performance of modern supercomputer systems goes in parallel with complication of complication of mathematical models of the processes considered that makes performing even a single model calculation (a \textit{trial}) a computation-costly operation. Consequently, the choice of the optimal values of the model parameters in reasonable time cannot be completed by trying all possible variants by grid method, i.e. by search on some regular grid in a range of variation of the parameters.
-Impossibility of performing a large number of search trials requires applying efficient search algorithms, which would provide an acceptable estimate of a problem solution at relatively small number of trials using available computational resources.
+% Если будет предыдущая связка, то вот этот абзац можно и опустить, и начать - со следующего,
+Growth of performance of modern supercomputer systems goes in parallel with complication of complication of mathematical models of the processes considered that makes performing even a single model calculation (a \textit{trial}) a computation-costly operation. Consequently, the choice of the optimal values of the model parameters in reasonable time cannot be completed by trying all possible variants by grid method, i.e. by search on some regular grid in a range of variation of the parameters. Impossibility of performing a large number of search trials requires applying efficient search algorithms, which would provide an acceptable estimate of a problem solution at relatively small number of trials using available computational resources.
 
+%ННГУ - начать можно отсюда
 It is worth noting that majority of existing methods for search of the optimum of time-consuming black-box functions have some drawbacks. Gradient-based algorithms cannot be used in many cases just because the derivatives of an objective function are unknown while the finite-difference approximations of these ones are too computation costly. At the same time, in general, the gradient-based methods provide the finding of a local optimal problem solution only.
 Classical direct search methods, which don't require the derivatives, e.g. Nelder-Mead method \cite{NelderMead} or Hooke-Jeeves method \cite{HookJeeves}, are the local ones as well. As a rule, the application of these methods for solving the global optimization problems involves several restarts from nodes of a random grid that requires a large number of trials. 
 
