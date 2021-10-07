@@ -393,10 +393,10 @@ The initial conditions in the problem are set so that the volume is completely f
 
 
 %ННГУ
-\subsection{OPTIMIZATION OBJECT FUNCTION}
+\subsection{Global Optimization Problem Statement}
 Let us assume that the choice of some set of values of the model parameters is determined by the values of vector $y=(y_1,y_2,...,y_N)$ and the quality of model corresponding to given value of the vector of parameters is described by the function $\varphi(y)$. Let us call this function \textit{optimization criterion}: the decreasing of the criterion value corresponds to a better mathematical model. Also, let us assume that some requirements guarantying the applicability of the model should be satisfied. The satisfaction of these requirements is formulated usually as the condition for the vector $y$ to belong to the hyperinterval $D$,
 \[
-D={a_i \leq y_i \leq b_i, \; 1 \leq i \leq N}.
+D=\{a_i \leq y_i \leq b_i, \; 1 \leq i \leq N\}.
 \]
 
 So far, the process of choice of the optimal set of the model parameters corresponds to a \textit{global optimization problem} of the kind
@@ -404,6 +404,17 @@ So far, the process of choice of the optimal set of the model parameters corresp
 & \varphi(y^\ast)=\min{\left\{\varphi(y):y\in D\right\}},\\
 & D=\left\{y\in \text{R}^N: a_i\leq y_i \leq b_i, 1\leq i \leq N\right\}. \nonumber
 \end{eqnarray}
+
+When optimizing the coefficients of the turbulent model, the Root Mean Square Error of the calculated flow velocity profile on the exit plane from the experimental profile 
+\begin{equation}
+	\label{LossFunction}
+	\boldsymbol{L_{RMSE}} = \sqrt{\frac{\sum\limits_{z=0}^{h} (v_{EXP}(z) - v_{k-\omega\ SST}(z))^2}{h}}
+\end{equation}
+is minimized. 
+%где $h$~--- глубина потока на выходной плоскости.
+Here $h$ is the flow depth at the outlet plane. 
+We will consider the loss function (\ref{LossFunction}) as the objective function $\varphi(y)$ in the global optimization problem (\ref{main_problem}).
+
 
 The problems considered are characterized by the fact that the objective function $\varphi(y)$ is not defined analytically; there is only an algorithm for computing its values at the points of the domain $D$. At that, one search trial corresponds to one computation according to the model and is a time-consuming operation \cite{Kalyulin2017,Paulavicius2020}.
 
@@ -437,6 +448,7 @@ Therefore, it is possible, without loss of generality, to consider minimization 
 f(x)=\varphi(y(x)), \;\; x\in[0,1],
 \]
 satisfying the H{\"o}lder condition.
+
 
 \subsection{The global search algorithm}\label{GSA}
 
@@ -565,17 +577,7 @@ The algorithm proposed here ensures the convergence to the global solution in th
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Loss function definition}
-
-When optimizing the coefficients of the turbulent model, the Root Mean Square Error of the calculated flow velocity profile on the exit plane from the experimental profile is minimized:
-
-\begin{equation}
-	\label{LossFunction}
-	\boldsymbol{L_{RMSE}} = \sqrt{\frac{\sum\limits_{z=0}^{h} (v_{EXP}(z) - v_{k-\omega\ SST}(z))^2}{h}}.
-\end{equation}
-%где $h$~--- глубина потока на выходной плоскости.
-Here $h$~--- flow depth at the outlet plane.
-
+%\subsection{Loss function definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
