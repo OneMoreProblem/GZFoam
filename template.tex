@@ -84,7 +84,7 @@
 \newcommand{\orcidauthorC}{0000-0002-0722-6884} % Add \orcidC{} behind the author's name
 
 \newcommand{\orcidauthorD}{0000-0002-5771-4114} % Add \orcidD{} behind the author's name
-\newcommand{\orcidauthorE}{0000-0002-0722-6884} % Add \orcidF{} behind the author's name
+\newcommand{\orcidauthorE}{0000-0001-5525-5180} % Add \orcidF{} behind the author's name
 \newcommand{\orcidauthorF}{0000-0001-9568-7121} % Add \orcidG{} behind the author's name
 
 % Authors, for the paper (add full first names)
@@ -409,11 +409,12 @@ So far, the process of choice of the optimal set of the model parameters corresp
 When optimizing the coefficients of the turbulent model, the Root Mean Square Error of the calculated flow velocity profile on the exit plane from the experimental profile 
 \begin{equation}
 	\label{LossFunction}
-	\boldsymbol{L_{RMSE}} = \sqrt{\frac{\sum\limits_{z=0}^{h} (v_{EXP}(z) - v_{k-\omega\ SST}(z))^2}{h}}
+	\boldsymbol{L_{RMSE}} = \sqrt{\frac{\sum\limits_{i=1}^{N} \left( v_{EXP}^i - v_{k-\omega\ SST}^i \right)^2}{N}}
 \end{equation}
 is minimized. 
 %где $h$~--- глубина потока на выходной плоскости.
-Here $h$ is the flow depth at the outlet plane. 
+Here $N$ is the number of measuring points for horizontal component of velocity over flow depth at the outlet plane. $v_{EXP}^i$ -- horizontal component of velocity at in-the control point obtained by experiment. $v_{k-\omega\ SST}^i$  -- horizontal component of velocity at in-the control point calculated by computational fluid dynamic (CFD).
+
 We will consider the loss function (\ref{LossFunction}) as the objective function $\varphi(y)$ in the global optimization problem (\ref{main_problem}).
 
 
@@ -815,13 +816,13 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} and Table~\ref{tabLossFunctionMinimize} sh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
-В работе проведен расчет двухфазного течения в лотке с использованием решателя interFoam, математической модели URANS и k-omega SST модели турбулентности. В процессе оптимизации исследовались попарно шесть констант, которые вносят наибольший вклад в значение турбулентной вязкости.
+In this work, a two-phase flow in a flume was calculated using the interFoam solver, the URANS mathematical model and the k-omega SST turbulence model. In the optimization process, six constants were investigated in pairs, which make the greatest contribution to the value of turbulent viscosity.
 
-Выполнено сравнение результатов расчета профиля скорости с данными эксперимента НИИ Механики МГУ в различных сечения при изменении угла наклона лотка. Выполнен поиск оптимальных коэфициентов модели турбулентности путем минимизации целевая функция расхождения профиля скорости в лотке - RMSE.
+The comparison of the results of calculating the velocity profile with the experimental data of the Research Institute of Mechanics of Moscow State University in different sections with a change in the angle of inclination of the flume is carried out. The search for the optimal coefficients of the turbulence model is performed by minimizing the target function of the divergence of the velocity profile in the flume - RMSE.
 
-MLPRegressor класс из Scikit-learn библиотеки был использован для построения  целевой функции аппроксимации. Выполнена оптимизация целевой функции с использованием критерия Липшица и ПО Globalizer Software, разработанного в ННГУ им. Н.И. Лобачевского. При этом дополнительно была использована полносвязанная нейронная сеть с одним скрытым слоем для аппроксимации значения целевой функции по значениям констант турбулентной модели.
+The MLPRegressor class from the Scikit-learn library was used to build an objective approximation function. The optimization of the objective function was performed using the Lipschitz criterion and the Globalizer Software developed at the Lobachevsky University. In addition, a fully connected neural network with one hidden layer was used to approximate the value of the objective function by the values of the constants of the turbulent model.
 
-В данной работе использовался междисциплинарный подход, который помог найти оптимальное значение шести с использованием открытой платформы OpenFOAM и ПО Globalizer. Минимальное значение для целевой функции получилось для случая угла лотка в 33 градусов. Один расчет целевой функции при заданных значениях параметров занимал в  среднем 15 минут с использованием 8 MPI-процессов на узле вычислительного кластера <<ЦКП Лобачевский>>.
+This paper took an interdisciplinary approach that helped find the optimal value of six using the OpenFOAM open platform and Globalizer software. The minimum value for the objective function was obtained for the case of a tray angle of 33 degrees. The one case calculation of the objective function for the given parameter values took on average 15 minutes using 8 MPI processes on the node of supercomputer of the Lobachevsky Center for Collective Use.
 
 
 
