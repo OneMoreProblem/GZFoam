@@ -73,10 +73,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Turbulence Model Optimization for Slope Flow with AI}
+\Title{Optimization of turbulence model parameters using the global search method combined with machine learning}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{Turbulence Model Optimization for Slope Flow with AI}
+\TitleCitation{Optimization of turbulence model parameters using the global search method combined with machine learning}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0001-5273-2471} % Add \orcidA{} behind the author's name
@@ -341,7 +341,10 @@ The following approximation schemes are used:
 \end{itemize}
 
 %Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
-To obtain a system of linear algebraic equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm is used, which is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+To solve a system equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm is used, which is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+
+The Gauss–Seidel method is used to solve a system of linear equations. Pressure correction is made using conjugate gradient method.
+
 
 \subsubsection{Definition of the calculation domain}
 
@@ -371,7 +374,20 @@ The following boundary conditions were set:
 	\item the output plane: all values have a zero gradient condition.
 \end{itemize}
 
+For parameters k and $\omega$ was determined following values on boundaries.
+
+\begin{itemize}
+    \item The chute bottom: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$.
+    \item The chute sides: zero gradient for both parameters.
+    \item The chute upper border: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
+    \item The chute input plane: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
+    \item The chute output plane: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
+\end{itemize}
+
 %Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
+
+For values $k$ and $\omega$ was used wall function for high Reynolds turbulence model $k-\omega SST$
+
 The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The flow is considered steady after 5 seconds.
 
 
@@ -592,7 +608,7 @@ The algorithm proposed here ensures the convergence to the global solution in th
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-The simulations were conducted using a computer cluster at Lobachevsky University of Nizhni Novgorod (operated under CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
+The simulations were conducted using a supercomputer Lobachevsky in Lobachevsky University of Nizhni Novgorod (operated under CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
 The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and Open MPI v4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
 For the numerical solving of the problem described in Section \ref{math_model}, open source CFD software OpenFOAM v2012 was used.
 
