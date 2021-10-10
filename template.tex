@@ -154,34 +154,31 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-The climate change is accompanied by dangerous natural phenomena, which have recently been observed more and more often, which inevitably affects human life and daily activities. The study of these issues consists in the construction of mathematical models, analysis of geophysical data, data from numerical and field experiments. The current trend in the analysis of geodata is associated with the use of machine learning algorithms and artificial neural networks.
+The climate change is accompanied by dangerous natural phenomena, which occur more and more often. These phenomena affect human life and daily activities inevitably. The investigations of these issues include construction of mathematical models and analysis of geophysical data as well as of data from numerical and field experiments. Current trend in the analysis of geodata is associated with the use of machine learning algorithms and artificial neural networks.
 
-The landslides, mudflows and avalanches are classified as dangerous geological phenomena. They are slope processes associated with the separation of rocks, their movement along the slope under the influence of gravity and leading to irreversible changes in the relief. The study of the descent of landslides, mudflows and avalanches, their prediction and detection is an urgent task in connection with the impact of these dangerous phenomena on human life and urban infrastructure. The landslides are distinguished for their main causes. They are abrasive, erosional, man-made and natural-man-made.
+The landslides, mudflows, and avalanches are classified as dangerous geological phenomena. These are the slope processes associated with the separation of rocks, movement of the ones along the slope under the influence of gravity and leading to irreversible changes in the relief. The study of the descent of landslides, mudflows, and avalanches as well as prediction and detection of the ones are urgent due to the impact of these dangerous phenomena on human life and urban infrastructure. The landslides are distinguished by the main causes of the ones. These are: abrasive, erosional, man-made, and natural-man-made.According to the mechanism of displacement, block landslides, shears, stretching, and liquefaction are distinguished, respectively \cite{Pendin2015}..
 
-The landslides are distinguished for their main causes. They are abrasive, erosional, man-made and natural-man-made. According to the mechanism of displacement, block landslides, shears, stretching, liquefaction are distinguished, respectively \cite{Pendin2015}.
+The data show that in total $55\,997$ people were killed in $4\,862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
 
-%The data show that in total $55997$ people were killed in $4862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
+A large number of landslides, avalanches, and mudflows occur in European countries (Switzerland, Austria, Italy, France, and Iceland). Similar dangerous phenomena occur in Russia, for example, in Krasnodar Territory of the Russian Federation and in  North Caucasus due to heavy rainfalls in these regions where mountainous terrain are present and in connection with the development of the territory (linear and areal objects) in recent years \cite{hungr2005landslide}.  The amount of precipitation was outstanding in the above territories of Russia (Sochi, Krasnaya Polyana) in 2021. This led to the flooding of mountain rivers and increased the risk of slope flows. Catastrophic descents of mudflows occured that led to damage of the road equipment and to overlap of the roadways \cite{Harch2020}.
 
-A large number of landslides, avalanches and mudflows occur in European countries (Switzerland, Austria, Italy, France, Iceland). Similar dangerous phenomena occur in Russia, for example, in the Krasnodar Territory of the Russian Federation and in the North Caucasus, due to heavy rainfall in these regions, with the presence of mountainous terrain and in connection with the development of the territory (linear and areal objects) in recent years \cite{hungr2005landslide}. The year 2021 is anomalous in terms of the amount of precipitation in the above territories of Russia (Sochi, Krasnaya Polyana), which leads to the flooding of mountain rivers and an increased risk of slope flows. Catastrophic descent of mudflows was noted, which led to damage to road equipment and overlap of the roadway \cite{Harch2020}.
-
-The mudflows are one of the most complex exogenous geological processes that integrate the actions of other geological processes. The mudflow is a complex heterogeneous structure consisting of liquid and solid components. The solid element consists of mineral particles that are non-uniform in the granulometric relation.
+The mudflows are one of the most complex exogenous geological processes, which integrate the actions of other geological processes. The mudflow is a complex heterogeneous structure consisting of liquid and solid components. The solid fraction consists of mineral particles, which are nonuniform from the granulometric viewpoint.
 
 The most well-known landslide problem involves assessing the stability of a landslide slope for static conditions and seismic impact. Modeling the descent of the slope flow allows predicting the destruction caused by this phenomenon, correctly locating protective structures and vital objects.
 
-Such problems are solved using finite-difference methods \cite{Bernander2016}, finite volume method \cite{liu2007application}, discrete
-elements \cite{Liu2020} of cellular automata \cite{piegari2006cellular} and hybrid methods. The mudflows can be modeled using a two-fluid model based on the Volume of Fluid model \cite{Hirt1981}. The listed methods are implemented in various commercial and open source software packages: MN2D \cite{Naaim2002}, TITAN2D \cite{Pitman2003}, RAMMS.
+The most well-known landslide problem involves assessing the stability of a landslide slope for static conditions and seismic impact. Modeling the descent of the slope flow allows predicting the destruction caused by this phenomenon and locating the protective structures and vital objects correctly. Such problems are solved using finite-differences methods \cite{Bernander2016}, finite volume method \cite{liu2007application}, descrete elements \cite{Liu2020} of cellular automata \cite{piegari2006cellular}, and hybrid methods. The mudflows can be modeled using a two-fluid model based on the Volume of Fluid model \cite{Hirt1981}. The methods listed above are implemented in various commercial and open source software packages e.. MN2D \cite{Naaim2002}, TITAN2D \cite{Pitman2003}, and RAMMS
 
-Previously, the study of avalanches was carried out using the methods of computational fluid dynamics for non-Newtonian fluids and laboratory experiment data, including the use of historical data on avalanches in Japan \cite{Oda2011, Yamaguchi2017}. Similar work was carried out on avalanches in Switzerland, Austria and Italy. The University of Iceland carried out a series of works on the study of avalanches using a laboratory experiment in special trays and measuring equipment for studying avalanches in Iceland  \cite{IceThesKatr, IceThesJon}. The paper \cite{Jaedicke2006} presents an experiment with the descent of a snow-water stream in Davos, Switzerland. Measurements were made for the flow depth for a dry snow avalanche and for a snow-water flow.
+Previously, the study of avalanches was carried out using computational fluid dynamics methods for non-Newtonian fluids and analysis of observation data including the historical data on avalanches in Japan \cite{Oda2011, Yamaguchi2017}. Similar work was carried out on avalanches in Switzerland, Austria, and Italy. A series of works on the study of avalanches using a laboratory experiment in special trays and measuring equipment for studying avalanches in Iceland were carried out University of Iceland  \cite{IceThesKatr, IceThesJon}. An experiment with the descent of a snow-water stream in Davos, Switzerland was described in \cite{Jaedicke2006}. Measurements were made for the flow depth for a dry snow avalanche and for a snow-water flow.
 
-Among similar work, the coefficients were already calibrated in the $\kappa-\epsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
+Among similar works, the coefficients were already calibrated in the $\kappa-\epsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
 
-A wide range of analysis of climatic, geological and hydrological data is used to model and predict slope flows. In the light of recent trends, huge streams of data received from satellites from experiments and mathematical modeling are processed using machine learning, which makes it possible to develop effective models of these processes \cite{GeoML, Ma2020}.
+A comprehensive analysis of climatic, geological, and hydrological data was applied to model and predict the slope flows. In the scope of recent trends, huge streams of data received from satellites from the experiments, and from mathematical modeling are processed using machine learning, which makes it possible to develop efficient models of these processes \cite{GeoML, Ma2020}.
 
-Methods based on convolutional neural networks (CNN) are able to extract stable spatial and spectral features \cite{Maggiori2017}. The combination of satellite image and topographic data can be used to generalize the extracted features in order to identify slope flows in satellite images \cite{Qin2021, Prakash2021}.
+Methods based on convolutional neural networks (CNN) are able to extract stable spatial and spectral features \cite{Maggiori2017}. The combination of satellite image and topographic data can be used to generalize the extracted features in order to identify the slope flows in the satellite images \cite{Qin2021, Prakash2021}.
 
-The slope flow model, as a rule, includes several parameters, the values of which cannot be specified in advance, but can be selected based on the correspondence of the numerical calculation results and the available experimental data. Such a task is a global optimization task with a black box objective function, because the specific type of the objective function is not known, there is only an algorithm for calculating its values.
+The slope flow model, as a rule, includes several parameters, the values of which cannot be specified in advance but can be selected based on the correspondence of the numerical calculation results to the experimental data available. Such a problem is a global optimization one with a black box objective function because the specific type of the objective function is not known, there is an algorithm for calculating its values only.
 
-The complexity of the phenomena and processes under study is reflected in the complexity of the corresponding mathematical models and numerical methods of their analysis. Currently, the main (and often the only possible) tool for such analysis is supercomputer modeling of object behavior, for which open source software is widely used. A well-known example of open source software of this kind is OpenFOAM – an open platform for numerical modeling of continuum mechanics problems \cite{OpenFOAM}. 
+The complexity of the phenomena and processes under study is reflected in the complexity of the corresponding mathematical models and numerical methods for the analysis of these ones. Currently, the main (and often the only possible) tool for such an analysis is supercomputer modeling of the object behavior. Open source software is used widely in this purpose. OpenFOAM (an open platform for numerical modeling of continuum mechanics problems) is a well-known example of open source software of this kind \cite{OpenFOAM}. 
 
 %ННГУ
 % Если будет предыдущая связка, то вот этот абзац можно и опустить, и начать - со следующего,
@@ -214,13 +211,13 @@ Section 6 concludes the paper.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The experiment in chute with slope}
+\section{The Experiment in Chute With Slope}
 
 %Произведём оптимизацию коэффициентов $k-\omega\ SST$ модели турбулентности для расчёта турбулентного потока жидкости в лотке. Для этого используем эксперимент, поставленный в НИИ Механики МГУ. В процессе эксперимента в лотке постоянного уклона (эксперимент проведён для нескольких разных углов наклона) производился спуск турбулентного потока жидкости. Использовался лоток следующей геометрии: длина~--- 1~м, ширина~--- 12~см, высота бортиков~--- 10~см. В расчётах использовалась область лотка между двумя точками замера скорости и глубины, находящимися на расстоянии 23~см и 82~см от верхнего края лотка. Схема эксперимента показана на рис. \ref{NIIMexLinearUProfileInlet}. Для проведения эксперимента используется водопроводная вода.
 
-Experimental installations are used to study the parameters of slope flows, such as discharge and velocity profile in various sections.
+Experimental installations are used to study the parameters of slope flows, such as discharge and velocity profiles in various sections.
 
-An experiment set up at the Research Institute of Mechanics of Lomonosov Moscow State University was used for this task. During the experiment, a turbulent fluid flow descended along a chute with a constant slope angle; the experiment was carried out for several different slope angles. The used chute had the following geometry: length is 1~m, width is 12~cm, height of sides is 10~cm. The area of the chute which is analysed, is located between two points of velocity and depth measurement, located at a distance of 23~cm and 82~cm from the top edge. The scheme of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
+An experiment setup at the Research Institute of Mechanics, Lomonosov Moscow State University was used for this purpose. In the experiment, a turbulent fluid flow descended along a chute with a constant slope. The experiment was carried out for several different slopes. The chute had the following geometry: the length 1~m, the width 12~cm, and the side heights 10~cm. The chute area to analyze was between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top edge. The schematic representation of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
 
 \begin{figure}[H]	
 \widefigure
@@ -229,7 +226,7 @@ An experiment set up at the Research Institute of Mechanics of Lomonosov Moscow 
 \end{figure}
 
 %Было проведено 3 серии экспериментов, в которых менялся угол наклона склона, начальная глубина потока, начальный профиль потока, как показано в таблице \ref{tabNIIMexLinear}
-Three series of experiments were carried out, in which the slope angle, the initial flow depth, the initial flow profile were changed, as shown in the Table~\ref{tabNIIMexLinear}.
+Three series of experiments were done; the slope, the initial flow depth, and the initial flow profile were varied as shown in Table~\ref{tabNIIMexLinear}.
 
 %\begin{table}[H]
 %	\caption{Параметры расчётов}
@@ -247,8 +244,8 @@ Three series of experiments were carried out, in which the slope angle, the init
 %	\end{center}
 %\end{table}
 \begin{specialtable}[H]
-	\caption{Experiments parameters\label{tabNIIMexLinear}}
-	\begin{tabular}{ | c | c | c | }
+	\caption{Parameters of the experiments\label{tabNIIMexLinear}}
+	\begin{tabular}{  c  c  c  }
 	\toprule
 	\textbf{$\boldsymbol{u_0}$ (depth-averaged), m/s}	& \textbf{$\boldsymbol{h_0}$, mm}	& \textbf{$\boldsymbol{\theta}$}\\
 	\midrule
@@ -267,10 +264,10 @@ Three series of experiments were carried out, in which the slope angle, the init
 \section{Mathematical model}\label{math_model}
 
 %Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году \cite{HirtNichols1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
-The Reynolds-averaged Navier-Stokes equations were used to calculate the experiment carried out at the Research Institute of Mechanics, Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of the water phase $\alpha$ in the cell uses to determine the free surface in such a way that for $\alpha>0.6$ it is considered that the cell is filled with liquid, otherwise it is filled with air.
+The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics, Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air.
 
-%Таким образом для описания потока используется следующая система уравнений \eqref{vofKWSST}, состоящая из уравнения неразрывности, закона сохранения количества движения, уравнения переноса объёмной доли воды, уравнения для расчёта турбулентной кинетической энергии и уравнения для расчёта специальной диссипации турбулентной кинетической энергии.
-To describe the flow, the following system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy equation and turbulent kinetic energy dissipation equation.
+
+To describe the flow, the system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy equation, and turbulent kinetic energy dissipation equation.
 
 \begin{equation}
 	\label{vofKWSST}
@@ -287,7 +284,7 @@ To describe the flow, the following system of equations \eqref{vofKWSST} is used
 \end{equation} 
 
 %Здесь $\boldsymbol{u}$~--- скорость смеси; $\alpha$~--- объёмная доля выбранной фазы; $\rho$~--- плотность смеси, рассчитываемая по принципу весового среднего; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- тензор напряжений, выраженный через тензор скоростей деформации $\bar{\boldsymbol{s}}$, горизонтальной чертой над буквами обозначается осреднение по Рейнольдсу; $\mu_{eff} = \mu + \mu_t$~--- эффективный коэффициент вязкости, сумма молекулярной вязкости и турбулентной, последняя вычисляется по формуле $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\bar{p}$~--- давление; $\bar{\boldsymbol{f}}$~--- плотность массовых сил; $k$ --- плотность турбулентной кинетической энергии; $\omega$ --- скорость диссипации плотности турбулентной кинетической энергии; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- функция перемешивания ($F_1$ равняется нулю вдалеке от стены и получается $k-\varepsilon$ модель, и переключается на единицу внутри пограничного слоя, реализуя $k-\omega$ модель); $\dot{s}$~--- скорость сдвига (инвариантная мера $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- вторая функция перемешивания, $\widetilde{P}_k$~--- ограничитель на нарастание турбулентности в режимах стагнации.
-Here $\bar{\boldsymbol{u}}$~is the speed of the mixture; $\alpha$~--- the volume fraction of the selected phase; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- the stress tensor, which is function of the strain rate tensor $\bar{\boldsymbol{s}}$; $\mu_{eff} = \mu + \mu_t$~--- the effective viscosity, which is sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\rho$~--- the mixture density, calculated according to the principle of the weighted average; $\bar{p}$~--- the pressure; $ \bar{\boldsymbol{f}} $~--- the density of body forces; $k$~--- the turbulent kinetic energy; $\omega$~--- production rate of turbulent kinetic energy by an average flow; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- the blending function ($F_1$ equals zero away from the wall and turns into $k-\varepsilon$ model, and switches to one inside the boundary layer, realizing $k-\omega$ model); $\dot{s}$~--- strain rate (invariant of $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- second blending function; $\widetilde{P}_k$~--- the limiter on the growth of turbulence is used in stagnation modes.
+Here $\bar{\boldsymbol{u}}$~is the speed of the mixture, $\alpha$~is the volume fraction of the selected phase, $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~is the stress tensor, which is a function of the strain rate tensor $\bar{\boldsymbol{s}}$, $\mu_{eff} = \mu + \mu_t$~is the effective viscosity, which is a sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega, \ b_1 \dot{s} F_2)$, $\rho$~is the mixture density calculated according to the principle of the weighted average, $\bar{p}$~is the pressure, $\bar{\boldsymbol{f}}$~is the density of the body forces, $k$~is the turbulent kinetic energy, $\omega$~is the production rate of turbulent kinetic energy by an average flow, $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~is the blending function ($F_1$ equals zero away from the wall and turns into $k-\varepsilon$ model and turns into unity inside the boundary layer that corresponds to $k-\omega$ model), $\dot{s}$~is the strain rate (invariant of $\overline{\boldsymbol{s}}$), $F_2 = F_2(\beta^*)$~is the second blending function, and $\widetilde{P}_k$~is the limiter on the growth of turbulence used in stagnation modes.
 
 %Все константы турбулентной модели рассчитываются по принципу весового среднего между константами $k-\varepsilon$ и $k-\omega$ моделей по принципу $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$ и т.д. Стандартно константы турбулентной модели задаются следующими значениями \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
 The turbulence model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$ are calculated according to the principle of the weighted average: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. By default, the constants of the turbulent model are set by the following values \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
@@ -301,7 +298,7 @@ The turbulence model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$
 	\end{aligned}
 \end{equation}
 
-A more detailed description of the mathematical model can be found in Ferziger and Peric's book \cite{FerzigerPeric2002}.
+The details of the turbulence model description are presented in \cite{Menter1993, MenterKuntzLangtry2003}.
 
 %Подробности описания турбулентной модели представлены в работах \cite{Menter1993, MenterKuntzLangtry2003}.
 The turbulence model description details are presented in the works \cite{Menter1993, MenterKuntzLangtry2003}.
@@ -312,13 +309,13 @@ The turbulence model description details are presented in the works \cite{Menter
 \section{Methods}
 %ИСП
 %\subsection{Используемый численный метод решения ДУЧП}
-\subsection{CFD numerical method}
+\subsection{CFD Numerical Method}
 
 %Для реализации трёхмерного многофазного односкоростного подхода использовался решатель interFoam.
-The interFoam solver was used to implement a three-dimensional multiphase one-rate approach.
+To implement the three-dimensional multiphase single-rate approach, interFoam solver was used.
 
 %Используются следующие аппроксимационные схемы:
-The following approximation schemes are used:
+The following approximation schemes were employed:
 \begin{itemize}
 %	\item производные по времени $\frac{\partial}{\partial t}$ аппроксимируются с помощью неявного метода Эйлера;
 	\item time derivatives $\frac{\partial}{\partial t}$ schemes: first order, bounded, implicit Euler scheme;
@@ -341,15 +338,13 @@ The following approximation schemes are used:
 \end{itemize}
 
 %Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
-To obtain a system of linear algebraic equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm is used, which is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+To obtain a system of linear algebraic equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm was used. This algorithmm is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
 
-\subsubsection{Definition of the calculation domain}
+\subsubsection{Definition of the Calculation Domain}
 
-A part of the experimental chute was calculated, located between two velocity profile and flow depth measurement points. The calculation was carried out for the 10~mm thickness middle region of the chute, where the influence of the side walls is insignificant. The first measured profile was used for the input data of the computational domain. The second was the object of comparison. The geometry of the computational domain is a parallelepiped 590~mm long, 10~mm wide, and 10~mm deep. The number of cells was 590x10x60.
+A part of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in depth. The number of cells was $590 \times 10 \times 60$.
 
-
-
-\subsubsection{Initial and boundary conditions}
+\subsubsection{Initial and Boundary Conditions}
 
 %Были выделены следующие границы расчётной области: дно лотка, боковые стенки лотка, верхняя граница лотка, плоскость на входе в лоток, плоскость на выходе из лотка.
 The following boundaries of the computational domain were determined: the chute bottom, the chute sides, the chute upper border, the input plane, the output plane.
@@ -363,12 +358,13 @@ The following boundaries of the computational domain were determined: the chute 
 %	\item выходная плоскость: для всех величин установлено условие нулевого градиента.
 %\end{itemize}
 The following boundary conditions were set:
+
 \begin{itemize}
-	\item the chute bottom: is a solid wall with the no-slip condition;
-	\item the chute sides: the zero gradient condition is set to exclude the influence of sides on the flow;
-	\item the chute upper border: a mixed condition with atmospheric pressure, no inflow through the border and outflow according to zero gradient condition;
-	\item the input plane: fixed values of water volume fraction and flow velocity profile;
-	\item the output plane: all values have a zero gradient condition.
+    \item the chute bottom: is a solid wall with the no-slip condition;
+    \item the chute sides: the zero gradient condition is set to exclude the     influence of sides on the flow;
+    \item the chute upper border: a mixed condition with atmospheric pressure,     no inflow through the border and outflow according to zero gradient     condition;
+    \item the input plane: fixed values of water volume fraction and flow velocity profile;
+    \item the output plane: all values have a zero gradient condition.
 \end{itemize}
 
 %Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
@@ -415,10 +411,10 @@ is minimized.
 %где $h$~--- глубина потока на выходной плоскости.
 Here $N$ is the number of measuring points for horizontal component of velocity over flow depth at the outlet plane, $v_{EXP}^i$ is horizontal component of velocity at the control point obtained by experiment, and $v_{k-\omega\ SST}^i$  is horizontal component of velocity at the control point calculated by computational fluid dynamic (CFD). 
 
-We will consider the loss function (\ref{LossFunction}) as the objective function $\varphi(y)$ in the global optimization problem (\ref{main_problem}).
-The problems considered are characterized by the fact that the objective function $\varphi(y)$ is not defined analytically; there is only an algorithm for computing its values at the points of the domain $D$. At that, one search trial corresponds to one computation according to the model and is a time-consuming operation \cite{Kalyulin2017,Paulavicius2020}.
+We will consider the loss function (\ref{LossFunction}) as the objective function $\varphi(y)$ in the global optimization problem (\ref{main_problem}). 
+The problems considered are characterized by the fact that the objective function $\varphi(y)$ is not defined analytically; there is only an algorithm for computing its values at the points of the domain $D$. At that, one search trial corresponds to one computation according to the model and is a time- consuming operation \cite{Kalyulin2017,Paulavicius2020}.
 
-The multiextremal optimization problems have much higher computation costs of solving as compared to other types of the optimization problems since the global optimum is an integral characteristic of the problem being solved and requires investigating the whole search domain. As a result, the search of the global optimum is reduced to a construction of some coverage (grid) in some range of parameters and to selection of the optimal function value on this grid. The reduction of the amount of computations may be achieved by constructing a non-uniform coverage of the search domain: the grid should be dense enough in the nearness of the global optimum and less dense far away from the sought solution.
+The multiextremal optimization problems have much higher computation costs of solving as compared to other types of the optimization problems since the global optimum is an integral characteristic of the problem being solved and requires investigating the whole search domain. As a result, the search of the global optimum is reduced to a construction of some coverage (grid) in some range of parameters and to selection of the optimal function value on this grid. The reduction of the amount of computations may be achieved by constructing a non-uniform coverage of the search domain: the grid should be dense enough in the nearness of the global optimum and less dense far away from the sought solution
 
 An assumption that the objective function $\varphi(y)$ satisfies the Lipschitz condition
 \[
@@ -450,7 +446,7 @@ f(x)=\varphi(y(x)), \;\; x\in[0,1],
 satisfying the H{\"o}lder condition.
 
 
-\subsection{The global search algorithm}\label{GSA}
+\subsection{The Global Search Algorithm}\label{GSA}
 
 The algorithm for solving the problem (\ref{main_problem}) involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(y^k, z^k)$, the ``trial result''. The set of pairs $\left\{(y^k, z^k), 0\leq k\leq n\right\}$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
 
@@ -700,7 +696,7 @@ During the calibration, the following minimization of the loss function~\eqref{L
 %\end{table}
 \begin{specialtable}[H] 
     \caption{Loss function minimization\label{tabLossFunctionMinimize}}
-    \begin{tabular}{ | c | c | c | }
+    \begin{tabular}{  c  c  c  }
     \toprule
     \textbf{Slope angle} & \textbf{Initial value of loss function} & \textbf{Minimized value of loss function}\\
     \midrule
@@ -718,13 +714,13 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} and Table~\ref{tabLossFunctionMinimize} sh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
-In this work, a two-phase flow in a flume was calculated using the interFoam solver, the URANS mathematical model and the $k-\omega \; SST$ turbulence model. In the optimization process, six constants were investigated in pairs, which make the greatest contribution to the value of turbulent viscosity.
+In this work, a two-phase flow in a flume was simulated using the interFoam solver, the URANS mathematical model, and the $k-\omega \; SST$ turbulence model. In the optimization process, six constants were investigated in pairs, which make the greatest contribution to the value of turbulent viscosity.
 
-The comparison of the results of calculating the velocity profile with the experimental data of the Research Institute of Mechanics of Moscow State University in different sections with a change in the angle of inclination of the flume is carried out. The search for the optimal coefficients of the turbulence model is performed by minimizing the objective function of the divergence of the velocity profile in the flume. % - RMSE.
+The comparison of the results of calculating the velocity profiles with the experimental data obtained at Research Institute of Mechanics, Moscow State University in different sections subject to the angle of inclination of the flume was conducted. The search for the optimal coefficients of the turbulence model was performed by minimizing the objective function of the divergence of the velocity profile in the flume. % - RMSE.
 
-The search for the global minimum of the objective function was performed using the global search agorithm implemented in Globalizer software \cite{globalizerSystem}. In addition, a fully connected neural network with one hidden layer was used to approximate the value of the objective function by the values of the constants of the turbulent model. The MLPRegressor class from the Scikit-learn library was used to build the objective function approximation . 
+The search for the global minimum of the objective function was performed using the global search algorithm implemented in Globalizer software \cite{globalizerSystem}. In addition, a fully connected neural network with one hidden layer was used to approximate the values of the objective function by the values of the constants of the turbulent model. The MLPRegressor class from the Scikit-learn library was used to build the objective function approximation. 
 
-This paper took an interdisciplinary approach that helped find the optimal value of six turbulence model parameters using the OpenFOAM open platform and Globalizer. The minimum value for the objective function was obtained for the case of a tray angle of 33 degrees. The one calculation of the objective function for the given parameter values took on average 15 minutes using 8 MPI processes on the node of  the Lobachevsky University supercomputer, and the total computation time was 24 hours.  
+In the present work, an interdisciplinary approach was itilized, which helped us to find the optimal values of six turbulence model parameters using OpenFOAM open platform and Globalizer. The minimum value for the objective function was obtained in the case of the tray angle of 33 degrees. One calculation of the objective function for given parameters took 15 minutes in average using 8 MPI processes on a node of Lobachevskii University supercomputer. Total computation time was 24 hours.  
 
 
 
