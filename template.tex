@@ -115,7 +115,9 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{Using the global optimization method, the coefficients of the turbulence model for slope flows are selected. The slope flow is modeled using the finite volume method the averaged Reynolds equations model and the k - $\omega$ SST turbulence model. The choice of the optimal values of the coefficients of the turbulence model was carried out using the global search algorithm. To speed up the optimization procedure, the objective function was approximated using artificial neural network. The optimal coefficients of the turbulence model for slope flows were obtained with virtual sensors, and the calculated data were compared with the experimental ones. An interdisciplinary approach was itilized, which helped to find the optimal values of six turbulence model parameters using OpenFOAM and Globalizer software.}
+
+\abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameters values of this mathematical model. The slope flow is modeled using the finite volume method the averaged Reynolds equations model and the k - $\omega$ SST turbulence model. The Root Mean Square Error of the calculated flow velocity profile is considered as the objective function in the optimization problem. The analytical form of this function is not known and the calculation of its values involves time-consuming numerical simulation. The optimal values of the coefficients of the turbulence model were found using the global search algorithm. To speed up the optimization procedure, the objective function was approximated using artificial neural network. The optimal coefficients of the turbulence model for slope flows were obtained with virtual sensors, and the calculated data were compared with the experimental ones. An interdisciplinary approach was utilized, which helped to find the optimal values of six turbulence model parameters using OpenFOAM and Globalizer software.}
+
 
 % Keywords
 \keyword{global optimization; artificial neural network; function approximation, finite volume method, CFD} 
@@ -751,7 +753,7 @@ The comparison of the results of calculating the velocity profiles with the expe
 
 The search for the global minimum of the objective function was performed using the global search algorithm implemented in Globalizer software \cite{globalizerSystem}. In addition, a fully connected neural network with one hidden layer was used to approximate the values of the objective function by the values of the constants of the turbulent model. The MLPRegressor class from the Scikit-learn library was used to build the objective function approximation. 
 
-In the present work, an interdisciplinary approach was itilized, which helped us to find the optimal values of six turbulence model parameters using OpenFOAM open platform and Globalizer. The minimum value for the objective function was obtained in the case of the tray angle of 33 degrees. One calculation of the objective function for given parameters took 15 minutes in average using 8 MPI processes on a node of Lobachevskii University supercomputer. Total computation time was 24 hours.  
+In the present work, an interdisciplinary approach was itilized, which helped us to find the optimal values of six turbulence model parameters using OpenFOAM open platform and Globalizer. The minimum value for the objective function was obtained in the case of the tray angle of 33 degrees. One calculation of the objective function for given parameters took 15 minutes in average using 8 MPI processes on a node of Lobachevsky University supercomputer. Total computation time was 24 hours.  
 
 
 
@@ -781,9 +783,9 @@ In the present work, an interdisciplinary approach was itilized, which helped us
 
 \informedconsent{Not applicable.}
 
-\dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.} 
+%\dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.} 
 
-%\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
+\acknowledgments{The authors consider it their duty to acknowledge the contribution of prof. Victor Gergel (14.01.1955 -- 29.06.2021), who initiated this interdisciplinary study.}
 
 \conflictsofinterest{The authors declare no conflict of interest.} 
 
