@@ -338,7 +338,9 @@ The following approximation schemes were employed:
 \end{itemize}
 
 %Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
-To obtain a system of linear algebraic equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm was used. This algorithmm is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+To solve a system of equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm was used. This algorithm is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+
+The Gauss–Seidel method is used to solve a system of linear equations. Pressure correction is made using conjugate gradient method.
 
 \subsubsection{Definition of the Calculation Domain}
 
@@ -367,7 +369,20 @@ The following boundary conditions were set:
     \item the output plane: all values have a zero gradient condition.
 \end{itemize}
 
+For parameters k and $\omega$ was determined following values on boundaries.
+
+\begin{itemize}
+    \item The chute bottom: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$.
+    \item The chute sides: zero gradient for both parameters.
+    \item The chute upper border: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
+    \item The chute input plane: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
+    \item The chute output plane: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
+\end{itemize}
+
 %Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
+
+For values $k$ and $\omega$ was used wall function for high Reynolds turbulence model $k-\omega SST$
+
 The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The flow is considered steady after 5 seconds.
 
 
