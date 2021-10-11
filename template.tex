@@ -176,7 +176,7 @@ Cheung et al. \cite{Cheung2011} used Bayesian analysis for the calibration of th
 
 Among similar works, the coefficients were already calibrated in the $\kappa-\epsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
 
-Bayesian analysis has been proposed to address the question of RANS turbulence models (The k–ε model with Launder–Sharma damping functions, The Wilcox k–ω model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo– Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
+Bayesian analysis has been proposed to address the question of RANS turbulence models (The k–$\varepsilon$ model with Launder–Sharma damping functions, The Wilcox k–$\omega$ model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo– Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
 
 Kotaro Matsui et al. \cite{Matsui2021} proposed a new set of calibrated coefficients that improved the ability of Spalart-Allmaras model to predict a corner flow separation of a compressor cascade.
 
@@ -222,13 +222,14 @@ Section 6 concludes the paper.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Experiment in Chute With Slope}
+\section{The Experiment in Inclined Chute}
 
 %Произведём оптимизацию коэффициентов $k-\omega\ SST$ модели турбулентности для расчёта турбулентного потока жидкости в лотке. Для этого используем эксперимент, поставленный в НИИ Механики МГУ. В процессе эксперимента в лотке постоянного уклона (эксперимент проведён для нескольких разных углов наклона) производился спуск турбулентного потока жидкости. Использовался лоток следующей геометрии: длина~--- 1~м, ширина~--- 12~см, высота бортиков~--- 10~см. В расчётах использовалась область лотка между двумя точками замера скорости и глубины, находящимися на расстоянии 23~см и 82~см от верхнего края лотка. Схема эксперимента показана на рис. \ref{NIIMexLinearUProfileInlet}. Для проведения эксперимента используется водопроводная вода.
 
-Experimental installations are used to study the parameters of slope flows, such as discharge and velocity profiles in various sections.
+Experimental installations are used to study the parameters of slope flows. The objects of study are such measurements as flow depth, flow velocity, force of interaction with an obstacle. Such measurements as flow depth, flow velocity, impact force on an obstacle become the object of study. In our study, the velocity profile is studied.
 
-An experiment setup at the Research Institute of Mechanics, Lomonosov Moscow State University was used for this purpose. In the experiment, a turbulent fluid flow descended along a chute with a constant slope. The experiment was carried out for several different slopes. The chute had the following geometry: the length 1~m, the width 12~cm, and the side heights 10~cm. The chute area to analyze was between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top edge. The schematic representation of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
+
+An experiment setup at the Research Institute of Mechanics, Lomonosov Moscow State University was used for this purpose. In the experiment, a turbulent fluid flow descended along a chute with a constant slope. The experiment was carried out for several different slope angles. The chute has the following geometry: the length 1~m, the width 12~cm, and the side heights 10~cm. The chute area to analyze is between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top edge. The schematic representation of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
 
 \begin{figure}[H]	
 \widefigure
@@ -698,7 +699,7 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} shows the resulting velocity profiles on t
 \nointerlineskip
 \begin{figure}[H]	
 \widefigure
-\includegraphics[width=18 cm]{UProfilesKWSSTGlob.png}
+\includegraphics[width=18 cm]{UProfilesKWSSTGlob1.png}
 \caption{Comparison of the experimental velocity profile with the calculated one using the standard values of the $k-\omega\ SST$ turbulence model coefficients and the calculated velocity profile with calibrated values of the coefficients for different slope inclination angles (to the horizon).\label{NIIMexUProfilesKWSSTGlob}}
 \end{figure}  
 \begin{paracol}{2}
