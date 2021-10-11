@@ -88,13 +88,13 @@
 \newcommand{\orcidauthorF}{0000-0001-9568-7121} % Add \orcidG{} behind the author's name
 
 % Authors, for the paper (add full first names)
-\Author{Konstantin Barkalov $^{1}$\orcidA{}, Ilya Lebedev $^{1}$\orcidB{}, Marina Usova$^{1}$\orcidC{}, Daria Romanova$^2$\orcidD{}, Sergei Strijhak$^2$\orcidE{} and Daniil Ryazanov$^2$\orcidF{}}
+\Author{Konstantin Barkalov $^{1}$\orcidA{}, Ilya Lebedev $^{1}$\orcidB{}, Marina Usova$^{1}$\orcidC{}, Daria Romanova$^2$\orcidD{}, Daniil~Ryazanov$^2$\orcidF{} and Sergei~Strijhak$^2$\orcidE{}}
 
 % MDPI internal command: Authors, for metadata in PDF
-\AuthorNames{Konstantin Barkalov, Ilya Lebedev, Marina Usova, Daria Romanova, Sergei Strijhak and Daniil Ryazanov}
+\AuthorNames{Konstantin Barkalov, Ilya Lebedev, Marina Usova, Daria Romanova, Daniil~Ryazanov and Sergei~Strijhak}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{Barkalov, K.; Lebedev, I., Usova, M.; Romanova D.; Strijhak S.; Ryazanov D.}
+\AuthorCitation{Barkalov, K.; Lebedev, I., Usova, M.; Romanova D.; Ryazanov D.; Strijhak S.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
@@ -115,9 +115,9 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{
-The paper considers the slope flow simulation and the problem of finding the optimal parameters values of this mathematical model. The slope flow is simulated using the finite volume method and the $k-\omega\ SST$ turbulence model. The Root Mean Square Error of the calculated flow velocity profile is considered as the objective function in the optimization problem. The analytical form of this function is not known and the calculation of its values involves time-consuming numerical simulation. The optimal values of the coefficients of the turbulence model were found using the global search algorithm. To speed up the optimization procedure, the objective function was approximated using artificial neural network. The optimal coefficients of the turbulence model for slope flows were obtained, and the calculated data were compared with the experimental ones.
-}
+
+\abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameters values of this mathematical model. The slope flow is modeled using the finite volume method the averaged Reynolds equations model and the k - $\omega$ SST turbulence model. The Root Mean Square Error of the calculated flow velocity profile is considered as the objective function in the optimization problem. The analytical form of this function is not known and the calculation of its values involves time-consuming numerical simulation. The optimal values of the coefficients of the turbulence model were found using the global search algorithm. To speed up the optimization procedure, the objective function was approximated using artificial neural network. The optimal coefficients of the turbulence model for slope flows were obtained with virtual sensors, and the calculated data were compared with the experimental ones. An interdisciplinary approach was utilized, which helped to find the optimal values of six turbulence model parameters using OpenFOAM and Globalizer software.}
+
 
 % Keywords
 \keyword{global optimization; artificial neural network; function approximation, finite volume method, CFD} 
@@ -168,11 +168,20 @@ The mudflows are one of the most complex exogenous geological processes, which i
 
 The most well-known landslide problem involves assessing the stability of a landslide slope for static conditions and seismic impact. Modeling the descent of the slope flow allows predicting the destruction caused by this phenomenon, correctly locating protective structures and vital objects.
 
-The most well-known landslide problem involves assessing the stability of a landslide slope for static conditions and seismic impact. Modeling the descent of the slope flow allows predicting the destruction caused by this phenomenon and locating the protective structures and vital objects correctly. Such problems are solved using finite-differences methods \cite{Bernander2016}, finite volume method \cite{liu2007application}, descrete elements \cite{Liu2020} of cellular automata \cite{piegari2006cellular}, and hybrid methods. The mudflows can be modeled using a two-fluid model based on the Volume of Fluid model \cite{Hirt1981}. The methods listed above are implemented in various commercial and open source software packages e.. MN2D \cite{Naaim2002}, TITAN2D \cite{Pitman2003}, and RAMMS
+The most well-known landslide problem involves assessing the stability of a landslide slope for static conditions and seismic impact. Modeling the descent of the slope flow allows predicting the destruction caused by this phenomenon and locating the protective structures and vital objects correctly. Such problems are solved using finite-differences methods \cite{Bernander2016}, finite volume method \cite{liu2007application}, descrete elements \cite{Liu2020} of cellular automata \cite{piegari2006cellular}, and hybrid methods. The mudflows can be modeled using a two-fluid model based on the Volume of Fluid model \cite{Hirt1981}. The methods listed above are implemented in various commercial and open source software packages MN2D \cite{Naaim2002}, TITAN2D \cite{Pitman2003}, and RAMMS.
 
 Previously, the study of avalanches was carried out using computational fluid dynamics methods for non-Newtonian fluids and analysis of observation data including the historical data on avalanches in Japan \cite{Oda2011, Yamaguchi2017}. Similar work was carried out on avalanches in Switzerland, Austria, and Italy. A series of works on the study of avalanches using a laboratory experiment in special trays and measuring equipment for studying avalanches in Iceland were carried out University of Iceland  \cite{IceThesKatr, IceThesJon}. An experiment with the descent of a snow-water stream in Davos, Switzerland was described in \cite{Jaedicke2006}. Measurements were made for the flow depth for a dry snow avalanche and for a snow-water flow.
 
+Cheung et al. \cite{Cheung2011} used Bayesian analysis for the calibration of the Spalart–Allmaras turbulence model coefficients, and model inadequacy, to reproduce the turbulent boundary layer profile over the flat plate. 
+
 Among similar works, the coefficients were already calibrated in the $\kappa-\epsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
+
+Bayesian analysis has been proposed to address the question of RANS turbulence models (The k–ε model with Launder–Sharma damping functions, The Wilcox k–ω model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo– Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
+
+Kotaro Matsui et al. \cite{Matsui2021} proposed a new set of calibrated coefficients that improve the ability of Spalart-Allmaras model to predict corner flow separation of compressor cascade.
+
+A comprehensive review of turbulence model uncertainties is given in Xiao and Cinnella \cite{Xiao2019}. 
+
 
 A comprehensive analysis of climatic, geological, and hydrological data was applied to model and predict the slope flows. In the scope of recent trends, huge streams of data received from satellites from the experiments, and from mathematical modeling are processed using machine learning, which makes it possible to develop efficient models of these processes \cite{GeoML, Ma2020}.
 
@@ -202,9 +211,9 @@ For example, the use of the radial basis functions has been considered in detail
 In the present study, we used efficient global search algorithm (GSA) \cite{Strongin2000,Sergeyev2013} for solving the Lipschitz global optimization problems combined with a function approximations based on the regression models. At the first search stage, GSA worked with the objective function as a direct method. Then, an approximation of the objective function was constructed on the base on the accumulated information. This approximation was used at the second stage of the search.
 To construct the approximations, we applied Neural Network Regression (NNR).
 
-To study the parameters of slope flows, it is advisable to use interdisciplinary approaches from the fields of computational and experimental hydrodynamics, optimization theory, parallel computing and neural networks. This paper uses the results of an experiment in a chute with a different angle of inclination, a mathematical model for modeling a two-phase flow, global optimization methods and an artificial neural network. The mathematical model is based on the averaged Reynolds equation and a two-parameter turbulence model. 
+To study the parameters of slope flows, it is advisable to use interdisciplinary approaches from the fields of computational and experimental hydrodynamics, optimization theory, parallel computing and neural networks. This paper uses the results of an experiment in a chute with a different angle of inclination, a mathematical model for modeling a two-phase flow, global optimization methods and an artificial neural network. The mathematical model is based on the averaged Reynolds equations and a two-parameter turbulence model. 
 
-Existing turbulence models contain a number of constants that were calibrated for canonical flows such as air flow around various profiles, flows in pipes and channels, etc. \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. Calibration of turbulence models coefficients for calculating flows of a non-Newtonian media with a free surface on mountain slopes has not been performed. In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute.
+Existing turbulence models contain a number of constants that were calibrated for canonical flows such as air flow around various profiles, flows in pipes and channels, etc. \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. Calibration of turbulence models coefficients for calculating flows of a Newtonian media with a free surface on mountain slopes has not been performed. In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute.
 
 The main part of the paper has the following structure. 
 Section 2 contains a description of the experiment. Section 3 describes mathematical model of turbulent two-phase flows. In Section 4 contains the details of numerical methods. 
@@ -245,11 +254,13 @@ Three series of experiments were done; the slope, the initial flow depth, and th
 %		\end{tabular}
 %	\end{center}
 %\end{table}
+
 \begin{specialtable}[H]
+    \centering
 	\caption{Parameters of the experiments\label{tabNIIMexLinear}}
 	\begin{tabular}{  c  c  c  }
 	\toprule
-	\textbf{$\boldsymbol{u_0}$ (depth-averaged), m/s}	& \textbf{$\boldsymbol{h_0}$, mm}	& \textbf{$\boldsymbol{\theta}$}\\
+	\textbf{$\boldsymbol{u_0}$, m/s}	& \textbf{$\boldsymbol{h_0}$, mm}	& \textbf{$\boldsymbol{\theta}$}\\
 	\midrule
 	1.63 & 4.20 & 25$^\circ$\\
 	2.00 & 4.95 & 28$^\circ$\\
@@ -257,7 +268,8 @@ Three series of experiments were done; the slope, the initial flow depth, and th
 	\bottomrule
 	\end{tabular}
 \end{specialtable}
-	
+
+Where $u_0$ is a depth-averaged velocity. $h_0$ -- a height of the liquid in the chute. $\theta$ -- an angle of inclination.
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -269,7 +281,7 @@ Three series of experiments were done; the slope, the initial flow depth, and th
 The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics, Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air.
 
 
-To describe the flow, the system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy equation, and turbulent kinetic energy dissipation equation.
+To describe the flow, the system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy and specific rate of dissipation equations.
 
 \begin{equation}
 	\label{vofKWSST}
@@ -346,7 +358,11 @@ The Gauss–Seidel method is used to solve a system of linear equations. Pressur
 
 \subsubsection{Definition of the Calculation Domain}
 
-A part of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in depth. The number of cells was $590 \times 10 \times 60$.
+The advantage of mathematical modeling is that the exploration is able to place virtual sensors at any point in the computational domain to measure the values of physical quantities. In the experiment, the physical sensors were placed at the exit from the chute. To compare the results of the experiment and the calculation, the virtual sensors were placed in the same place.
+
+A part of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in depth. The number of cells was $590 \times 10 \times 60$. The average value of Y+ was 17.
+
+
 
 \subsubsection{Initial and Boundary Conditions}
 
@@ -603,7 +619,7 @@ The algorithm proposed here ensures the convergence to the global solution in th
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-The simulations were conducted using supercomputer of Lobachevsky University of Nizhni Novgorod (operated under CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
+The simulations were conducted using supercomputer of Lobachevsky University of Nizhni Novgorod (operated under Linux CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
 The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and Open MPI v4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
 For the numerical solving of the problem described in Section \ref{math_model}, open source CFD software OpenFOAM v2012 was used.
 
@@ -731,9 +747,9 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} and Table~\ref{tabLossFunctionMinimize} sh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
-In this work, a two-phase flow in a flume was simulated using the interFoam solver, the URANS mathematical model, and the $k-\omega \; SST$ turbulence model. In the optimization process, six constants were investigated in pairs, which make the greatest contribution to the value of turbulent viscosity.
+In this work, a two-phase flow in a chute was simulated using the interFoam solver, the URANS mathematical model, and the $k-\omega \; SST$ turbulence model. In the optimization process, six constants were investigated in pairs, which make the greatest contribution to the value of turbulent viscosity.
 
-The comparison of the results of calculating the velocity profiles with the experimental data obtained at Research Institute of Mechanics, Moscow State University in different sections subject to the angle of inclination of the flume was conducted. The search for the optimal coefficients of the turbulence model was performed by minimizing the objective function of the divergence of the velocity profile in the flume. % - RMSE.
+The comparison of the results of calculating the velocity profiles with the experimental data obtained at Research Institute of Mechanics, Moscow State University in different sections subject to the angle of inclination of the chute was conducted. The search for the optimal coefficients of the turbulence model was performed by minimizing the objective function of the divergence of the velocity profile in the chute. % - RMSE.
 
 The search for the global minimum of the objective function was performed using the global search algorithm implemented in Globalizer software \cite{globalizerSystem}. In addition, a fully connected neural network with one hidden layer was used to approximate the values of the objective function by the values of the constants of the turbulent model. The MLPRegressor class from the Scikit-learn library was used to build the objective function approximation. 
 
