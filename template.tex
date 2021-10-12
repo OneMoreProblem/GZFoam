@@ -158,7 +158,7 @@ $^{2}$ \quad Institute For System Programming of Russian Academy of Science, 109
 
 The climate change is accompanied by dangerous natural phenomena, which occur more and more often. These phenomena affect human life and daily activities inevitably. The investigations of these issues include construction of mathematical models and analysis of geophysical data as well as of data from numerical and field experiments. Current trend in the analysis of geodata is associated with the use of machine learning algorithms and artificial neural networks.
 
-The landslides, mudflows, and avalanches are classified as dangerous geological phenomena. These are the slope processes associated with the separation of rocks, movement of the ones along the slope under the influence of gravity and leading to irreversible changes in the relief. The study of the descent of landslides, mudflows, and avalanches as well as prediction and detection of the ones are urgent due to the impact of these dangerous phenomena on human life and urban infrastructure. The landslides are distinguished by the main causes of the ones. These are: abrasive, erosional, man-made, and natural-man-made.According to the mechanism of displacement, block landslides, shears, stretching, and liquefaction are distinguished, respectively \cite{Pendin2015}..
+The landslides, mudflows, and avalanches are classified as dangerous geological phenomena. These are the slope processes associated with the separation of rocks, movement of the ones along the slope under the influence of gravity and leading to irreversible changes in the relief. The study of the descent of landslides, mudflows, and avalanches as well as prediction and detection of the ones are urgent due to the impact of these dangerous phenomena on human life and urban infrastructure. The landslides are distinguished by the main causes of the ones. These are: abrasive, erosional, man-made, and natural-man-made.According to the mechanism of displacement, block landslides, shears, stretching, and liquefaction are distinguished, respectively \cite{Pendin2015}.
 
 The data show that in total $55\,997$ people were killed in $4\,862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
 
@@ -172,15 +172,11 @@ The most well-known landslide problem involves assessing the stability of a land
 
 Previously, the study of avalanches was carried out using computational fluid dynamics methods for Newtonian fluids and analysis of observation data including the historical data on avalanches in Japan \cite{Oda2011, Yamaguchi2017}. Similar work was carried out on avalanches in Switzerland, Austria, and Italy. A series of works on the study of avalanches using a laboratory experiment in special trays and measuring equipment for studying avalanches in Iceland were carried out University of Iceland  \cite{IceThesKatr, IceThesJon}. An experiment with the descent of a snow-water stream in Davos, Switzerland was described in \cite{Jaedicke2006}. Measurements were made for the flow depth for a dry snow avalanche and for a snow-water flow.
 
-Cheung et al. \cite{Cheung2011} used Bayesian analysis for the calibration of the Spalart–Allmaras turbulence model coefficients, and model inadequacy, to reproduce the turbulent boundary layer profile over the flat plate. 
+Cheung et al. \cite{Cheung2011} used Bayesian analysis for the calibration of the Spalart–Allmaras turbulence model coefficients, and model inadequacy, to reproduce the turbulent boundary layer profile over the flat plate. Among similar works, the coefficients were already calibrated in the $k-\varepsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
 
-Among similar works, the coefficients were already calibrated in the $\kappa-\epsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
+Bayesian analysis has been proposed to address the question of RANS turbulence models (The $k–\varepsilon$ model with Launder–Sharma damping functions, The Wilcox $k–\omega$ model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo–Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
 
-Bayesian analysis has been proposed to address the question of RANS turbulence models (The k–$\varepsilon$ model with Launder–Sharma damping functions, The Wilcox k–$\omega$ model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo– Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
-
-Kotaro Matsui et al. \cite{Matsui2021} proposed a new set of calibrated coefficients that improved the ability of Spalart-Allmaras model to predict a corner flow separation of a compressor cascade.
-
-A comprehensive review of turbulence model uncertainties is given in paper of Xiao and Cinnella \cite{Xiao2019}. 
+Kotaro Matsui et al. \cite{Matsui2021} proposed a new set of calibrated coefficients that improved the ability of Spalart-Allmaras model to predict a corner flow separation of a compressor cascade. A comprehensive review of turbulence model uncertainties is given in paper of Xiao and Cinnella \cite{Xiao2019}. 
 
 
 A comprehensive analysis of climatic, geological, and hydrological data was applied to model and predict the slope flows. In the scope of recent trends, huge streams of data received from satellites from the experiments, and from mathematical modeling are processed using machine learning, which makes it possible to develop efficient models of these processes \cite{GeoML, Ma2020}.
@@ -224,10 +220,7 @@ Section 6 concludes the paper.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Experiment in Inclined Chute}
 
-%Произведём оптимизацию коэффициентов $k-\omega\ SST$ модели турбулентности для расчёта турбулентного потока жидкости в лотке. Для этого используем эксперимент, поставленный в НИИ Механики МГУ. В процессе эксперимента в лотке постоянного уклона (эксперимент проведён для нескольких разных углов наклона) производился спуск турбулентного потока жидкости. Использовался лоток следующей геометрии: длина~--- 1~м, ширина~--- 12~см, высота бортиков~--- 10~см. В расчётах использовалась область лотка между двумя точками замера скорости и глубины, находящимися на расстоянии 23~см и 82~см от верхнего края лотка. Схема эксперимента показана на рис. \ref{NIIMexLinearUProfileInlet}. Для проведения эксперимента используется водопроводная вода.
-
 Experimental installations are used to study the parameters of slope flows. The objects of study are such measurements as flow depth, flow velocity, force of interaction with an obstacle. Such measurements as flow depth, flow velocity, impact force on an obstacle become the object of study. In our study, the velocity profile is studied.
-
 
 An experiment setup at the Research Institute of Mechanics, Lomonosov Moscow State University was used for this purpose. In the experiment, a turbulent fluid flow descended along a chute with a constant slope. The experiment was carried out for several different slope angles. The chute has the following geometry: the length 1~m, the width 12~cm, and the side heights 10~cm. The chute area to analyze is between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top edge. The schematic representation of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
 
@@ -366,7 +359,7 @@ A part of the experimental chute located between two velocity profile and flow d
 \subsubsection{Initial and Boundary Conditions}
 
 %Были выделены следующие границы расчётной области: дно лотка, боковые стенки лотка, верхняя граница лотка, плоскость на входе в лоток, плоскость на выходе из лотка.
-The following boundaries of the computational domain were determined: the chute bottom, the chute sides, the chute upper border, the input plane, the output plane.
+The following boundaries of the computational domain were determined: the chute bottom, the chute sides, the computational domain upper border, the input plane, the output plane.
 
 %Были заданы следующие граничные условия:
 %\begin{itemize}
@@ -379,26 +372,22 @@ The following boundaries of the computational domain were determined: the chute 
 The following boundary conditions were set:
 
 \begin{itemize}
-    \item the chute bottom: is a solid wall with the no-slip condition;
-    \item the chute sides: the zero gradient condition is set to exclude the     influence of sides on the flow;
-    \item the chute upper border: a mixed condition with atmospheric pressure,     no inflow through the border and outflow according to zero gradient     condition;
-    \item the input plane: fixed values of water volume fraction and flow velocity profile;
-    \item the output plane: all values have a zero gradient condition.
-\end{itemize}
 
-For parameters k and $\omega$ was determined following values on boundaries.
-
-\begin{itemize}
-    \item The chute bottom: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$.
-    \item The chute sides: zero gradient for both parameters.
-    \item The chute upper border: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
-    \item The chute input plane: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
-    \item The chute output plane: $k=0.1\;\frac{m^2}{s^2}$, $\omega = 2 \; s^{-1}$
+    \item The chute bottom: a solid wall with the no-slip condition and fixed value condition for $k$ and $\omega$.
+    
+    \item The chute sides: the zero gradient condition (to exclude the influence of sides on the flow).
+    
+    \item The computational domain upper border: a mixed condition with atmospheric pressure, no inflow through the border and outflow according to zero gradient condition and fixed value condition for $k$ and $\omega$.
+    
+    \item The input plane: fixed values of water volume fraction, flow velocity profile, $k$ and $\omega$.
+    
+    \item The output plane: the zero gradient condition.
+    
 \end{itemize}
 
 %Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
 
-For values $k$ and $\omega$ was used wall function for high Reynolds turbulence model $k-\omega SST$
+High Reynolds wall functions used in $k-\omega\ SST$ turbulence model.
 
 The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The flow is considered steady after 5 seconds.
 
@@ -707,7 +696,7 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} shows the resulting velocity profiles on t
 \switchcolumn
 
 %Калибровка привела к следующей минимизации функции потерь~\eqref{LossFunction}, показанной в таб.~\ref{tabLossFunctionMinimize}
-During the calibration, the following minimization of the loss function~\eqref{LossFunction} was achieved, as shown in Table~\ref{tabLossFunctionMinimize}
+During the calibration, the following minimization of the loss function~\eqref{LossFunction} was achieved, as shown in Table~\ref{tabLossFunctionMinimize}.
 
 %\begin{table}[H]
 %	\caption{Минимизация функции потерь}
@@ -746,7 +735,7 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} and Table~\ref{tabLossFunctionMinimize} sh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
-In this work, a two-phase flow in a chute was simulated using the interFoam solver, the URANS mathematical model, and the $k-\omega \; SST$ turbulence model. In the optimization process, six constants were investigated in pairs, which make the greatest contribution to the value of turbulent viscosity.
+In this work, a two-phase flow in a chute was simulated using the interFoam solver, the URANS mathematical model, and the $k-\omega\ SST$ turbulence model. In the optimization process, six constants were investigated in pairs, which make the greatest contribution to the value of turbulent viscosity.
 
 The comparison of the results of calculating the velocity profiles with the experimental data obtained at Research Institute of Mechanics, Moscow State University in different sections subject to the angle of inclination of the chute was conducted. The search for the optimal coefficients of the turbulence model was performed by minimizing the objective function of the divergence of the velocity profile in the chute. % - RMSE.
 
