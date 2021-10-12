@@ -238,7 +238,7 @@ An experiment setup at the Research Institute of Mechanics, Lomonosov Moscow Sta
 \end{figure}
 
 %Было проведено 3 серии экспериментов, в которых менялся угол наклона склона, начальная глубина потока, начальный профиль потока, как показано в таблице \ref{tabNIIMexLinear}
-Three series of experiments were done; the slope, the initial flow depth, and the initial flow profile were varied as shown in Table~\ref{tabNIIMexLinear}.
+Three series of experiments were done; the initial flow profile, the initial flow depth, the slope angle were varied as shown in Table~\ref{tabNIIMexLinear}.
 
 %\begin{table}[H]
 %	\caption{Параметры расчётов}
@@ -270,7 +270,7 @@ Three series of experiments were done; the slope, the initial flow depth, and th
 	\end{tabular}
 \end{specialtable}
 
-Where $u_0$ is a depth-averaged velocity. $h_0$ -- a height of the liquid in the chute. $\theta$ -- an angle of inclination.
+Where $u_0$ is a depth-averaged velocity. $h_0$~--- the flow depth. $\theta$~--- the slope inclination angle.
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -279,10 +279,10 @@ Where $u_0$ is a depth-averaged velocity. $h_0$ -- a height of the liquid in the
 \section{Mathematical model}\label{math_model}
 
 %Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году \cite{HirtNichols1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
-The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics, Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air.
+The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics of Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air.
 
 
-To describe the flow, the system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy and specific rate of dissipation equations.
+To describe the flow, the system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy and specific dissipation rate equations.
 
 \begin{equation}
 	\label{vofKWSST}
@@ -299,7 +299,7 @@ To describe the flow, the system of equations \eqref{vofKWSST} is used, which co
 \end{equation} 
 
 %Здесь $\boldsymbol{u}$~--- скорость смеси; $\alpha$~--- объёмная доля выбранной фазы; $\rho$~--- плотность смеси, рассчитываемая по принципу весового среднего; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- тензор напряжений, выраженный через тензор скоростей деформации $\bar{\boldsymbol{s}}$, горизонтальной чертой над буквами обозначается осреднение по Рейнольдсу; $\mu_{eff} = \mu + \mu_t$~--- эффективный коэффициент вязкости, сумма молекулярной вязкости и турбулентной, последняя вычисляется по формуле $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\bar{p}$~--- давление; $\bar{\boldsymbol{f}}$~--- плотность массовых сил; $k$ --- плотность турбулентной кинетической энергии; $\omega$ --- скорость диссипации плотности турбулентной кинетической энергии; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- функция перемешивания ($F_1$ равняется нулю вдалеке от стены и получается $k-\varepsilon$ модель, и переключается на единицу внутри пограничного слоя, реализуя $k-\omega$ модель); $\dot{s}$~--- скорость сдвига (инвариантная мера $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- вторая функция перемешивания, $\widetilde{P}_k$~--- ограничитель на нарастание турбулентности в режимах стагнации.
-Here $\bar{\boldsymbol{u}}$~is the speed of the mixture, $\alpha$~is the volume fraction of the selected phase, $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~is the stress tensor, which is a function of the strain rate tensor $\bar{\boldsymbol{s}}$, $\mu_{eff} = \mu + \mu_t$~is the effective viscosity, which is a sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega, \ b_1 \dot{s} F_2)$, $\rho$~is the mixture density calculated according to the principle of the weighted average, $\bar{p}$~is the pressure, $\bar{\boldsymbol{f}}$~is the density of the body forces, $k$~is the turbulent kinetic energy, $\omega$~is the production rate of turbulent kinetic energy by an average flow, $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~is the blending function ($F_1$ equals zero away from the wall and turns into $k-\varepsilon$ model and turns into unity inside the boundary layer that corresponds to $k-\omega$ model), $\dot{s}$~is the strain rate (invariant of $\overline{\boldsymbol{s}}$), $F_2 = F_2(\beta^*)$~is the second blending function, and $\widetilde{P}_k$~is the limiter on the growth of turbulence used in stagnation modes.
+Here $\bar{\boldsymbol{u}}$~is the speed of the mixture, $\alpha$~is the volume fraction of the selected phase, $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~is the stress tensor, which is a function of the strain rate tensor $\bar{\boldsymbol{s}}$, $\mu_{eff} = \mu + \mu_t$~is the effective viscosity, which is a sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega, \ b_1 \dot{s} F_2)$, $\rho$~is the mixture density calculated according to the principle of the weighted average, $\bar{p}$~is the pressure, $\bar{\boldsymbol{f}}$~is the density of the body forces, $k$~is the turbulent kinetic energy, $\omega$~is the specific dissipation rate, $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~is the blending function ($F_1$ equals zero away from the wall and turns into $k-\varepsilon$ model and turns into unity inside the boundary layer that corresponds to $k-\omega$ model), $\dot{s}$~is the strain rate (invariant of $\overline{\boldsymbol{s}}$), $F_2 = F_2(\beta^*)$~is the second blending function, and $\widetilde{P}_k$~is the limiter on the growth of turbulence used in stagnation modes.
 
 %Все константы турбулентной модели рассчитываются по принципу весового среднего между константами $k-\varepsilon$ и $k-\omega$ моделей по принципу $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$ и т.д. Стандартно константы турбулентной модели задаются следующими значениями \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
 The turbulence model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$ are calculated according to the principle of the weighted average: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. By default, the constants of the turbulent model are set by the following values \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
@@ -624,7 +624,7 @@ For the numerical solving of the problem described in Section \ref{math_model}, 
 
 
 %В процессе оптимизации исследовались такие константы, как $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$, которые регулируют скорость диссипации турбулентной кинетической энергии, напряжения Рейнольдса, поток диффузии турбулентной кинетической энергии, поток диффузии диссипации турбулентной кинетической энергии, соответственно.
-Such constants of the turbulence model as $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$ have been optimized. They regulate the turbulent kinetic energy dissipation rate, Reynolds stress, turbulent kinetic energy diffusion flow, diffusion flow of turbulent kinetic energy dissipation, respectively.
+Such constants of the turbulence model as $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$ have been optimized. They regulate the turbulent kinetic energy dissipation rate, Reynolds stress, turbulent kinetic energy diffusion flux, diffusion flux of turbulent kinetic energy dissipation, respectively.
 
 %Начальные значения коэффициентов были заданы следующими:
 The initial values of the coefficients are
