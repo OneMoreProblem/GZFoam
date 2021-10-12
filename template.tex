@@ -301,7 +301,7 @@ The turbulence model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$
 	\label{kOmegaSstConstantsInit}
 	\begin{aligned}
 		\gamma_1 = 5 / 9,\ \ \ \beta_1 = 3 / 40,\ \ \ \alpha_{k1} = 0.85,\ \ \ \alpha_{\omega1} = 0.5,\\
-		\gamma_2 = 0.44,\ \ \ \beta_2 = 0.0828,\ \ \ \alpha_{k2} = 1,\ \ \ \alpha_{\omega 2} = 0.856,\\
+		\gamma_2 = 0.44,\ \ \ \beta_2 = 0.083,\ \ \ \alpha_{k2} = 1,\ \ \ \alpha_{\omega 2} = 0.856,\\
 		\beta^* = 0.09,\ \ \ a_1 = 0.31,\ \ \ b_1 = 1.0,\ \ \ c_1 = 10.0.
 	\end{aligned}
 \end{equation}
@@ -353,8 +353,6 @@ The Gauss–Seidel method is used to solve a system of linear equations. Pressur
 The advantage of mathematical modeling is that the exploration is able to place virtual sensors at any point in the computational domain to measure the values of physical quantities. In the experiment, the physical sensors were placed at the exit from the chute. To compare the results of the experiment and the calculation, the virtual sensors were placed in the same place.
 
 A part of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in depth. The number of cells was $590 \times 10 \times 60$. The average value of Y+ was 17.
-
-
 
 \subsubsection{Initial and Boundary Conditions}
 
@@ -611,7 +609,6 @@ The simulations were conducted using supercomputer of Lobachevsky University of 
 The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and Open MPI v4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
 For the numerical solving of the problem described in Section \ref{math_model}, open source CFD software OpenFOAM v2012 \cite{OpenFOAM} was used.
 
-
 %В процессе оптимизации исследовались такие константы, как $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$, которые регулируют скорость диссипации турбулентной кинетической энергии, напряжения Рейнольдса, поток диффузии турбулентной кинетической энергии, поток диффузии диссипации турбулентной кинетической энергии, соответственно.
 Such constants of the turbulence model as $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$ have been optimized. They regulate the turbulent kinetic energy dissipation rate, Reynolds stress, turbulent kinetic energy diffusion flux, diffusion flux of turbulent kinetic energy dissipation, respectively.
 
@@ -636,7 +633,7 @@ In the second experiment, the approach described in subsection \ref{GSA_Appr} wa
 First, $K_1 = 30$ iterations of global search algorithm were performed. 
 Afterwards, the algorithm employing the approximation with the neural network was started. 
 Total $K_1 + K_2 = 65$ iterations of the algorithm were performed, after that the algorithm stopped on accuracy. 
-As a result, the best value  of the objective function 0.375174 was found. 
+As a result, the best value  of the objective function 0.375 was found. 
 Total solution search time was reduced down to 16 hours that provided obtaining more accurate solution of the problem in acceptable time.
 
 The trial points and the approximating function plotted according to these points using the neural network are presented in Figure~\ref{NN_100_point} (the parameters $\beta^*$ and $a_1$ were varied). One can see clearly several local minima to be present.
@@ -650,7 +647,7 @@ The trial points and the approximating function plotted according to these point
 \end{figure}
 
 The best values of parameters $\beta^*$ and $a_1$ found were fixed, and then optimization in parameters $\alpha_{k1}, \alpha_{\omega1}$, and $\alpha_{k2}, \alpha_{\omega2}$ was performed. 
-The optimization in these parameters didn't result in a considerable improvement of the objective function: the value of 0.364464 was obtained.
+The optimization in these parameters didn't result in a considerable improvement of the objective function: the value of 0.3645 was obtained.
 
 
 %На рисунках ~\ref{NN_100_point1} и ~\ref{NN_100_point2} приведены изображение функций, полученные с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались соответсвенно пары параметров $\alpha_{k1} $,  $\alpha_{\omega1} $ и $\alpha_{k2} $, $\alpha_{\omega2} $.
@@ -676,8 +673,8 @@ The optimization in these parameters didn't result in a considerable improvement
 As a final result, the following values of the coefficients of the model were obtained:
 \begin{equation}
 	\begin{aligned}
-		\beta^* = 0.117432;\ \ \ a_1 = 1.84082;\ \ \ \alpha_{k 1} = 1.999023;\\
-		\alpha_{\omega 1} = 0.061523; \ \ \ \alpha_{k 2} = 1.241211;\ \ \ \alpha_{\omega 2} = 0.002930.
+		\beta^* = 0.117;\ \ \ a_1 = 1.84;\ \ \ \alpha_{k 1} = 1.999;\\
+		\alpha_{\omega 1} = 0.062; \ \ \ \alpha_{k 2} = 1.241;\ \ \ \alpha_{\omega 2} = 0.003.
 	\end{aligned}
 \end{equation}
 
