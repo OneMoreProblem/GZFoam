@@ -175,7 +175,7 @@ Previously, the study of avalanches was carried out using computational fluid dy
 
 Cheung et al. \cite{Cheung2011} used Bayesian analysis for the calibration of the Spalart–Allmaras turbulence model coefficients, and model inadequacy, to reproduce the turbulent boundary layer profile over the flat plate. Among similar works, the coefficients were already calibrated in the $k-\varepsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
 
-Bayesian analysis has been proposed to address the question of RANS turbulence models (The $k–\varepsilon$ model with Launder–Sharma damping functions, The Wilcox $k–\omega$ model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo–Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
+Bayesian analysis has been proposed to address the question of RANS turbulence models (The $k-\varepsilon$ model with Launder–Sharma damping functions, The Wilcox $k-\omega$ model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo–Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
 
 Kotaro Matsui et al. \cite{Matsui2021} proposed a new set of calibrated coefficients that improved the ability of Spalart-Allmaras model to predict a corner flow separation of a compressor cascade. A comprehensive review of turbulence model uncertainties is given in paper of Xiao and Cinnella \cite{Xiao2019}. 
 
@@ -223,7 +223,7 @@ Section 6 concludes the paper.
 
 Experimental installations are used to study the parameters of slope flows. The objects of study are such measurements as flow depth, flow velocity, force of interaction with an obstacle. Such measurements as flow depth, flow velocity, impact force on an obstacle become the object of study. In our study, the velocity profile is studied.
 
-An experiment setup at the Research Institute of Mechanics, Lomonosov Moscow State University was used for this purpose. In the experiment, a turbulent fluid flow descended along a chute with a constant slope. The experiment was carried out for several different slope angles. The chute has the following geometry: the length 1~m, the width 12~cm, and the side heights 10~cm. The chute area to analyze is between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top edge. The schematic representation of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
+An experiment setup at the Research Institute of Mechanics, Lomonosov Moscow State University \cite{fluids7030111} was used for this purpose. In the experiment, a turbulent fluid flow descended along a chute with a constant slope. The experiment was carried out for several different slope angles. The chute has the following geometry: the length 1~m, the width 12~cm, and the side heights 10~cm. The chute area to analyze is between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top edge. The schematic representation of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
 
 \begin{figure}[H]	
 \widefigure
@@ -273,7 +273,7 @@ Where $u_0$ is a depth-averaged velocity. $h_0$~--- the flow depth. $\theta$~---
 \section{Mathematical model}\label{math_model}
 
 %Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году \cite{HirtNichols1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
-The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics of Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air.
+The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics of Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air. The value of 0.6 is used as the most representative for visualization.
 
 
 To describe the flow, the system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy and specific dissipation rate equations.
@@ -322,27 +322,32 @@ The details of the turbulence model description are presented in \cite{Menter199
 To implement the three-dimensional multiphase single-rate approach, interFoam \cite{Rusche2003ComputationalFD} solver was used.
 
 %Используются следующие аппроксимационные схемы:
-The following approximation schemes were employed:
-\begin{itemize}
+%\begin{itemize}
 %	\item производные по времени $\frac{\partial}{\partial t}$ аппроксимируются с помощью неявного метода Эйлера;
-	\item time derivatives $\frac{\partial}{\partial t}$ schemes: first order, bounded, implicit Euler scheme;
 %	\item поток объёмной доли фазы $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$ аппроксимируется при помощи схемы Ван Лира;
-	\item the water volume fraction flux $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$: Gaussian finite volume integration with vanLeer interpolation;
 %	\item поток массы смеси $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$ аппроксимируется с помощью противопоточной схемы с весами;
-	\item the convection term $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$: Gaussian finite volume integration with upwind interpolation;
 %	\item дивергенция тензора вязких напряжений $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$ аппроксимируется с помощью центральной разностной схемы;
-	\item the divergence of the stress tensor $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$: Gaussian finite volume integration with upwind interpolation;
 %	\item поток турбулентной кинетической энергии $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$ аппроксимируется противопоточной схемой;
-	\item the turbulent kinetic energy flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$: Gaussian finite volume integration with linear (central differencing) interpolation;
 %	\item поток специальной диссипации турбулентной кинетической энергии $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$ используется противопоточная схема;
-	\item the specific turbulent kinetic energy dissipation flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$: Gaussian finite volume integration with linear (central differencing) interpolation;
 %	\item оператор градиента $\boldsymbol{\nabla}$ аппроксимируется центрально-разностной схемой;
-	\item gradient terms $\boldsymbol{\nabla}$: Gaussian integration with linear interpolation;
 %	\item оператор Лапласа $\boldsymbol{\nabla}^2$ аппроксимируется центрально-разностной схемой с явной неортогональной коррекцией;
-	\item Laplacian terms $\boldsymbol{\nabla}^2$: Gaussian integration with linear interpolation with explicit non-orthogonal correction;
 %	\item другие, не перечисленные выше члены описываются с помощью центрально-разностной схемы.
-	\item other terms not listed above are described using a central difference scheme.
+%\end{itemize}
+
+The following approximation schemes are used:
+\begin{itemize}
+	\item time derivatives $\frac{\partial}{\partial t}$: first order, bounded, implicit Euler scheme;
+	\item water volume fraction flux $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$: second order, unbounded, Gaussian finite volume integration with Van Leer interpolation;
+	\item convection term $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$: second order, unbounded, Gaussian finite volume integration with upwind interpolation weights, with an explicit correction based on the local cell gradient;
+	\item divergence of the stress tensor $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$: second order, unbounded, Gaussian finite volume integration with upwind interpolation;
+	\item turbulent kinetic energy flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$: first order, bounded, Gaussian finite volume integration with linear (central differencing) interpolation;
+	\item dissipation flux of the specific turbulent kinetic energy $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$: first order, bounded, Gaussian finite volume integration with linear (central differencing) interpolation;
+	\item gradient terms $\boldsymbol{\nabla}$: Gaussian integration with linear interpolation;
+	\item Laplacian terms $\boldsymbol{\nabla}^2$: Gaussian integration with linear interpolation with explicit non-orthogonal correction;
+	\item Other terms not listed above are discretized using a central difference scheme.
 \end{itemize}
+
+The 2nd order linear upwind scheme used for convection term is most efficient and accurate for Reynolds Averaged Navier Stokes (RANS) simulations \cite{ROBERTSON2015122}.
 
 %Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
 To solve a system of equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm was used. This algorithm is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
@@ -353,7 +358,7 @@ The Gauss–Seidel method is used to solve a system of linear equations. Pressur
 
 The advantage of mathematical modeling is that the exploration is able to place virtual sensors at any point in the computational domain to measure the values of physical quantities. In the experiment, the physical sensors were placed at the exit from the chute. To compare the results of the experiment and the calculation, the virtual sensors were placed in the same place.
 
-A part of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in depth. The number of cells was $590 \times 10 \times 60$. The average value of Y+ was 17.
+A part of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in depth. The number of cells was $590 \times 10 \times 60$. Also, a study was made of grid convergence on grids $290 \times 5 \times 30$, $590 \times 10 \times 60$, $1080 \times 20 \times 120$.
 
 \subsubsection{Initial and Boundary Conditions}
 
@@ -384,9 +389,10 @@ The following boundary conditions were set:
     
 \end{itemize}
 
-%Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
+%High Reynolds wall functions used in $k-\omega\ SST$ turbulence model.
+The average value of Y+ was 17. The nutkWallFunction boundary condition used, which provides a wall constraint on the turbulent viscosity, based on the turbulent kinetic energy for both low- and high-Reynolds number turbulence models.
 
-High Reynolds wall functions used in $k-\omega\ SST$ turbulence model.
+%Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
 
 The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The flow is considered steady after 5 seconds.
 
