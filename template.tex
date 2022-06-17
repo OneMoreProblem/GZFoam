@@ -43,6 +43,7 @@
 %\usepackage[english,russian]{babel}
 %\usepackage{cmap}
 %%%%
+\usepackage{ulem}
 
 %=================================================================
 % MDPI internal commands
@@ -117,7 +118,13 @@ $^{3}$ \quad Moscow aviation institute, 125993, Moscow, Volokolamskoe shosse, 4;
 
 % Abstract (Do not insert blank lines, i.e. \\) 
 
-\abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameter values of this mathematical model. The slope flow is modeled using the finite volume method, the averaged Reynolds equations model and the $k-\omega\ SST$ turbulence model. The Root Mean Square Error of the calculated flow velocity profile is considered as the objective function in the optimization problem. The analytical form of this function is not known and the calculation of its values involves time-consuming numerical simulation. The optimal values of the coefficients of the turbulence model were found using the global search algorithm. To speed up the optimization procedure, the objective function was approximated using an artificial neural network. The optimal coefficients of the turbulence model for slope flows were obtained with virtual sensors, and the calculated data were compared with the experimental ones. \textcolor{red}{The calibration of turbulence models coefficients for calculating the free surface flows on slopes using multiphase model for interphase tracking has not been performed earlier. In this study we used the novelty approach based on the idea of dimension reduction by means of a Peano curve y(x) to solve the multiextremal optimization problems for the definition of the loss function for the flow velocity profile}. An interdisciplinary approach was applied which allowed the optimal values of six turbulence model parameters to be found using OpenFOAM and Globalizer software.}
+\abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameter values of this mathematical model. The slope flow is modeled using the finite volume method, the averaged Reynolds equations model and the $k-\omega\ SST$ turbulence model. The Root Mean Square Error of the calculated flow velocity profile is considered as the objective function in the optimization problem. The analytical form of this function is not known and the calculation of its values involves time-consuming numerical simulation. The optimal values of the coefficients of the turbulence model were found using the global search algorithm. 
+\sout{To speed up the optimization procedure, the objective function was approximated using an artificial neural network.} 
+The \sout{optimal} coefficients of the turbulence model for slope flows were obtained with virtual sensors, and the calculated data were compared with the experimental ones.
+\textcolor{red}{The calibration of turbulence models coefficients for calculating the free surface flows on slopes using multiphase model for interphase tracking has not been performed earlier.} 
+\textcolor{green}{To solve the multi-extremal optimization problem arising from the search for the minimum of the loss function for the flow velocity profile we use a new optimization approach using a Peano curve to reduce the dimensionality of the problem.
+To speed up the optimization procedure, the objective function was approximated using an artificial neural network. Thus,} 
+an interdisciplinary approach was applied which allowed the optimal values of six turbulence model parameters to be found using OpenFOAM and Globalizer software.}
 
 
 % Keywords
@@ -548,6 +555,8 @@ The left layer called the \textit{input} one consists of a set of neurons $y_i, 
 w_1 y_1 + w_2 y_2+...+w_k y_k+bias,
 \]
 where $w_i$ are the weights of the neurons and $bias$ is a special weight, which doesn't include a factor in the form of an input value. Next, the value obtained is transformed into an output one (predicted) value of the layer with a transmission function (the \textit{activation function}). The output layer receives the values from the last hidden layer and transforms these ones onto the output values. The network was trained by the error backpropagation method.
+
+\textcolor{green}{We used a three-layered neural network for solving the approximation problem due to the following reasons. From a theoretical point of view, such a network will be sufficient to approximate the function with a high accuracy. From a practical point of view, the use of deep neural networks here will be redundant, because the set of trial results used to build the approximation is small and will not be enough to train a deep network.}
 
 \subsubsection{Selection of the Model Parameters}
 
