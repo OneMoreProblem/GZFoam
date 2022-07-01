@@ -2,7 +2,7 @@
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[applsci,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
+\documentclass[mathematics,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
 
 % For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 
@@ -101,11 +101,11 @@
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
 $^{1}$ \quad Department of Mathematical Software and Supercomputing Technologies, Lobachevsky University, 603022 Nizhni Novgorod, Russia; konstantin.barkalov@itmm.unn.ru (K.B.), ilya.lebedev@itmm.unn.ru (I.L.), marina.usova@itmm.unn.ru (M.U.)\\
-$^{2}$ \quad Institute for System Programming of the Russian Academy of Sciences, 109004, Moscow, Russia; Ryazanov Daniil ryazanov@ispras.ru (R.D.), Romanova Daria romanova.d@ispras.ru (Rom.D.)\\
+$^{2}$ \quad Institute for System Programming of the Russian Academy of Sciences, 109004, Moscow, Russia; Ryazanov Daniil ryazanov@ispras.ru (R.D.), Romanova Daria romanovadi@ispras.ru (Rom.D.)\\
 $^{3}$ \quad Moscow Aviation Institute, 125993, Moscow, Volokolamskoe shosse, 4; Sergei Strijhak s.strijhak@ispras.ru (S.S.)}
 
 % Contact information of the corresponding author
-\corres{Correspondence: Ryazanov Daniil, ryazanov@ispras.ru;}
+\corres{Correspondence: Sergei Strijhak, s.strijhak@ispras.ru;}
 
 % Current address and/or shared authorship
 %\firstnote{Current address: Affiliation 3} 
@@ -119,8 +119,7 @@ $^{3}$ \quad Moscow Aviation Institute, 125993, Moscow, Volokolamskoe shosse, 4;
 % Abstract (Do not insert blank lines, i.e. \\) 
 
 \abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameter values of this mathematical model. The slope flow is modeled using the finite volume method, the averaged Reynolds equations model and the $k-\omega\ SST$ turbulence model. The Root Mean Square Error of the calculated flow velocity profile is considered as the objective function in the optimization problem. The analytical form of this function is not known and the calculation of its values involves time-consuming numerical simulation. The optimal values of turbulence model coefficients were found using the global search algorithm. 
-The turbulence model  coefficients for slope flows were obtained with virtual sensors, and the calculated data were compared with the experimental ones.
-\textcolor{red}{The calibration of turbulence model coefficients for calculating the free surface flows on slopes using the multiphase model for interphase tracking has not been performed earlier.} 
+The turbulence model  coefficients for slope flows were obtained with virtual sensors, and the calculated data were compared with the experimental ones. The calibration of turbulence model coefficients for calculating the free surface flows on test slopes using the multiphase model for interphase tracking has not been performed earlier. 
 To solve the multi-extremal optimization problem arising from the search for the minimum of the loss function for the flow velocity profile, we apply a new optimization approach using a Peano curve to reduce the dimensionality of the problem.
 To speed up the optimization procedure, the objective function was approximated using an artificial neural network. Thus,
 an interdisciplinary approach was applied which allowed the optimal values of six turbulence model parameters to be found using OpenFOAM and Globalizer software.}
@@ -217,7 +216,7 @@ To construct the approximations, we applied Neural Network Regression (NNR).
 To study the parameters of slope flows, it is advisable to use interdisciplinary approaches from the fields of computational and experimental hydrodynamics, optimization theory, parallel computing and neural networks. This paper uses the results of an experiment in a chute with a different angle of inclination, a mathematical model for modeling a two-phase flow, global optimization methods and an artificial neural network. The mathematical model is based on the averaged Reynolds equations and a two-parameter turbulence model. 
 
 The $k-\omega\ SST$ turbulence model contains a number of constants that were calibrated for canonical flows such as air flow around various profiles, flows in pipes and channels, etc. \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. No calibration of turbulence model coefficients for calculating the free surface flows on slopes using the multiphase model for interphase tracking was performed. In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute.
-
+````````````````    q
 The main part of the paper has the following structure. 
 Section 2 contains a description of the experiment. Section 3 describes the mathematical model of turbulent two-phase flows. Section 4 contains the details of numerical methods. 
 Section 5 describes the results of numerical experiments. 
@@ -356,13 +355,13 @@ The 2nd order linear upwind scheme used for the convection term is most efficien
 %Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
 To solve the system of equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm was used. This algorithm is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and the SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
 
-The Gauss–Seidel method is used to solve the system of linear equations. Pressure correction is made using the conjugate gradient method.
+The conjugate gradient method with preconditioner GAMG is used to solve the system of linear equations for pressure. The GaussSeidel method is used as a smoother. The values for volume fraction of water, velocity, $k$, $\omega$ are defined using smoothSolver and  symGaussSeidel method as a smoother. 
 
 \subsubsection{Definition of the Calculation Domain}
 
 The advantage of mathematical modeling is that the model allows virtual sensors to be placed at any point in the computational domain to measure the values of physical quantities. In the experiment, the physical sensors were placed at the exit from the chute. To compare the results of the experiment and the calculation, the virtual sensors were positioned in the same place.
 
-A section of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in height. \textcolor{red}{We have checked the effect of grid resolution. A study was made of grid convergence for different grids $290 \times 5 \times 30$, $590 \times 10 \times 60$, $1080 \times 20 \times 120$. Finally, the number of cells was chosen to be $590 \times 10 \times 60$ for reasons of reducing computer time with the same accuracy}.
+A section of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in height. We have checked the effect of grid resolution. A study was made of grid convergence for different grids $290 \times 5 \times 30$, $590 \times 10 \times 60$, $1080 \times 20 \times 120$. Finally, the number of cells was chosen to be $590 \times 10 \times 60$ for reasons of reducing computer time with the same accuracy.
 
 \subsubsection{Initial and Boundary Conditions}
 
@@ -394,11 +393,11 @@ The following boundary conditions were set:
 \end{itemize}
 
 %High Reynolds wall functions used in $k-\omega\ SST$ turbulence model.
-\textcolor{red}{The average value of Y+ was 17 which satisfied the model of wall functions. The nutkWallFunction was used for boundary condition for the wall, which provides a wall constraint on the turbulent viscosity, based on the turbulent kinetic energy for both low- and high-Reynolds number turbulence models}.
+The average value of Y+ was 17 which satisfied the model of wall functions. The nutkWallFunction was used for boundary condition for the wall, which provides a wall constraint on the turbulent viscosity, based on the turbulent kinetic energy for both low- and high-Reynolds number turbulence models.
 
 %Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
 
-The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The flow is considered steady after 5 seconds.
+The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The time step dt is equal to 0.001. The flow is considered steady after 5 seconds.
 
 
 %%%%%%%%%%%%%%%%%%%%Перенести в раздел с оптимизацией
@@ -553,7 +552,7 @@ w_1 y_1 + w_2 y_2+...+w_k y_k+bias,
 \]
 where $w_i$ are the weights of the neurons and $bias$ is a special weight, which doesn't include a factor in the form of an input value. Next, the value obtained is transformed into an output (predicted) value of the layer with a transmission function (the \textit{activation function}). The output layer receives the values from the last hidden layer and transforms them into the output values. The network was trained by the error backpropagation method.
 
-\textcolor{green}{We used a three-layered neural network for solving the approximation problem due to the following reasons. From the theoretical point of view, such a network will be sufficient to approximate the function with a high accuracy. From the practical point of view, the use of deep neural networks here will be redundant, because the set of trial results used to build the approximation is small and will not be sufficient to train a deep network.}
+We used a three-layered neural network for solving the approximation problem due to the following reasons. From the theoretical point of view, such a network will be sufficient to approximate the function with a high accuracy. From the practical point of view, the use of deep neural networks here will be redundant, because the set of trial results used to build the approximation is small and will not be sufficient to train a deep network.
 
 \subsubsection{Selection of the Model Parameters}
 
