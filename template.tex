@@ -576,13 +576,11 @@ A MLP with one hidden layer with a scalar output is shown in Figure \ref{fig1}.
 \unskip
 
 The left layer called the input layer consists of a set of neurons $y_i, \; i=\overline{1,k}$ representing the input signals (the values of variables). Each neuron in the hidden layer transforms the values from the previous layer with weighted linear summing 
-
 \begin{linenomath}
 \begin{equation}
 w_1 y_1 + w_2 y_2+...+w_k y_k+bias,
 \end{equation}
 \end{linenomath}
-
 where $w_i$ are the weights of the neurons and $bias$ is a special weight, which doesn't include a factor in the form of an input value. Next, the value obtained is transformed into an output (predicted) value of the layer with a transmission function (the \textit{activation function}). The output layer receives the values from the last hidden layer and transforms them into the output values. The network was trained by the error backpropagation method.
 
 We used a three-layered neural network for solving the approximation problem due to the following reasons. From the theoretical point of view, such a network will be sufficient to approximate the function with a high accuracy. From the practical point of view, the use of deep neural networks here will be redundant, because the set of trial results used to build the approximation is small and will not be sufficient to train a deep network.
