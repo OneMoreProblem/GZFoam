@@ -443,7 +443,6 @@ When optimizing the coefficients of the turbulent model, the Root Mean Square Er
 	\boldsymbol{L_{RMSE}} = \sqrt{\frac{\sum\limits_{i=1}^{N} \left( v_{EXP}^i - v_{k-\omega\ SST}^i \right)^2}{N}}
 \end{equation}
 \end{linenomath}
-
 is minimized. 
 %где $h$~--- глубина потока на выходной плоскости.
 Here $N$ is the number of measuring points for the horizontal component of velocity over the flow depth at the outlet plane, $v_{EXP}^i$ is the horizontal component of velocity at the control point obtained by experiment, and $v_{k-\omega\ SST}^i$  is the horizontal component of velocity at the control point calculated by computational fluid dynamic (CFD). 
@@ -463,18 +462,16 @@ The assumption that the objective function $\varphi(y)$ satisfies the Lipschitz 
 is a typical and is used in many global optimization methods \cite{Sergeyev2013,Evtushenko2013,Jones2009,Zilinskas2010}.
 The assumption of this kind is natural enough for many applied problems since the relative variations of the function characterizing the process being simulated cannot usually exceed some threshold imposed by limited energy of variation. The question of estimating the Lipschitz constant values unknown {\textit a priori} arising here can be resolved by introducing some additive schemes \cite{Strongin2020,Strongin2020_1}.
 
-There are several ways to adapt effective one-dimensional algorithms for solving multidimensional problems; see, for example, the diagonal partitions method \cite{Sergeyev2017} or the simplicial partitions method \cite{Zilinskas2014}. In this study, we will use the approach based on the idea of dimensionality reduction by means of a Peano curve $y(x)$, which continuously and unambiguously maps the unit interval [0,1] onto the $n$-dimensional cube
-
+There are several ways to adapt efficient one-dimensional algorithms for solving multidimensional problems (see, e.g., \cite{Sergeyev2017,Zilinskas2014}). In this study we apply the dimensionality reduction using Peano curve $y(x)$ continuously mapping the unit interval [0,1] onto the $n$-dimensional cube
 \begin{linenomath}
 \begin{equation}
 \left\{y\in R^N: -2^{-1}\leq y_i \leq 2^{-1}, 1 \leq i \leq N\right\}=\left\{y(x):0\leq x \leq 1 \right\}.
 \end{equation}
 \end{linenomath}
 
-Problems of numerical construction of Peano-type space filling curves and the corresponding theory are considered in detail in \cite{Strongin2000,Sergeyev2013}.
+Algorithms for constructing Peano-type space filling curves and the corresponding theory are considered in detail in \cite{Strongin2000,Sergeyev2013}.
 
-By using this kind of mapping it is possible to reduce the multidimensional problem~(\ref{main_problem}) to a univariate problem
-
+By using this kind of mapping the multivariate problem~(\ref{main_problem}) could be reduced to a univariate problem
 \begin{linenomath}
 \begin{equation}
 \varphi(y^\ast)=\varphi(y(x^\ast))=\min{\left\{\varphi(y(x)): x\in[0,1]\right\}}.
@@ -482,23 +479,19 @@ By using this kind of mapping it is possible to reduce the multidimensional prob
 \end{linenomath}
 
 An important property of such mapping is that if the function $\varphi(y)$ in the domain $D$ satisfies the Lipschitz condition, then the function $\varphi(y(x))$ on the interval $[0,1]$ will satisfy a uniform H{\"o}lder condition
-
 \begin{linenomath}
 \begin{equation}
 \left|\varphi(y(x_1))-\varphi(y(x_2))\right|\leq H\left|x_1-x_2\right|^{1/N},
 \end{equation}
 \end{linenomath}
-
 where the H{\"o}lder constant $H$ is linked to the Lipschitz constant $L$ by the relation $H=2L\sqrt{N+3}$ \cite{Strongin2000}.
 
-Therefore, it is possible, without loss of generality, to consider minimization of univariate function
-
+Therefore, we can consider minimization of univariate function
 \begin{linenomath}
 \begin{equation}
 f(x)=\varphi(y(x)), \;\; x\in[0,1],
 \end{equation}
 \end{linenomath}
-
 satisfying the H{\"o}lder condition.
 
 
@@ -535,32 +528,29 @@ M = \left\{
 \right.
 \end{equation}
 \end{linenomath}
+where the real number $r>1$ is the method input parameter, and $\Delta_i=\left(x_i-x_{i-1}\right)^{1/N}$.
 
-where $r>1$ is a preset parameter of the method, and $\Delta_i=\left(x_i-x_{i-1}\right)^{1/N}$.
-
-Step 3. Calculate a \textit{characteristic} for every interval $(x_{i-1}, x_i), \; 1\leq i \leq k,$   according to the following formula
+Step 3. For each interval $(x_{i-1}, x_i), \; 1\leq i \leq k,$ calculate a \textit{characteristic} according to the following formula
 \begin{equation}\label{R}
 R(i)=\Delta_i+\frac{(z_i-z_{i-1})^2}{M^2\Delta_i}-2\frac{z_i+z_{i-1}}{M},1 \leq i \leq k.
 \end{equation}
 
-Step 4. Find the interval $(x_{t-1},x_t)$ with the maximum characteristic
+Step 4. Select the interval $(x_{t-1},x_t)$ corresponding to the maximum characteristic
 \begin{equation}\label{MaxR}
 R(t)=\max{\left\{R(i): 1 \leq i \leq k \right\}}.
 \end{equation}
 
-Step 5. Carry out a trial at the point $x^{k+1}\in(x_{t-1},x_t)$, calculated using the following formula
+Step 5. Execute the new trial at the point $x^{k+1}\in(x_{t-1},x_t)$, calculated using the following formula
 \begin{equation}\label{NewX}
 x^{k+1} = \frac{x_t+x_{t-1}}{2} - \mathrm{sign}(z_t-z_{t-1})\frac{1}{2r}\left[\frac{\left|z_t-z_{t-1}\right|}{\mu}\right]^N.
 \end{equation}
 
-The algorithm terminates if the condition $\Delta_t<\epsilon$ is satisfied; here $\epsilon>0$ is the preset accuracy. For estimation of the global solution, values
-
+The algorithm stops when $\Delta_t<\epsilon$, where $\epsilon>0$ is the preset accuracy. For estimation of the global optimum, values
 \begin{linenomath}
 \begin{equation}
 f_k^\ast=\min_{0\leq i \leq k}f(x^i), \ x_k^\ast=\arg \min_{0\leq i \leq k}f(x^i),
 \end{equation}
 \end{linenomath}
-
 are chosen.
 
 A rigorous proof of this algorithm's convergence is provided in \cite{Strongin2000}. 
@@ -661,7 +651,7 @@ The algorithm proposed here ensures the convergence to the global solution in th
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-The simulations were conducted using the supercomputer of Lobachevsky University of Nizhni Novgorod (operated under the Linux CentOS 7.2 operation system). Each cluster node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
+The simulations were conducted using the supercomputer of Lobachevsky University of Nizhni Novgorod (operated under the Linux CentOS 7.2 operation system). Each supercomputer node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
 The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and Open MPI v4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
 To numerically solve the problem described in Section \ref{math_model}, the open source CFD software OpenFOAM v2012 \cite{OpenFOAM} was used.
 
