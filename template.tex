@@ -2,7 +2,7 @@
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[journal,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+\documentclass[mathematics,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
 % For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 
 %--------------------
@@ -122,7 +122,7 @@ $^{4}$ \quad Lomonosov Moscow State University, 119991, Moscow, Russia; romanova
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameter values of this mathematical model. \textcolor{red}{The slope flow is modeled using the finite volume method applied to the Reynolds-averaged Navier–Stokes equations with closure in the form of the $k-\omega\ SST$ turbulence model. The optimal values of turbulence model coefficients for free surface gravity multiphase flows were found using the global search algorithm. Calibration was performed to increase the similarity of the experimental and calculated velocity profiles. The Root Mean Square Error (RMSE) of derivation between the calculated flow velocity profile and the experimental one is considered as the objective function in the optimization problem.} The calibration of turbulence model coefficients for calculating the free surface flows on test slopes using the multiphase model for interphase tracking has not been performed earlier. To solve the multi-extremal optimization problem arising from the search for the minimum of the loss function for the flow velocity profile, we apply a new optimization approach using a Peano curve to reduce the dimensionality of the problem. To speed up the optimization procedure, the objective function was approximated using an artificial neural network. Thus, an interdisciplinary approach was applied which allowed the optimal values of six turbulence model parameters to be found using OpenFOAM and Globalizer software.}
+\abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameter values of this mathematical model. The slope flow is modeled using the finite volume method applied to the Reynolds-averaged Navier–Stokes equations with closure in the form of the $k-\omega\ SST$ turbulence model. The optimal values of turbulence model coefficients for free surface gravity multiphase flows were found using the global search algorithm. Calibration was performed to increase the similarity of the experimental and calculated velocity profiles. The Root Mean Square Error (RMSE) of derivation between the calculated flow velocity profile and the experimental one is considered as the objective function in the optimization problem. The calibration of turbulence model coefficients for calculating the free surface flows on test slopes using the multiphase model for interphase tracking has not been performed earlier. To solve the multi-extremal optimization problem arising from the search for the minimum of the loss function for the flow velocity profile, we apply a new optimization approach using a Peano curve to reduce the dimensionality of the problem. To speed up the optimization procedure, the objective function was approximated using an artificial neural network. Thus, an interdisciplinary approach was applied which allowed the optimal values of six turbulence model parameters to be found using OpenFOAM and Globalizer software.}
 
 % Keywords
 \keyword{global optimization; artificial neural network; function approximation; finite volume method; CFD; OpenFOAM; interFoam} 
@@ -163,7 +163,7 @@ Climate change is accompanied by dangerous natural phenomena that are becoming m
 
 Landslides, mudflows, and avalanches are classified as dangerous geological phenomena. These are slope processes associated with the separation of rocks, their movement along the slope under the influence of gravity and leading to irreversible changes in the relief. The study of the descent of landslides, mudflows, and avalanches as well as their prediction and detection are highly relevant due to the impact of these dangerous phenomena on human life and urban infrastructure. Landslides are distinguished according to the main causes of their occurrence. These are: abrasive, erosional, anthropogenic, and natural/anthropogenic. According to the mechanism of displacement, block landslides, shear, stretching, and liquefaction landslides are classified, respectively \cite{Pendin2015}.
 
-The data show that in total $55\,997$ people were killed in $4\,862$ distinct landslide events covering the period from January 2004 to December 2016. The spatial distribution of landslides is heterogeneous, with Asia representing the dominant geographical area \cite{Froude2018}.
+Data show that between January 2004 and December 2016, landslides killed about 56 thousand of people in a little then 5 thousand incidents. The spatial distribution of landslides is uneven, with Asia as the predominant geographic area \cite{Froude2018}.
 
 A large number of landslides, avalanches, and mudflows occur in European countries (Switzerland, Austria, Italy, France, and Iceland). Similar dangerous phenomena occur in Russia, for example, in Krasnodar Territory of the Russian Federation and in  North Caucasus due to heavy rainfalls in these regions where mountainous terrain is present and in connection with the development of the territory (linear and areal objects) in recent years \cite{hungr2005landslide}.  The amount of precipitation was outstanding in the above territories of Russia (Sochi, Krasnaya Polyana) in 2021. This led to the flooding of mountain rivers and increased the risk of slope flows. Catastrophic descents of mudflows occured resulting in damage to road equipment and blockage of roadways \cite{Harch2020}.
 
@@ -175,11 +175,11 @@ The most well-known landslide problem involves assessing the stability of a land
 
 Previously, the study of avalanches was carried out using computational fluid dynamics methods for Newtonian fluids and analysis of observation data including the historical data on avalanches in Japan \cite{Oda2011, Yamaguchi2017}. Similar work was carried out on avalanches in Switzerland, Austria, and Italy. A series of works on the study of avalanches using laboratory experiment in special trays and measuring equipment for studying avalanches in Iceland were carried out at the University of Iceland  \cite{IceThesKatr, IceThesJon}. An experiment with the descent of a snow-water stream in Davos, Switzerland was described in \cite{Jaedicke2006}. Measurements were made for the flow depth for a dry snow avalanche and for a snow-water flow.
 
-Cheung et al. \cite{Cheung2011} used Bayesian analysis to calibrate the Spalart–Allmaras turbulence model coefficients, to overcome model inadequacy, and to reproduce the turbulent boundary layer profile over the flat plate. Among similar works, the coefficients were already calibrated in the $k-\varepsilon$ turbulence model when studying the process of the propagation of impurities in urban development \cite{Guillas2014}.
+Cheng et al. \cite{Cheung2011} used Bayesian analysis to calibrate the coefficients of the Spalart-Allmaras turbulence model to correct model deficiencies and reproduce the profile of a turbulent boundary layer over a flat plate. Among similar works, the coefficients were already calibrated in the $k-\varepsilon$ turbulence model when studying the process of the propagation of impurities in the process of urban development \cite{Guillas2014}.
 
-Bayesian analysis has been proposed to address the question of RANS turbulence models (The $k-\varepsilon$ model with Launder–Sharma damping functions, The Wilcox $k-\omega$ model, the Spalart–Allmaras and Baldwin–Lomax models) calibration towards increased prediction accuracy without computational efficiency loss \cite{Edeling2014a,Edeling2014b}  de Zordo–Banliat et al. \cite{deZordoBanliat2020}  applied Bayesian analysis to compressor cascades to produce a set of calibrated turbulence model parameters with emphasis on the turbulence model inadequacy.
+Bayesian analysis is often used to calibrate the RANS closures turbulence models to improve forecast accuracy without losing computational efficiency (as was done for $k-\varepsilon$ model with Launder-Sharma damping functions, $k-\omega$ Wilcox model, Spalart-Allmaras and Baldwin-Lomax models \cite{Edeling2014a,Edeling2014b}). De Zordo-Banliat et al. applied Bayesian analysis to compressor cascades to obtain a set of calibrated turbulence model parameters due to the inadequacy of the original model \cite{deZordoBanliat2020}.
 
-Kotaro Matsui et al. \cite{Matsui2021} proposed a new set of calibrated coefficients that improved the ability of Spalart-Allmaras model to predict a corner flow separation of a compressor cascade. A comprehensive review of turbulence model uncertainties is given in the paper of Xiao and Cinnella \cite{Xiao2019}. 
+Kotaro Matsui et al. \cite{Matsui2021} proposed a new set of calibrated coefficients that improved the ability of the Spalart-Allmaras model to predict compressor cascade flow angular separation. A comprehensive review of turbulence model uncertainties is given in the paper of Xiao and Cinnella \cite{Xiao2019}.
 
 
 A comprehensive analysis of climatic, geological, and hydrological data was applied to model and predict the slope flows. In the scope of recent trends, huge streams of data received from satellites, from the experiments, and from mathematical modeling are processed using machine learning, which makes it possible to develop efficient models of these processes \cite{GeoML, Ma2020}.
@@ -212,8 +212,8 @@ To construct the approximations, we applied Neural Network Regression (NNR).
 
 To study the parameters of slope flows, it is advisable to use interdisciplinary approaches from the fields of computational and experimental hydrodynamics, optimization theory, parallel computing and neural networks. This paper uses the results of an experiment in a chute with a different angle of inclination, a mathematical model for modeling a two-phase flow, global optimization methods and an artificial neural network. The mathematical model is based on the averaged Reynolds equations and a two-parameter turbulence model. 
 
-The $k-\omega\ SST$ turbulence model contains a number of constants that were calibrated for canonical flows such as air flow around various profiles, flows in pipes and channels, etc. \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. No calibration of turbulence model coefficients for calculating the free surface flows on slopes using the multiphase model for interphase tracking was performed. In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute.
-````````````````    q
+The turbulence model $k-\omega\ SST$ contains a number of constants calibrated for canonical flows in pipes and channels, air flow around various profiles, etc. \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. Calibration of turbulence model coefficients was not carried out for calculating the free surface flows on slopes using the multiphase model for interphase tracking was performed. In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute.
+
 The main part of the paper has the following structure. 
 Section 2 contains a description of the experiment. Section 3 describes the mathematical model of turbulent two-phase flows. Section 4 contains the details of numerical methods. 
 Section 5 describes the results of numerical experiments. 
@@ -225,11 +225,13 @@ Section 6 concludes the paper.
 
 To study slope flow parameters, experimental setups were used. The objects of study were such measurements as flow depth, flow velocity, and force of interaction with an obstacle. In our study, the velocity profile was studied.
 
-An experimental setup at the Research Institute of Mechanics, Lomonosov Moscow State University \cite{fluids7030111} was used for this purpose. In the experiment, a turbulent fluid flow descended along a chute with a constant slope. The experiment was carried out for several different slope angles. The chute had the following geometry and dimensions: length 1~m, width 12~cm, and side heights 10~cm. The section of the chute to be examined was between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top edge. The schematic representation of the experiment is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used for the experiment.
+An experimental setup at the Research Institute of Mechanics, Lomonosov Moscow State University \cite{fluids7030111} was used for this purpose. To carry out the calibration, a turbulent flow in an inclined chute was studied. Three different angles of inclination were used during the work. The chute had a simple rectangular geometry 1~m long, 12~cm wide and 10~cm high. The section of the chute to be examined was between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top side of chute. The schematic diagram of the experimental setup is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used in the experiment.
 
 \begin{figure}[H]
+\begin{center}
 \includegraphics[width=10.5 cm]{NIIMexLinearUProfileInlet.png}
 \caption{Schematic diagram of the experimental chute.\label{NIIMexLinearUProfileInlet}}
+\end{center}
 \end{figure}   
 \unskip
 
@@ -274,10 +276,10 @@ Three series of experiments were performed; the initial flow profile, the initia
 \section{Mathematical model}\label{math_model}
 
 %Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году \cite{HirtNichols1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
-The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics of Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method proposed by Hirt and Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air.
+The Reynolds-averaged Navier-Stokes equations were used to model the experiment carried out at the Research Institute of Mechanics of Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method suggested by C.W.~Hirt and B.D.~Nichols in 1981 \cite{HirtNichols1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise --- to be filled with air.
 
-
-To describe the flow, the system of equations \eqref{vofKWSST} is used, which consists of the continuity equation for a mixture, the volume phase fraction transfer equation, the momentum conservation equation, the turbulent kinetic energy and specific dissipation rate equations.
+%Течение в экспериментальной у становке описывается системой из пяти уравнений. Это уравнения Навье-Стокса, осреднённые по Рейнольдсу (уравнение неразрывности и уравнение сохранения импульса). Так же в систему входит уравнение переноса объёмной доли фазы для отслеживания межфазной границы. Замыкают систему уравнения сохранения для турбулентной кинетической энергии и специальной диссипации турбулентной кинетической энергии, которые используются для вычисления напряжений Рейнольдса, возникающих при осреднении уравнений Навье-Стокса.
+The flow in the experimental setup is described by a system of five equations \eqref{vofKWSST}. These are the Reynolds-averaged Navier-Stokes equations (continuity equation and momentum conservation equation). The system also includes a transfer equation for the phase volume fraction to track the interface. The system of equations is closed by two equations of conservation of turbulent kinetic energy and a special dissipation of turbulent kinetic energy, which are used to calculate the Reynolds stresses that arise when averaging the Navier-Stokes equations.
 
 \begin{linenomath}
 \begin{equation}
@@ -296,10 +298,10 @@ To describe the flow, the system of equations \eqref{vofKWSST} is used, which co
 \end{linenomath}
 
 %Здесь $\boldsymbol{u}$~--- скорость смеси; $\alpha$~--- объёмная доля выбранной фазы; $\rho$~--- плотность смеси, рассчитываемая по принципу весового среднего; $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~--- тензор напряжений, выраженный через тензор скоростей деформации $\bar{\boldsymbol{s}}$, горизонтальной чертой над буквами обозначается осреднение по Рейнольдсу; $\mu_{eff} = \mu + \mu_t$~--- эффективный коэффициент вязкости, сумма молекулярной вязкости и турбулентной, последняя вычисляется по формуле $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\bar{p}$~--- давление; $\bar{\boldsymbol{f}}$~--- плотность массовых сил; $k$ --- плотность турбулентной кинетической энергии; $\omega$ --- скорость диссипации плотности турбулентной кинетической энергии; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- функция перемешивания ($F_1$ равняется нулю вдалеке от стены и получается $k-\varepsilon$ модель, и переключается на единицу внутри пограничного слоя, реализуя $k-\omega$ модель); $\dot{s}$~--- скорость сдвига (инвариантная мера $\overline{\boldsymbol{s}}$); $F_2 = F_2(\beta^*)$~--- вторая функция перемешивания, $\widetilde{P}_k$~--- ограничитель на нарастание турбулентности в режимах стагнации.
-Here $\bar{\boldsymbol{u}}$~is the speed of the mixture, $\alpha$~is the volume fraction of the selected phase, $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~is the stress tensor, which is a function of the strain rate tensor $\bar{\boldsymbol{s}}$, $\mu_{eff} = \mu + \mu_t$~is the effective viscosity, which is a sum of molecular and turbulent viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega, \ b_1 \dot{s} F_2)$, $\rho$~is the mixture density calculated according to the principle of the weighted average, $\bar{p}$~is the pressure, $\bar{\boldsymbol{f}}$~is the density of the body forces, $k$~is the turbulent kinetic energy, $\omega$~is the specific dissipation rate, $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~is the blending function ($F_1$ equals zero away from the wall and turns into the $k-\varepsilon$ model while inside the boundary layer it turns into unity which corresponds to the $k-\omega$ model), $\dot{s}$~is the strain rate (invariant of $\overline{\boldsymbol{s}}$), $F_2 = F_2(\beta^*)$~is the second blending function, and $\widetilde{P}_k$~is the limiter on the growth of turbulence used in stagnation modes.
+Here $\alpha$~is the water volume fraction, $\bar{\boldsymbol{\tau}} = 2 \mu_{eff} \bar{\boldsymbol{s}}$~is the stress tensor, $\bar{\boldsymbol{s}}$~is the strain rate tensor, $\mu_{eff} = \mu + \mu_t$~is the effective viscosity, $\mu$~is a molecular viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega, \ b_1 \dot{s} F_2)$~is a turbulent viscosity, $\bar{\boldsymbol{f}}$~is the density of the body forces, $\bar{\boldsymbol{u}}$~is the mixture velocity, $\rho$~is the mixture density, $\bar{p}$~is the pressure, $\omega$~is the specific dissipation rate of the turbulent kinetic energy, $k$~is the turbulent kinetic energy, $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~is the blending function ($F_1$ equals zero away from the wall and the model turns into the $k-\varepsilon$ model, while inside the boundary layer $F_1$ equals one and the $k-\omega$ model is realized), $\dot{s}$~is the strain rate (invariant of $\overline{\boldsymbol{s}}$), $F_2 = F_2(\beta^*)$~is the second blending function, and $\widetilde{P}_k$~is the limiter on the growth of turbulence used in stagnation modes.
 
 %Все константы турбулентной модели рассчитываются по принципу весового среднего между константами $k-\varepsilon$ и $k-\omega$ моделей по принципу $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$ и т.д. Стандартно константы турбулентной модели задаются следующими значениями \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
-The turbulence model coefficients $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$ are calculated according to the principle of the weighted average: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. By default, the constants of the turbulent model are set by the following values \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
+The turbulence model contains four coefficients: $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$. $\alpha_k$, $\alpha_\omega$, $\gamma$ are calculated using the weighted average principle: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. By default, the constants of the turbulent model are set by the following values \cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
 
 \begin{linenomath}
 \begin{equation}
@@ -339,23 +341,23 @@ To implement the three-dimensional multiphase single-rate approach, the interFoa
 %	\item другие, не перечисленные выше члены описываются с помощью центрально-разностной схемы.
 %\end{itemize}
 
-The following approximation schemes were used:
+The approximation schemes used in the work are listed below.
 \begin{itemize}
-	\item time derivatives $\frac{\partial}{\partial t}$: first order, bounded, implicit Euler scheme;
-	\item water volume fraction flux $\boldsymbol{\nabla} \cdot (\bar{\boldsymbol{u}} \alpha)$: second order, unbounded, Gaussian finite volume integration with Van Leer interpolation;
-	\item convection term $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}})$: second order, unbounded, Gaussian finite volume integration with upwind interpolation weights, with an explicit correction based on the local cell gradient;
-	\item divergence of the stress tensor $\boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}}$: second order, unbounded, Gaussian finite volume integration with upwind interpolation;
-	\item turbulent kinetic energy flux $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k)$: first order, bounded, Gaussian finite volume integration with linear (central differencing) interpolation;
-	\item dissipation flux of the specific turbulent kinetic energy $\boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \omega)$: first order, bounded, Gaussian finite volume integration with linear (central differencing) interpolation;
-	\item gradient terms $\boldsymbol{\nabla}$: Gaussian integration with linear interpolation;
-	\item Laplacian terms $\boldsymbol{\nabla}^2$: Gaussian integration with linear interpolation with explicit non-orthogonal correction;
-	\item Other terms not listed above are discretized using a central difference scheme.
+	\item The time terms were approximated with first order Euler numerical scheme;
+	\item The convection term, the water volume fraction flux term, divergence of the stress tensor term were approximated with second order numerical scheme;
+	\item The turbulent kinetic energy flux, the dissipation flux of the specific turbulent kinetic energy term were approximated with first order bounded numerical scheme;
+	\item The gradient terms were calculated using Gaussian integration with linear interpolation;
+	\item The Laplacian terms were calculated using Gaussian integration with linear interpolation with explicit non-orthogonal correction;
+	\item All other terms in the equations were discretized using a central difference numerical scheme.
 \end{itemize}
 
 The 2nd order linear upwind scheme used for the convection term is most efficient and accurate for Reynolds Averaged Navier Stokes (RANS) simulations \cite{ROBERTSON2015122}.
 
 %Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
-To solve the system of equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm was used. This algorithm is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and the SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+The PIMPLE algorithm \cite{Holzmann2019, Yin2003}, which was developed to run the equations with a large Courant number, was used to solve the system equations. The PIMPLE is a combination of PISO \cite{Issa1986_2} and SIMPLE \cite{Issa1986_1} algorithms.
+
+% To solve the system of equations, the PIMPLE \cite{Holzmann2019, Yin2003} algorithm was used. This algorithm is a combination of the PISO (Pressure Implicit with Splitting of Operator) \cite{Issa1986_2} and the SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms \cite{Issa1986_1}.
+%
 
 The conjugate gradient method with preconditioner GAMG is used to solve the system of linear equations for pressure. The GaussSeidel method is used as a smoother. The values for volume fraction of water, velocity, $k$, $\omega$ are defined using smoothSolver and  symGaussSeidel method as a smoother. 
 
@@ -363,12 +365,18 @@ The conjugate gradient method with preconditioner GAMG is used to solve the syst
 
 The advantage of mathematical modeling is that the model allows virtual sensors to be placed at any point in the computational domain to measure the values of physical quantities. In the experiment, the physical sensors were placed at the exit from the chute. To compare the results of the experiment and the calculation, the virtual sensors were positioned in the same place.
 
-A section of the experimental chute located between two velocity profile and flow depth measurement points was simulated. The calculation was carried out for the 10~mm thick middle part of the chute where the effect of the side walls was insignificant. The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. The geometry of the computational domain was a parallelepiped of 590~mm in length, 10~mm in width, and 10~mm in height. We have checked the effect of grid resolution. A study was made of grid convergence for different grids $290 \times 5 \times 30$, $590 \times 10 \times 60$, $1080 \times 20 \times 120$. Finally, the number of cells was chosen to be $590 \times 10 \times 60$ for reasons of reducing computer time with the same accuracy.
+A section of the experimental chute located between two velocity profile and flow depth measurement points was simulated. 
+The simulation were done for the thick  10~mm part of the chute where the influence of the side walls was small.
+The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. 
+%
+The parallelepiped with a size of 590 mm in length, 10 mm in width, 10 mm in height was used for numerical domain.
+%
+We have checked the effect of grid resolution. A study was made of grid convergence for different grids $290 \times 5 \times 30$, $590 \times 10 \times 60$, $1080 \times 20 \times 120$. Finally, the number of cells was chosen to be $590 \times 10 \times 60$ for reasons of reducing computer time with the same accuracy.
 
 \subsubsection{Initial and Boundary Conditions}
 
 %Были выделены следующие границы расчётной области: дно лотка, боковые стенки лотка, верхняя граница лотка, плоскость на входе в лоток, плоскость на выходе из лотка.
-The following boundaries of the computational domain were determined: the chute bottom, the chute sides, the computational domain upper border, the inlet plane, the outlet plane.
+The special boundaries for numerical domain were defined: the chute bottom, the chute sides, the upper border for numerical domain, the inlet and outlet planes.
 
 %Были заданы следующие граничные условия:
 %\begin{itemize}
@@ -381,11 +389,11 @@ The following boundaries of the computational domain were determined: the chute 
 The following boundary conditions were set:
 
 \begin{itemize}
-    \item The chute bottom: a solid wall with the no-slip condition and fixed value condition for $k$ and $\omega$.
-    \item The chute sides: the zero gradient condition (to exclude the influence of sides on the flow).
-    \item The computational domain upper border: a mixed condition with atmospheric pressure, no inflow through the border and outflow according to zero gradient condition and fixed value condition for $k$ and $\omega$.
-    \item The inlet plane: fixed values of water volume fraction, flow velocity profile, $k$ and $\omega$.
-    \item The outlet plane: the zero gradient condition.
+    \item The solid wall with the no-slip condition was used for the chute bottom.
+    \item The zero gradient condition was used for the chute side.
+    \item The mixed condition with atmospheric pressure was used for the upper border of numerical domain, no inflow through the border and outflow according to zero gradient condition and fixed value condition for $k$ and $\omega$.
+    \item The fixed values were used for inlet plane for water volume fraction, velocity profile, $k$ and $\omega$ values.
+    \item The zero gradient condition was used for outlet plane.
 \end{itemize}
 
 %High Reynolds wall functions used in $k-\omega\ SST$ turbulence model.
@@ -435,7 +443,7 @@ So far, the process of choosing the optimal set of the model parameters correspo
 \end{equation}
 \end{linenomath}
 
-When optimizing the coefficients of the turbulent model, the Root Mean Square Error of the calculated flow velocity profile on the outlet plane from the experimental profile 
+When optimizing the coefficients of the turbulent model, the Root-Mean-Square Error (RMS) of differentiation of the calculated flow velocity profile and the experimental one on the outlet plane is taken into account.
 
 \begin{linenomath}
 \begin{equation}
@@ -570,9 +578,11 @@ In the present study, MLPRegressor class from scikit-learn machine learning libr
 A MLP with one hidden layer with a scalar output is shown in Figure \ref{fig1}.
 
 \begin{figure}[H]
+\begin{center}
 \includegraphics[width=5 cm]{perceptron.jpg}
 \caption{Three-layer perceptron with scalar output.\label{fig1}}
-\end{figure}   
+\end{center}
+\end{figure}
 \unskip
 
 The left layer called the input layer consists of a set of neurons $y_i, \; i=\overline{1,k}$ representing the input signals (the values of variables). Each neuron in the hidden layer transforms the values from the previous layer with weighted linear summing 
@@ -649,7 +659,7 @@ The algorithm proposed here ensures the convergence to the global solution in th
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-The simulations were conducted using the supercomputer of Lobachevsky University of Nizhni Novgorod (operated under the Linux CentOS 7.2 operation system). Each supercomputer node included two  Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM; the central processor unit had 8 cores. 
+The simulations were conducted using the supercomputer of Lobachevsky University of Nizhni Novgorod (operated under the Linux CentOS 7.2 operation system). Each supercomputer node included two Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM. The central processor unit had 8 cores. 
 The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and Open MPI v4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
 To numerically solve the problem described in Section \ref{math_model}, the open source CFD software OpenFOAM v2012 \cite{OpenFOAM} was used.
 
@@ -687,8 +697,10 @@ The total search time was reduced to 16 hours, which ensured a more accurate sol
 The trial points and the approximating function plotted according to these points using the neural network are presented in Figure~\ref{NN_100_point} (the parameters $\beta^*$ and $a_1$ were varied). Several local minima are clearly visible.
 
 \begin{figure}[H]
+\begin{center}
 \includegraphics[width=10.5 cm]{NN_100_point_.png}
 \caption{Objective function values (red points) and the approximation plot constructed using the neural network (parameters $\beta^*$ and $a_1$ were varied).\label{NN_100_point}}
+\end{center}
 \end{figure}   
 \unskip
 
@@ -735,11 +747,11 @@ Figure~\ref{NIIMexUProfilesKWSSTGlob} shows the resulting velocity profiles on t
 \centering
 \includegraphics[width=18 cm]{UProfilesKWSSTGlob1.png}
 \end{adjustwidth}
-\caption{Comparison of the experimental velocity profile with the calculated one using the standard values of the $k-\omega\ SST$ turbulence model coefficients and the calculated velocity profile with calibrated values of the coefficients for different slope inclination angles (to the horizon).\label{NIIMexUProfilesKWSSTGlob}}
+\caption{The comparison graphs of the experimental velocity profile and the calculated velocity profile using the standard values of the $k-\omega\ SST$ turbulence model coefficients and the calculated velocity profile with calibrated values of the coefficients for different slope inclination angles.\label{NIIMexUProfilesKWSSTGlob}}
 \end{figure}  
 
 %Калибровка привела к следующей минимизации функции потерь~\eqref{LossFunction}, показанной в таб.~\ref{tabLossFunctionMinimize}
-During the calibration, the following minimization of the loss function~\eqref{LossFunction} was achieved, as shown in Table~\ref{tabLossFunctionMinimize}.
+During the process of calibration, the minimization of the loss function~\eqref{LossFunction} was achieved the value, as shown in Table~\ref{tabLossFunctionMinimize}.
 
 %\begin{table}[H]
 %	\caption{Минимизация функции потерь}
@@ -759,11 +771,11 @@ During the calibration, the following minimization of the loss function~\eqref{L
 %	\end{center}
 %\end{table}
 \begin{table}[H] 
-\caption{Loss function minimization.\label{tabLossFunctionMinimize}}
+\caption{Loss function values obtained during the minimization process.\label{tabLossFunctionMinimize}}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{CCC}
 \toprule
-    \textbf{Slope angle} & \textbf{Initial value of loss function} & \textbf{Minimized value of loss function}\\
+    \textbf{Slope inclination angle} & \textbf{Initial loss function value} & \textbf{Minimized loss function value}\\
 \midrule
     25$^\circ$ & 0.165 & 0.155\\
     28$^\circ$ & 0.085 & 0.128\\
@@ -784,7 +796,7 @@ In this work, a two-phase flow in a chute was simulated using the interFoam solv
 
 The results of calculating the velocity profiles were compared with experimental data obtained at the Research Institute of Mechanics, Moscow State University, at different sections depending on the angle of inclination of the chute. The search for the optimal coefficients of the turbulence model was performed by minimizing the objective function of the divergence of the velocity profile in the chute. % - RMSE.
 
-The search for the global minimum of the objective function was performed using the global search algorithm implemented in the Globalizer software \cite{globalizerSystem}. In addition, a fully connected neural network with one hidden layer was used to approximate the values of the objective function by the values of the constants of the turbulent model. The MLPRegressor class from the scikit-learn library was used to build the objective function approximation. 
+The search for the global minimum of the objective function was performed using the global search algorithm implemented in the Globalizer software \cite{globalizerSystem}. In addition, a fully connected neural network with one hidden layer was used to approximate the values of the objective function by the values of the constants in the turbulence model. The MLPRegressor class from the scikit-learn library was used to build the objective function approximation. 
 
 In the present work, an interdisciplinary approach was utilized, which helped us to find the optimal values of six turbulence model parameters using the OpenFOAM open platform and the Globalizer. The minimum value for the objective function was obtained in the case of the slope angle of 33 degrees. One calculation of the objective function for the given parameters took 15 minutes in average using 8 MPI processes on a node of the Lobachevsky University supercomputer. Total computation time was 24 hours.  
 
