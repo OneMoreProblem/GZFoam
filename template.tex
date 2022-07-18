@@ -217,7 +217,7 @@ The turbulence model $k-\omega\ SST$ contains a number of constants calibrated f
 The main part of the paper has the following structure. 
 Section 2 contains a description of the experiment. Section 3 describes the mathematical model of turbulent two-phase flows. Section 4 contains the details of numerical methods. 
 Section 5 describes the results of numerical experiments. 
-Section 6 concludes the paper.
+Section 6 concludes the paper. Nomenclature and list of abbreviations are presented in Appendix \ref{app}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -291,7 +291,7 @@ The flow in the experimental setup is described by a system of five equations \e
 			&\frac{\partial (\rho \bar{\boldsymbol{u}})}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} \bar{\boldsymbol{u}}) = -\boldsymbol{\nabla} \bar{p} + \boldsymbol{\nabla} \cdot \bar{\boldsymbol{\tau}} + \rho \bar{\boldsymbol{f}},\\
 			&\frac{\partial (\rho k)}{\partial t} + \boldsymbol{\nabla} \cdot (\rho \bar{\boldsymbol{u}} k) = \widetilde{P}_k - \beta^*\rho k \omega + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_k \mu_t) \boldsymbol{\nabla} k \right),\\
 			&\frac{\partial (\rho \omega)}{\partial t}  + \boldsymbol{\nabla} \cdot ( \rho \bar{\boldsymbol{u}} \omega) = \gamma \rho \dot{s}^2 - \beta \rho \omega^2 + \boldsymbol{\nabla} \cdot \left( (\mu + \alpha_\omega \mu_t) \boldsymbol{\nabla} \omega \right) + \\
-			&+2 (1 - F_1) \rho \alpha_{\omega 2} \frac{1}{\omega} \boldsymbol{\nabla} k \cdot \boldsymbol{\nabla} \omega.
+			&2 (1 - F_1) \rho \alpha_{\omega 2} \frac{1}{\omega} \boldsymbol{\nabla} k \cdot \boldsymbol{\nabla} \omega.
 		\end{aligned}
 	\right.
 \end{equation}
@@ -443,17 +443,17 @@ So far, the process of choosing the optimal set of the model parameters correspo
 \end{equation}
 \end{linenomath}
 
-When optimizing the coefficients of the turbulent model, the Root-Mean-Square Error (RMS) of differentiation of the calculated flow velocity profile and the experimental one on the outlet plane is taken into account.
+When optimizing the coefficients of the turbulent model, the Root-Mean-Square Error (RMSE    ) of differentiation of the calculated flow velocity profile and the experimental one on the outlet plane is taken into account.
 
 \begin{linenomath}
 \begin{equation}
 	\label{LossFunction}
-	\boldsymbol{L_{RMSE}} = \sqrt{\frac{\sum\limits_{i=1}^{N} \left( v_{EXP}^i - v_{k-\omega\ SST}^i \right)^2}{N}}
+	\boldsymbol{L_{RMSE}} = \sqrt{\frac{\sum\limits_{i=1}^{N} \left( u_{EXP}^i - u_{k-\omega\ SST}^i \right)^2}{N}}
 \end{equation}
 \end{linenomath}
 is minimized. 
 %где $h$~--- глубина потока на выходной плоскости.
-Here $N$ is the number of measuring points for the horizontal component of velocity over the flow depth at the outlet plane, $v_{EXP}^i$ is the horizontal component of velocity at the control point obtained by experiment, and $v_{k-\omega\ SST}^i$  is the horizontal component of velocity at the control point calculated by computational fluid dynamic (CFD). 
+Here  $u_{EXP}^i$ is the horizontal component of velocity at the control point obtained by experiment, and $u_{k-\omega\ SST}^i$  is the horizontal component of velocity at the control point calculated by computational fluid dynamic (CFD), $N$ is the number of comparison points for the horizontal component of velocity over the flow depth at the outlet plane (right cross-section displayed in Figure \ref{NIIMexLinearUProfileInlet}). Approximately 10 comparison points are used. Their number is determined by the number of measurements performed in the experiment and varies depending on the change in the flow depth at different chute inclination angles. The points are evenly distributed in depth due to the measurement tools used in the experiment.
 
 We will consider the loss function (\ref{LossFunction}) as the objective function $\varphi(y)$ in the global optimization problem (\ref{main_problem}). 
 The problems considered are characterized by the fact that the objective function $\varphi(y)$ is not defined analytically; there is only an algorithm for computing its values at the points of the domain $D$. In this case, one search trial corresponds to one computation according to the model and is a time- consuming operation \cite{Kalyulin2017,Paulavicius2020}.
@@ -740,7 +740,7 @@ As a final result, the following values of the coefficients of the model were ob
 \end{linenomath}
 
 %Были получены следующие профили скорости на выходной плоскости для различных углов наклона лотка, как показано на рис.~\ref{NIIMexUProfilesKWSSTGlob}
-Figure~\ref{NIIMexUProfilesKWSSTGlob} shows the resulting velocity profiles on the exit plane for various slope angles.
+Figure~\ref{NIIMexUProfilesKWSSTGlob} shows the resulting velocity profiles $\bar{\boldsymbol{u_x}}$ as a function from flow depth $h$ on the exit plane for various slope angles.
 
 \begin{figure}[H]
 \begin{adjustwidth}{-\extralength}{0cm}
@@ -800,6 +800,8 @@ The search for the global minimum of the objective function was performed using 
 
 In the present work, an interdisciplinary approach was utilized, which helped us to find the optimal values of six turbulence model parameters using the OpenFOAM open platform and the Globalizer. The minimum value for the objective function was obtained in the case of the slope angle of 33 degrees. One calculation of the objective function for the given parameters took 15 minutes in average using 8 MPI processes on a node of the Lobachevsky University supercomputer. Total computation time was 24 hours.  
 
+In the future, it is planned to continue improving the turbulent models. Including the creation of a turbulent model based on a neural network. The Globalizer software will be used to optimize the model parameters.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
 
@@ -847,25 +849,87 @@ In the present work, an interdisciplinary approach was utilized, which helped us
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optional
-%\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
-%\appendixstart
-%\appendix
-%\section[\appendixname~\thesection]{}
+\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{}\label{app}%Nomenclature%List of symbols and abbreviations
 %\subsection[\appendixname~\thesubsection]{}
 %The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
 
-%\begin{table}[H] 
-%\caption{This is a table caption.\label{tab5}}
-%\newcolumntype{C}{>{\centering\arraybackslash}X}
-%\begin{tabularx}{\textwidth}{CCC}
-%\toprule
-%\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-%\midrule
-%Entry 1		& Data			& Data\\
-%Entry 2		& Data			& Data\\
-%\bottomrule
-%\end{tabularx}
-%\end{table}
+\begin{table}[H] 
+\caption{Nomenclature.\label{A:tab1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{ll}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	\\
+\midrule
+$u_0$		& depth-averaged velocity on the inlet plane of experiment chute	\\
+$h_0$		& flow depth on the inlet plane of experiment chute	\\
+$\theta$	& inclination angle of the experiment chute \\
+$\alpha$	& water volume fraction	\\
+$\bar{\boldsymbol{\tau}}$	& Reynolds-averaged stress tensor	\\
+$\bar{\boldsymbol{s}}$		& Reynolds-averaged strain rate tensor	\\
+$\mu_{eff}$		& effective viscosity	\\
+$\mu$		& molecular viscosity	\\
+$\mu_{t}$		& turbulent viscosity	\\
+$\bar{\boldsymbol{f}}$		& Reynolds-averaged density of body forces	\\
+$\bar{\boldsymbol{u}}$		& Reynolds-averaged velocity of the mixture	\\
+$\rho$		& density of the mixture	\\
+$\bar{p}$		& pressure of the mixture	\\
+$\omega$		& specific dissipation rate of the turbulent kinetic energy	\\
+$k$		& 	turbulent kinetic energy \\
+$F_1$		& first blending function	\\
+$\dot{\boldsymbol{s}}$		& Reynolds-averaged strain rate (second invariant of the Reynolds-averaged strain rate tensor $\bar{\boldsymbol{s}}$)	\\
+$F_2$		& second blending function	\\
+$\widetilde{P}_k$ & the limiter on the growth of turbulence used in stagnation modes \\
+$\alpha_k$ & turbulence model constant \\
+$\alpha_{k1}$ & turbulence model constant \\
+$\alpha_{k2}$ & turbulence model constant \\
+$\alpha_\omega$ & turbulence model constant \\
+$\alpha_{\omega1}$ & turbulence model constant \\
+$\alpha_{\omega2}$ & turbulence model constant \\
+$\beta$ & turbulence model constant \\
+$\beta_1$ & turbulence model constant \\
+$\beta_2$ & turbulence model constant \\
+$\gamma$ & turbulence model constant \\
+$\gamma_1$ & turbulence model constant \\
+$\gamma_2$ & turbulence model constant \\
+$\beta^*$ & turbulence model constant \\
+$a_1$ & turbulence model constant \\
+$b_1$ & turbulence model constant \\
+$c_1$ & turbulence model constant \\
+$y = (y_1, ..., y_N)$ & vector of parameters values\\
+$\varphi(y)$		& optimization criterion	\\
+$D$	& hyperinterval	\\
+$N$		& number of measuring points of velocity over the flow depth at the outlet plane	\\
+$u^i_{EXP}$		& horizontal component of velocity at the control point obtained by experiment	\\
+$u^i_{k-\omega}\ SST$		& horizontal component of velocity at the control point calculated by CFD	\\
+$\boldsymbol{L_{RMSE}}$		& loss function	\\
+$L$		& Lipschitz constant	\\
+$H$		& H{\"o}lder constant	\\
+$f(x)$		& univariate function	\\
+Entry 2		& Data	\\
+Entry 2		& Data	\\
+Entry 2		& Data	\\
+Entry 2		& Data	\\
+Entry 2		& Data	\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H] 
+\caption{List of abbreviation.\label{A:tab2}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{ll}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	\\
+\midrule
+NNR		& Neural Network Regression	\\
+RMSE		& Root-Mean-Square Error	\\
+CFD & Computational Fluid Dynamic \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 %\section[\appendixname~\thesection]{}
 %All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc.
