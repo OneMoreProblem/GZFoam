@@ -207,7 +207,7 @@ There are many variants of constructing the approximations for multivariate func
 
 For example, the use of the radial basis functions has been considered in detail in \cite{Gutmann2001,Regis2005}. In \cite{Jones1998,UrRehman2014,Ollar2017_1}, Kriging-based methods have been proposed. A novel approach to constructing the metamodels and trust-region methods based on these ones has been presented in \cite{Polynkin2012,Ollar2017_2,Toropov2018}. 
 
-In the present study, we used an efficient global search algorithm (GSA) \cite{Strongin2000,Sergeyev2013} for solving the Lipschitz global optimization problems combined with function approximations based on the regression models. At the first search stage, GSA worked with the objective function as a direct method. Then, an approximation of the objective function was constructed using the accumulated information. This approximation was used at the second stage of the search.
+In the present study, we used an efficient global search algorithm \cite{Strongin2000,Sergeyev2013} for solving the Lipschitz global optimization problems combined with function approximations based on the regression models. At the first search stage, the algorithm worked with the objective function as a direct method. Then, an approximation of the objective function was constructed using the accumulated information. This approximation was used at the second stage of the search.
 To construct the approximations, we applied Neural Network Regression (NNR).
 
 To study the parameters of slope flows, it is advisable to use interdisciplinary approaches from the fields of computational and experimental hydrodynamics, optimization theory, parallel computing and neural networks. This paper uses the results of an experiment in a chute with a different angle of inclination, a mathematical model for modeling a two-phase flow, global optimization methods and an artificial neural network. The mathematical model is based on the averaged Reynolds equations and a two-parameter turbulence model. 
@@ -513,7 +513,7 @@ Step 1. Renumber points of the set $X_k=\{x^0,\dots,x^k\} $ with subscripts in i
 
 \begin{linenomath}
 \begin{equation}
-0=x_0<x_1<\dots <x_k<x_{k}=1.
+0=x_0<x_1<\dots <x_{k-1}<x_{k}=1.
 \end{equation}
 \end{linenomath}
 Note that hereinafter superscripts are used to denote the iteration number, and subscripts are used to number the points in order.
@@ -898,8 +898,8 @@ $\beta^*$ & turbulence model constant \\
 $a_1$ & turbulence model constant \\
 $b_1$ & turbulence model constant \\
 $c_1$ & turbulence model constant \\
-$y = (y_1, ..., y_N)$ & vector of parameters values\\
-$\varphi(y)$		& optimization criterion	\\
+$y = (y_1, ..., y_N)$ & vector of parameters\\
+$\varphi(y)$		& objective function	\\
 $D$	& hyperinterval	\\
 $N$		& number of measuring points of velocity over the flow depth at the outlet plane	\\
 $u^i_{EXP}$		& horizontal component of velocity at the control point obtained by experiment	\\
@@ -907,12 +907,16 @@ $u^i_{k-\omega}\ SST$		& horizontal component of velocity at the control point c
 $\boldsymbol{L_{RMSE}}$		& loss function	\\
 $L$		& Lipschitz constant	\\
 $H$		& H{\"o}lder constant	\\
-$f(x)$		& univariate function	\\
-Entry 2		& Data	\\
-Entry 2		& Data	\\
-Entry 2		& Data	\\
-Entry 2		& Data	\\
-Entry 2		& Data	\\
+$y(x)$		& Peano curve	\\
+$f(x) = \varphi(y(x))$		& univariate function	\\
+$X_k=\{x^0,\dots,x^k\} $ & set of the trial points \\
+$z^k = f(x^k)$ & value of the objective function \\
+$M$		& adaptive estimation of the Lipschitz constant \\
+$R(i)$		& characteristic of the $i$-th search interval\\
+$r>0$		& method parameter	\\
+$\epsilon > 0$		& search accuracy	\\
+$\Omega $ & set of the trial results \\
+$\overline{\varphi}(y)$ & approximation of the objective function \\
 \bottomrule
 \end{tabularx}
 \end{table}
