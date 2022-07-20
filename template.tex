@@ -397,11 +397,11 @@ The following boundary conditions were set:
 \end{itemize}
 
 %High Reynolds wall functions used in $k-\omega\ SST$ turbulence model.
-The average value of Y+ was 17 which satisfied the model of wall functions. The nutkWallFunction was used for boundary condition for the wall, which provides a wall constraint on the turbulent viscosity, based on the turbulent kinetic energy for both low- and high-Reynolds number turbulence models.
+The average value of $Y+$ was 17 which satisfied the model of wall functions. The nutkWallFunction was used for boundary condition for the wall, which provides a wall constraint on the turbulent viscosity, based on the turbulent kinetic energy for both low- and high-Reynolds number turbulence models.
 
 %Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
 
-The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The time step dt is equal to 0.001. The flow is considered steady after 5 seconds.
+The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The time step $dt$ is equal to 0.001 sec. The flow is considered steady after 5 seconds.
 
 
 %%%%%%%%%%%%%%%%%%%%Перенести в раздел с оптимизацией
@@ -861,8 +861,6 @@ In the future, it is planned to continue improving the turbulent models. Includi
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{ll}
 \toprule
-\textbf{Title 1}	& \textbf{Title 2}	\\
-\midrule
 $u_0$		& depth-averaged velocity on the inlet plane of experiment chute	\\
 $h_0$		& flow depth on the inlet plane of experiment chute	\\
 $\theta$	& inclination angle of the experiment chute \\
@@ -879,7 +877,7 @@ $\bar{p}$		& pressure of the mixture	\\
 $\omega$		& specific dissipation rate of the turbulent kinetic energy	\\
 $k$		& 	turbulent kinetic energy \\
 $F_1$		& first blending function	\\
-$\dot{\boldsymbol{s}}$		& Reynolds-averaged strain rate (second invariant of the Reynolds-averaged strain rate tensor $\bar{\boldsymbol{s}}$)	\\
+$\dot{\boldsymbol{s}}$		& Reynolds-averaged strain rate	\\
 $F_2$		& second blending function	\\
 $\widetilde{P}_k$ & the limiter on the growth of turbulence used in stagnation modes \\
 $\alpha_k$ & turbulence model constant \\
@@ -926,11 +924,13 @@ $\overline{\varphi}(y)$ & approximation of the objective function \\
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{ll}
 \toprule
-\textbf{Title 1}	& \textbf{Title 2}	\\
-\midrule
 NNR		& Neural Network Regression	\\
 RMSE		& Root-Mean-Square Error	\\
 CFD & Computational Fluid Dynamic \\
+RANS & Reynolds-Averaged Navier-Stokes equations \\
+PISO & Pressure Implicit with Splitting of Operator \\
+SIMPLE & Semi-Implicit Method for Pressure-Linked Equations \\
+PIMPLE & combination of PISO and SIMPLE \\  
 \bottomrule
 \end{tabularx}
 \end{table}
