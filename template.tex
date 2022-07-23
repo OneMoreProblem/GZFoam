@@ -814,6 +814,17 @@ We perform three experiments to avoid overfitting. It was noticed that when opti
 
 This study is part of a large study related to the modeling of currents on the slopes of mountains. These flows are very difficult to study, since they are turbulent multiphase flows of a non-Newtonian fluid on slopes of complex geometry. For such flows, the use of turbulent models using standard values of constants does not predict the flow in the best way. You need to calibrate the turbulence model coefficients or create new turbulence models. We are considering both options. Moreover, a new turbulent model is created based on the neural network. However, the use of neural networks requires hybrid computing clusters, which is not always possible. As a result, it is important to be able to obtain a solution of sufficient accuracy using the classical turbulent model. This problem requires the calibration of the constants, which was done in this work for the Newtonian medium. Optimization algorithms were developed and tested, which can later be used to calibrate the coefficients of any turbulent models. The next stage of the study is to set up an experiment with a non-Newtonian fluid and calibrate the constants of the turbulent model according to the developed algorithm.
 
+%Отметим также, что при поиске оптимальных параметров модели проводилась оптимизация сначала по параметрам $\beta^*$ and $a_1$, затем – по параметрам $\alpha_{k1}, \alpha_{\omega1}$, and $\alpha_{k2}, \alpha_{\omega2}$. Данный способ позволил найти хорошее решение за приемлемое время. Поиск глобального минимума сразу по всем варьируемым параметрам потребовал бы на порядки большего числа испытаний и, соответственно, времени. Указанный эффект ключевым образом отличает задачи глобальной оптимизации от задач на локальный экстремум, в которых затраты растут не столь быстро.
+We also note that when searching for the optimal model parameters, optimization was carried out first with respect to the parameters $\beta^*$ and $a_1$, then optimization in $\alpha_{k1}, \alpha_{\omega1}$, and $\alpha_{k2}, \alpha_{\omega2}$ was performed. This approach allows us to find good solution in acceptable time.
+The search for a global opimum for all parameters at once would require orders of magnitude more trials and time.
+This effect is a key difference between global optimization and local optimization problems, in which the costs increase less rapidly.
+
+%С точки зрения решения вычислительно трудоемкой задачи оптимизации с целевой функцией вида черный ящик представляет интерес сравнение использованного метода решения задачи, в котором целевая функция аппроксимировалась нейросетью, с распространенными методами, использующими аппроксимации на основе кригинга. Методы данного класса хорошо работают в задачах с небольшим числом локальных экстремумов, однако в существенно многоэкстремальных задачах вычислительные затраты значительно возрастают.
+In terms of solving a time-consuming optimization problem with a black-box objective function, it is interesting to compare the method used for solving the problem, which uses objective function approximation by a neural network, with the methods that use kriging-based approximations.
+Methods of this class work well in problems with a small number of local extrema.
+However, in essentially multiextremal problems the computational costs (number of objective function evaluations required for solving the problem) increase significantly.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
@@ -827,7 +838,7 @@ The search for the global minimum of the objective function was performed using 
 
 In the present work, an interdisciplinary approach was utilized, which helped us to find the optimal values of six turbulence model parameters using the OpenFOAM open platform and the Globalizer.  
 
-In the future, it is planned to continue improving the turbulent models. Including the creation of a turbulent model based on a neural network. The Globalizer software will be used to optimize the model parameters.
+In the future, it is planned to continue improving the turbulent models, including the creation of a turbulent model based on a neural network. The Globalizer software will be used to optimize the model parameters.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
