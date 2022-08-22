@@ -25,6 +25,7 @@
 
  %% PRELIMINARY DECLARATIONS
 \LoadClass[10pt,a4paper]{article}
+\RequirePackage[english,russian]{babel}%%%%%%%%%%%%%%%%%
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{calc}
