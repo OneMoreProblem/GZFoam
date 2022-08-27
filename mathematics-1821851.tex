@@ -93,7 +93,7 @@
 
 % Authors, for the paper (add full first names)
 %\Author{Firstname Lastname $^{1,\dagger,\ddagger}$\orcidA{}, Firstname Lastname $^{2,\ddagger}$ and Firstname Lastname $^{2,}$*}
-\Author{Konstantin Barkalov $^{1}$\orcidA{}, Ilya Lebedev $^{1}$\orcidB{}, Marina Usova $^{1}$\orcidC{}, Daria Romanova $^{{2},{3}}$\orcidD{}, Daniil~Ryazanov $^2$\orcidF{} \mbox{and Sergei~Strijhak} $^{2,{4},}$*\orcidE{}} 
+\Author{Константин Баркалов $^{1}$\orcidA{}, Илья Лебедев $^{1}$\orcidB{}, Марина Усова $^{1}$\orcidC{}, Дарья Романова $^{{2},{3}}$\orcidD{}, Даниил Рязанов $^2$\orcidF{} \mbox{и Сергей Стрижак} $^{2,{4},}$*\orcidE{}} 
 %MDPI: 1. Please carefully check the accuracy of names and affiliations. 
 %Authors: Names and affilations are correct
 %MDPI: 2. Affiliations should mentioned in order, we have revised the affiliation number, please confirm. 
@@ -105,7 +105,7 @@
 
 % MDPI internal command: Authors, for metadata in PDF
 %\AuthorNames{Firstname Lastname, Firstname Lastname and Firstname Lastname}
-\AuthorNames{Konstantin Barkalov, Ilya Lebedev, Marina Usova, Daria Romanova, Daniil~Ryazanov and Sergei~Strijhak}
+\AuthorNames{Константин Баркалов, Илья Лебедев, Марина Усова, Дарья Романова, Даниил Рязанов и Сергей Стрижак}
 
 % MDPI internal command: Authors, for citation in the left column
 %\AuthorCitation{Lastname, F.; Lastname, F.; Lastname, F.}
@@ -119,18 +119,18 @@
 %$^{1}$ \quad Affiliation 1; e-mail@e-mail.com\\
 %$^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
 \address{%
-$^{1}$ \quad Department of Mathematical Software and Supercomputing Technologies, Lobachevsky University, 603022~Nizhni Novgorod, Russia; konstantin.barkalov@itmm.unn.ru (K.B.); ilya.lebedev@itmm.unn.ru (I.L.); usova@itmm.unn.ru (M.U.)\\
+$^{1}$ \quad Кафедра математического обеспечения и суперкомпьютерных технологий, ННГУ им. Н.И. Лобачевского, 603022~Нижний Новгород, Россия; konstantin.barkalov@itmm.unn.ru (K.B.); ilya.lebedev@itmm.unn.ru (I.L.); usova@itmm.unn.ru (M.U.)\\
 %MDPI: The email of this author is different from the submitting system(usova@itmm.unn.ru). Please confirm which one is correct.
 %Authors: Fixed to correct one
 
-$^{2}$ \quad Ivannikov Institute for System Programming of the Russian Academy of Sciences,  
+$^{2}$ \quad Институт системного программирования им. В.П. Иванникова РАН,  
 %MDPI: Please check if it should be revised to ``Ivannikov Institute for System Programming, Russian Academy of Sciences''
 %Authors: Corrected
- 109004~Moscow, Russia; romanovadi@ispras.ru (D.R.) ryazanov@ispras.ru (D.R.) \\
-$^{3}$ \quad Faculty of Mechanics and Mathematics, Lomonosov Moscow State University, 119991~Moscow, Russia  \\
+ 109004~Москва, Россия; romanovadi@ispras.ru (D.R.) ryazanov@ispras.ru (D.R.) \\
+$^{3}$ \quad Механико-математический факультет МГУ имени М.В. Ломоносова, 119991~Москва, Россия  \\
 %MDPI: newly added  department based on his published paper in MDPI, please confirm if it is correct.
 %Authors: Yes, it is correct
-$^{4}$ \quad Moscow Aviation Institute, Volokolamskoe Shosse 4, 125993~Moscow, Russia 
+$^{4}$ \quad Московский авиационный институт, 125993~Москва, Россия 
 %MDPI: We rearranged addresses information, please confirm
 %Authors: Ok
 }
@@ -150,8 +150,8 @@ $^{4}$ \quad Moscow Aviation Institute, Volokolamskoe Shosse 4, 125993~Moscow, R
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e., \\) 
-\abstract{The paper considers the slope flow simulation and the problem of finding the optimal parameter values of this mathematical model. The slope flow is modeled using the finite volume method applied to the Reynolds-averaged Navier–Stokes equations with closure in the form of the $k{-}\omega\ SST$ 
-turbulence model. The optimal values of the turbulence model coefficients for free surface gravity multiphase flows were found using the global search algorithm. Calibration was performed to increase the similarity of the experimental and calculated velocity profiles. The Root Mean Square Error (RMSE) of derivation between the calculated flow velocity profile and the experimental one is considered as the objective function in the optimization problem. The calibration of the turbulence model coefficients for calculating the free surface flows on test slopes using the multiphase model for interphase tracking has not been performed previously. To solve the multi-extremal optimization problem arising from the search for the minimum of the loss function for the flow velocity profile, we apply a new optimization approach using a Peano curve to reduce the dimensionality of the problem. To speed up the optimization procedure, the objective function was approximated using an artificial neural network. Thus, an interdisciplinary approach was applied which allowed the optimal values of six turbulence model parameters to be found using OpenFOAM and Globalizer software.}  
+\abstract{В статье рассматривается проблема нахождения оптимальных значений параметров математической модели на примере расчёта склонового течения. Склоновое течение моделируется с помощью метода конечных объемов, примененного к осредненным по Рейнольдсу уравнениям Навье–Стокса с замыканием в виде $k{-}\omega\ SST$
+модели турбулентности. С помощью алгоритма глобального поиска найдены оптимальные значения коэффициентов модели турбулентности для гравитационных многофазных течений со свободной поверхностью. Калибровка проводилась для повышения сходства экспериментальных и расчетных профилей скорости. В качестве целевой функции в задаче оптимизации рассматривается среднеквадратическая ошибка (RMSE) между расчетным профилем скорости потока и экспериментальным профилем. Калибровка коэффициентов модели турбулентности для расчета течений со свободной поверхностью на наклонной поверхности с использованием многофазной модели для отслеживани интерфейса ранее не проводилась. Для решения задачи многопараметрической оптимизации, возникающей при поиске минимума функции потерь, мы применяем новый подход к оптимизации с использованием кривой Пеано для уменьшения размерности задачи. Для ускорения процедуры оптимизации целевая функция была аппроксимирована с помощью искусственной нейронной сети. Таким образом, был применен междисциплинарный подход, позволивший найти оптимальные значения шести параметров модели турбулентности с помощью программ OpenFOAM и Globalizer.}  
 %MDPI: Please state the software version number, creator, and the location (city, country) from where the software was sourced.
 %Authors: This information added in section 4.
 
@@ -192,92 +192,87 @@ turbulence model. The optimal values of the turbulence model coefficients for fr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\section{Introduction}
+\section{Введение}
 
-Climate change is accompanied by dangerous natural phenomena that are becoming more and more frequent. These phenomena inevitably affect human life and daily activities.  Research into these issues involves mathematical modeling and analysis of geophysical data, as well as data from numerical and field experiments. The current trend in geodata analysis is associated with the use of machine learning algorithms and artificial neural~networks.
+Изменение климата сопровождается опасными природными явлениями, которые становятся все более частыми. Эти явления неизбежно влияют на жизнь и повседневную деятельность человека. Исследование этих вопросов связано с математическим моделированием и анализом геофизических данных, а также данных численных и натурных экспериментов. Современная тенденция в анализе геоданных связана с использованием алгоритмов машинного обучения и искусственных нейронных сетей.
 
-Landslides, mudflows, and avalanches are classified as dangerous geological phenomena. These are slope processes associated with the separation of rocks, their movement along the slope under the influence of gravity and leading to irreversible changes in the relief. The study of the descent of landslides, mudflows, and avalanches, as well as their prediction and detection are highly relevant due to the impact of these dangerous phenomena on human life and urban infrastructure. Landslides are distinguished according to the main causes of their occurrence. These are: abrasive, erosional, anthropogenic, and natural/anthropogenic. According to the mechanism of displacement, block landslides, shear, stretching, and liquefaction landslides are classified, respectively~\cite{Pendin2015}.
+Оползни, сели и лавины относятся к опасным геологическим процессам. Они являются склоновыми процессами, связанными с отрывом горных пород, перемещением их по склону под влиянием силы тяжести и приводящим к необратимым преобразованиям в рельефе. Проблема изучения схода оползней, селей и лавин, их предсказания и обнаружения является актуальной задачей в связи с влиянием этого опасного явления на жизнь людей и городскую инфраструктуру. Оползни различают по основным причинам возникновения. Они бывают абразионные, эрозионные, техногенные и естественно-техногенные. По механизму смещения различают соответственно оползни блоковые, сдвига, растяжения, разжижения~\cite{Pendin2015}.
 
-Data show that between January 2004 and December 2016, landslides killed about 56,000 people in as little as 5000 
-%MDPI: please check intended meaning is retained
-%Authors: Value has been rounded
- incidents. The spatial distribution of landslides is uneven, with Asia as the predominant geographic area~\cite{Froude2018}.
+Данные показывают, что в период с января 2004 г. по декабрь 2016 г. оползни унесли жизни около 56 000 человек в 5 000 происшествий. Пространственное распределение оползней неравномерно, при этом преобладающим географическим регионом является Азия~\cite{Froude2018}.
 
-A large number of landslides, avalanches, and mudflows occur in European countries (Switzerland, Austria, Italy, France, and Iceland). Similar dangerous phenomena occur in Russia, for example, in the Krasnodar Territory of the Russian Federation and in  the North Caucasus, due to heavy rainfalls in these regions where mountainous terrain is present, and in connection with the development of the territory (linear and areal objects) in recent years~\cite{hungr2005landslide}.  The amount of precipitation was outstanding in the above territories of Russia (Sochi, Krasnaya Polyana) in 2021. This led to the flooding of mountain rivers and increased the risk of slope flows. Catastrophic descents of mudflows occurred, resulting in damage to road equipment and blockage of roadways~\cite{Harch2020}.
+Большое количество оползней, лавин и селей происходит в европейских странах (Швейцария, Австрия, Италия, Франция, Исландия). Подобные опасные явления имеют место и в России, например, в Краснодарском крае РФ и на Северном Кавказе, в связи с обильными осадками в этих районах, где присутствует горный рельеф, и в связи со стихийной застройкой территории (линейные и площадные объекты) в последние годы~\cite{hungr2005landslide}. На вышеуказанных территориях России (Сочи, Красная Поляна) в 2021 г. выпало выпадающее количество осадков. Это привело к разливу горных рек и увеличило опасность склоновых стоков. Произошли катастрофические сходы селей, приведшие к повреждению дорожной техники и перекрытию проезжей части~\cite{Harch2020}.
 
-Mudflows are one of the most complex exogenous geological processes, which integrate the actions of other geological processes. The mudflow is a complex heterogeneous structure consisting of liquid and solid components. The solid fraction consists of mineral particles, which are non-uniform from the granulometric viewpoint.
+Селевые потоки являются одним из наиболее сложных экзогенных геологических процессов, интегрирующих действия других геологических процессов. Селевой поток -- это сложная гетерогенная структура, состоящая из жидкого и твердого компонентов. Твердый элемент состоит из неоднородных в гранулометрическом отношении минеральных частиц.
 
-%The most well-known landslide problem involves assessing the stability of a landslide slope for static conditions and seismic impact. Modeling the descent of the slope flow allows predicting the destruction caused by this phenomenon, correctly locating protective structures and vital objects.
+%Самая известная проблема оползня связана с оценкой устойчивости оползневого склона к статическим условиям и сейсмическому воздействию. Моделирование спуска склонового потока позволяет прогнозировать вызванные этим явлением разрушения, правильно размещать защитные сооружения и жизненно важные объекты.
 
-The most well-known landslide problem involves assessing the stability of a landslide slope for static conditions and seismic impact. Modeling the descent of the slope flow makes it possible to predict the damage caused by this phenomenon and to correctly locate the protective structures and vital objects. Such problems are solved using the finite difference method~\cite{Bernander2016}, the finite volume method~\cite{liu2007application}, the discrete elements method~\cite{Liu2020}, the cellular automata method ~\cite{piegari2006cellular}, and hybrid methods. The mudflows can be modeled using a two-fluid model based on the Volume of Fluid model~\cite{Hirt1981}. The methods listed above are implemented in various commercial and open source software packages MN2D~\cite{Naaim2002}, TITAN2D~\cite{Pitman2003}, and RAMMS.
+Наиболее известная задача с оползнем связана с оценкой устойчивости оползневого склона для статических условий и сейсмического воздействия. Моделирование спуска склонового потока позволяет прогнозировать ущерб от этого явления и правильно размещать защитные сооружения и жизненно важные объекты. Такие задачи решаются с использованием метода конечных разностей~\cite{Bernander2016}, метода конечных объемов~\cite{liu2007application}, метода дискретных элементов~\cite{Liu2020}, метода клеточных автоматов ~\cite{piegari2006cellular} и гибридных методов. Селевые потоки можно смоделировать с помощью двухжидкостной модели, в основе которой используется модель объема в жидкости – Volume of Fluid~\cite{Hirt1981}. Перечисленные выше методы реализованы в различных коммерческих и открытых программных пакетах MN2D~\cite{Naaim2002}, TITAN2D~\cite{Pitman2003} и RAMMS.
 
-Previously, the study of avalanches was carried out using computational fluid dynamics methods for Newtonian fluids and analysis of observation data, including the historical data on avalanches in Japan~\cite{Oda2011, Yamaguchi2017}. Similar work was carried out on avalanches in Switzerland, Austria, and Italy. A series of works on the study of avalanches using laboratory experiment in special trays and measuring equipment for studying avalanches in Iceland were carried out at the University of Iceland ~\cite{IceThesKatr, IceThesJon}. An experiment with the descent of a snow-water stream in Davos, Switzerland was described in~\cite{Jaedicke2006}. Measurements were made for the flow depth for a dry snow avalanche and for a snow-water flow.
+Ранее изучение лавин проводилось методами вычислительной гидродинамики для ньютоновских жидкостей и анализа данных наблюдений, в том числе исторических данных о лавинах в Японии~\cite{Oda2011, Yamaguchi2017}. Аналогичные работы проводились с лавинами в Швейцарии, Австрии и Италии. В Исландском университете ~\cite{IceThesKatr, IceThesJon} проведена серия работ по изучению лавин с использованием лабораторного эксперимента в специальных лотках и измерительного оборудования для изучения лавин в Исландии. Эксперимент со спуском снежно-водяного потока в Давосе, Швейцария, описан в~\cite{Jaedicke2006}. Проведены измерения глубины потока для сухой снежной лавины и для снегово-водяного потока.
 
-Cheng et al.~\cite{Cheung2011} used Bayesian analysis to calibrate the coefficients of the Spalart--Allmaras turbulence model to correct model deficiencies and reproduce the profile of a turbulent boundary layer over a flat plate. Among similar works, the coefficients were already calibrated in the $k-\varepsilon$ turbulence model when studying the process of the propagation of impurities in the process of urban development~\cite{Guillas2014}.
+Чэн и др.~\cite{Cheung2011} использовали байесовский анализ для калибровки коэффициентов модели турбулентности Spalart--Allmaras, чтобы исправить недостатки модели и воспроизвести профиль турбулентного пограничного слоя над плоской пластиной. Среди подобных работ уже была проведена калибровка коэффициентов в $k-\varepsilon$ модели турбулентности при изучении процесса распространения примесей в процессе городской застройки~\cite{Guillas2014}.
 
-Bayesian analysis is often used to calibrate the RANS closures turbulence models to improve forecast accuracy without losing computational efficiency (as was done for $k{-}\varepsilon$ model with Launder-Sharma damping functions, $k{-}\omega$ Wilcox model, Spalart--Allmaras and Baldwin--Lomax models~\cite{Edeling2014a,Edeling2014b}). De Zordo-Banliat et al. applied Bayesian analysis to compressor cascades to obtain a set of calibrated turbulence model parameters due to the inadequacy of the original model~\cite{deZordoBanliat2020}. 
+Байесовский анализ часто используется для калибровки моделей турбулентности замыканий RANS для повышения точности прогноза без потери вычислительной эффективности (как это было сделано для модели $k{-}\varepsilon$ с функциями демпфирования Лаундера-Шармы, $k{-}\omega$ Wilcox-модели, Spalart--Allmaras и Baldwin--Lomax~\cite{Edeling2014a,Edeling2014b} моделей). Де Зордо-Банлиат и др. применил байесовский анализ к каскадам компрессоров, чтобы получить набор калиброванных параметров модели турбулентности из-за неадекватности исходной модели~\cite{deZordoBanliat2020}.
 
-Kotaro Matsui et al.~\cite{Matsui2021} proposed a new set of calibrated coefficients that improved the ability of the Spalart--Allmaras model to predict compressor cascade flow angular separation. A comprehensive review of turbulence model uncertainties is given in the paper of Xiao and Cinnella~\cite{Xiao2019}.
+Котаро Мацуи и др.~\cite{Matsui2021} предложили новый набор калиброванных коэффициентов, которые улучшили способность модели Спаларта--Аллмараса прогнозировать угловое разделение потока в каскаде компрессора. Всесторонний обзор неопределенностей модели турбулентности дан в статье Сяо и Циннелла~\cite{Xiao2019}.
 
-A comprehensive analysis of climatic, geological, and hydrological data was applied to model and predict the slope flows. In the scope of recent trends, huge streams of data received from satellites, from the experiments, and from mathematical modeling are processed using machine learning, which makes it possible to develop efficient models of these processes~\cite{GeoML, Ma2020}.
+Всесторонний анализ климатических, геологических и гидрологических данных применялся для моделирования и прогнозирования склоновых стоков. В рамках последних тенденций огромные потоки данных, получаемых со спутников, из экспериментов и из математического моделирования, обрабатываются с помощью машинного обучения, что позволяет разрабатывать эффективные модели этих процессов~\cite{GeoML, Ma2020}.
 
-%%%%% reviewer 2 citations start
+%%%%% рецензент 2 начала цитирования
 
-Recently, several new optimization and machine learning methods have been proposed.
-In~\cite{YuWuWang2022}, a new method of regret analysis, called stochastic p-robust optimization, has been proposed, which allows to simultaneously take advantage of stochastic optimization and robust optimization methods to study the optimal operation of a hybrid energy system.
+Недавно было предложено несколько новых методов оптимизации и машинного обучения.
+В~\cite{YuWuWang2022} был предложен новый метод анализа сожалений, названный стохастической p-робастной оптимизацией, который позволяет одновременно использовать преимущества методов стохастической оптимизации и робастной оптимизации для изучения оптимальной работы гибридной энергетической системы.
 
-A learning-based method for building driving-signal aware full-body avatars was presented in~\cite{BagautdinovWuSimon2021}. The model was a conditional variational auto-encoder that could be animated with incomplete driving signals, such as human pose and facial keypoints, and produced a high-quality representation of human geometry and view-dependent appearance. 
+Основанный на обучении метод создания аватаров в полный рост с учетом сигналов водителя был представлен в~\cite{BagautdnovWuSimon2021}. Модель представляла собой условный вариационный автокодер, который можно было анимировать с помощью неполных управляющих сигналов, таких как поза человека и ключевые точки лица, и производил высококачественное представление геометрии человека и внешнего вида в зависимости от вида.
 
-A novel multi-class wind turbine bearing fault diagnosis strategy based on the conditional variational generative adversarial network model combining multi-source signals fusion was proposed in~\cite{ZhangZhangCai2022}. The strategy converted multi-source 1D vibration signals into 2D signals, and the multi-source 2D signals were fused by using wavelet transform.
+В~\cite{ZhangZhangCai2022} была предложена новая многоклассовая стратегия диагностики неисправностей подшипников ветряных турбин, основанная на модели условно-вариационной генеративно-состязательной сети, сочетающей слияние сигналов из нескольких источников. Стратегия преобразовывала одномерные сигналы вибрации от нескольких источников в двумерные сигналы, а двумерные сигналы от нескольких источников объединялись с помощью вейвлет-преобразования.
 
-A complementary label adversarial network (CLARINET) was proposed to solve completely complementary unsupervised domain adaptation (CC-UDA) and partly complementary unsupervised domain adaptation (PC-UDA) problems. CLARINET maintains two deep networks simultaneously, with one focusing on classifying the complementary-label source data and the other taking care of the source-to-target distributional adaptation~\cite{ZhangLiuFang2021}. 
+Противоборствующая сеть с дополнительными метками (CLARINET) была предложена для решения проблем полностью комплементарной неконтролируемой адаптации домена (CC-UDA) и частично комплементарной неконтролируемой адаптации домена (PC-UDA). CLARINET одновременно поддерживает две глубокие сети, одна из которых занимается классификацией исходных данных с дополнительными метками, а другая занимается адаптацией распределения от источника к целевому~\cite{ZhangLiuFang2021}.
 
-A challenging problem called unsupervised open set domain adaptation (UOSDA) was considered in~\cite{ZhongFangLiu2021}. The authors proposed a practical theoretical bound for UOSDA, which contained an effective risk estimator to evaluate the risk on data with unknown classes. In addition, a DNN-based UOSDA method under the guidance of the proposed theoretical bound was put forward. The method can accurately estimate the risk of the classifier on data with unknown classes and adequately align the distributions of data with known classes.
+В~\cite{ZhongFangLiu2021} была рассмотрена сложная проблема, называемая неконтролируемой адаптацией домена с открытым набором (UOSDA). Авторы предложили практическую теоретическую границу для UOSDA, которая содержала эффективную оценку риска на данных с неизвестными классами. Кроме того, был предложен метод UOSDA на основе DNN под руководством предложенной теоретической оценки. Метод может точно оценить риск классификатора на данных с неизвестными классами и адекватно согласовать распределения данных с известными классами.
 
 %%%%% reviewer 2 citations finish
 
-Methods based on convolutional neural networks (CNN) are able to extract stable spatial and spectral features~\cite{Maggiori2017}. A combination of satellite image and topographic data can be used to generalize the extracted features in order to identify slope flows in satellite images~\cite{Qin2021, Prakash2021}.
+Методы, основанные на сверточных нейронных сетях (CNN), способны извлекать стабильные пространственные и спектральные особенности~\cite{Maggiori2017}. Комбинация спутникового изображения и топографических данных может быть использована для обобщения извлеченных признаков с целью идентификации склоновых течений на спутниковых снимках~\cite{Qin2021, Prakash2021}.
 
-Calibration of the $k{-}\omega$~$SST$ models~\cite{Menter1993, Menter1994, MenterKuntzLangtry2003} was mainly carried out for air flows around various profiles. For example, calibration was performed for the flow around airfoils at high Reynolds numbers in a wide range of angles of attack~\cite{MatyushenkoGarbaruk2016} (as it was noted by the authors, the area of applicability of the suggested modification is limited to flows around airfoils). Calibration was also carried out for the flow around small wind turbines~\cite{rocha2016case, rocha2014} and around a simple flat plate~\cite{kalitzin2016improvements}. 
-%Калибровки модели для потоков жидкости со свободной поверхностью на склоне под действием силы тяжести не проводилось. Для расчёта потока в работе используется многофазная модель с целью отслеживания интерфейса. Влияние этой многофазности также стоит учитывать при использовании констант турбулентной модели. В настоящей работе впервые была проведена калибровка констант турбулентной модели для многофазного потока жидкости под действием силы тяжести на склоне.
-No calibration of the turbulence model for fluid flows with a free surface on a slope under the action of gravity was performed. The work uses a multi-phase model to track the interface to calculate the flow. The effect of this multiphase nature should also be taken into account when using the coefficients of the turbulent model. In the present work, for the first time, the coefficients of the turbulent model are calibrated for the flow of a multiphase fluid under the action of gravity on a slope.
+Калибровка моделей $k{-}\omega$~$SST$~\cite{Menter1993, Menter1994, MenterKuntzLangtry2003} в основном проводилась для обтекания воздухом различных профилей. Например, калибровка проводилась для обтекания профилей при больших числах Рейнольдса в широком диапазоне углов атаки~\cite{MatyushenkoGarbaruk2016} (как было отмечено авторами, область применимости предложенной модификации ограничена течениями вокруг аэродинамических поверхностей). Калибровка также проводилась для обтекания малых ветряков~\cite{rocha2016case, rocha2014} и простой плоской пластины~\cite{kalitzin2016improvements}.
+Калибровочные модели для потоков жидкости со свободной поверхностью на склоне под действием силы тяжести проводов не было. Для расчета потока в работе используется многофазная модель с целью привлечения внимания. Эту многофазность также следует учитывать при сборке константной турбулентной модели. В настоящей работе была проведена оценка постоянной турбулентной модели для многофазного потока жидкости под воздействием напряжения на склоне.
+Калибровка модели турбулентности для течений жидкости со свободной поверхностью на склоне под действием силы тяжести не проводилась. В работе используется многофазная модель для отслеживания интерфейса для расчета потока. Эффект такой многофазности следует учитывать и при использовании коэффициентов турбулентной модели. В настоящей работе впервые проведена калибровка коэффициентов турбулентной модели для течения многофазной жидкости под действием силы тяжести на склоне.
 
-The slope flow model, as a rule, includes several parameters, the values of which cannot be specified in advance but can be selected based on the consistency of the numerical results with the experimental data available. Such a problem is a global optimization problem with a black box objective function because the specific type of the objective function is not known, there exists only the algorithm for calculating its values.
+Модель склонового течения, как правило, включает в себя несколько параметров, значения которых не могут быть заданы заранее, но могут быть выбраны исходя из соответствия численных результатов имеющимся экспериментальным данным. Такой задачей является задача глобальной оптимизации с целевой функцией черного ящика, поскольку неизвестен конкретный вид целевой функции, существует только алгоритм вычисления ее значений.
 
-The complexity of the phenomena and processes under study is reflected in the complexity of the corresponding mathematical models and numerical methods for their analysis. Currently, the main (and often the only possible) tool for such an analysis is supercomputer modeling of the object behavior. Open source software is used widely for this purpose. OpenFOAM (an open platform for numerical modeling of continuum mechanics problems) is a well-known example of open source software of this kind~\cite{Weller1998}. 
+Сложность изучаемых явлений и процессов отражается в сложности соответствующих математических моделей и численных методов их анализа. В настоящее время основным (а зачастую и единственно возможным) инструментом такого анализа является суперкомпьютерное моделирование поведения объекта. Для этой цели широко используется программное обеспечение с открытым исходным кодом. OpenFOAM (открытая платформа для численного моделирования задач механики сплошной среды) является хорошо известным примером такого программного обеспечения с открытым исходным кодом~\cite{Weller1998}.
 
 %ННГУ
-% Если будет предыдущая связка, то вот этот абзац можно и опустить, и начать - со следующего,
-The growing performance of modern supercomputer systems goes in parallel with the complication of mathematical models of the processes considered that makes performing even a single model calculation (a trial) a computation-costly operation. Consequently, the choice of the optimal values of the model parameters in reasonable time cannot be completed by trying all possible variants by the grid method, i.e., by searching on some regular grid in the range of variation of the parameters. The impossibility of performing a large number of search trials requires applying efficient search algorithms, which would provide an acceptable estimate of a problem solution at a relatively small number of trials using available computational resources.
-%MDPI: Is italic necessary? Please check the whole paper
-%Authors: Italic is not necessary. Removed
 
-%ННГУ - начать можно отсюда
-It is worth noting that most existing methods for finding the optimum of time-consuming black-box functions have some drawbacks. Gradient-based algorithms cannot be used in many cases just because the derivatives of an objective function are unknown while the finite-difference approximations of these derivatives are too computationally costly. At the same time, in general, gradient-based methods only allow finding a locally optimal solution to the problem.
-Classical direct search methods, which do not require the derivatives, e.g., the Nelder--Mead method~\cite{NelderMead} or the Hooke--Jeeves method~\cite{HookJeeves}, are also local. As a rule, the application of these methods for solving global optimization problems involves several restarts from random grid nodes,  which requires a large number of trials. 
+Рост вычислительных мощностей современных суперкомпьютерных систем идет параллельно с усложнением математических моделей рассматриваемых процессов, что делает проведение одного модельного расчета (a \textit{trial}) трудоемкой операцией. Следовательно, выбор наилучших значений параметров модели за приемлемое время не может быть выполнен перебором всех возможных вариантов методом «проб и ошибок», т.е. перебором на некоторой регулярной сетке в области изменения параметров.
+Невозможность проведения большого числа поисковых испытаний требует применения эффективных поисковых алгоритмов, которые при проведении относительно небольшого числа испытаний давали бы приемлемую оценку решения задачи в рамках доступного вычислительного ресурса.
 
-Deterministic methods of the Lipschitz global optimization, such as DIRECT~\cite{Jones2009}, non-uniform coverages method~\cite{Evtushenko2009, Evtushenko2013}, diagonal~\cite{Sergeyev2017}, and simplicial~\cite{Zilinskas2014} methods guarantee (in the limit) convergence to the global solution of the problem but may require a large number of search trials.
-Finally, heuristic methods, e.g., differential evolution or simulated annealing, also require a very large amount of computations of the functions to obtain good estimates of the solutions in global optimization problems and at the same time lose in quality to the deterministic algorithms~\cite{Sergeyev2018,Kvasov2018}.
+Следует отметить, что у большинства существующих методов поиска оптимума трудоёмких задач в виде "чёрного ящика" есть свои недостатки. Градиентные методы не могут использоваться во многих случаях просто потому, что производные целевой функции не известны, а их конечно-разностные аппроксимации слишком дороги для вычисления. Одновременно с этим методы на основе градиентов обеспечивают поиск, вообще говоря, лишь локально оптимального решения задачи.
+Классические методы прямого поиска, которые не требуют использования производных, такие как метод Нелдера - Мида~\cite{NelderMead} или метод Хука-Дживса~\cite{HookJeeves}, также являются локальными. Как правило, применение указанных методов для решения задач глобальной оптимизации включает несколько рестартов из узлов случайной сетки, что требует большого числа испытаний. 
 
-So far, the direct application of optimization algorithms to search for the minima of the time-consuming function may appear too computationally costly when a single trial takes a great deal of computation time. 
-A well known method to overcome this problem is to construct an approximation of the objective function (also known as a response surface model or a metamodel or a surrogate model). Computing its values is a computationally inexpensive operation. The approximation is used further to find the minimum.
-There are many variants of constructing the approximations for multivariate functions. These are various interpolation methods utilizing polynomials, splines, radial basis functions, Kriging, as well as various regression models. Many of these algorithms are used in the development of global optimization methods.
+Детерминированные методы липшицевой глобальной оптимизации, такие как DIRECT~\cite{Jones2009}, метод неравномерных покрытий \cite{Evtushenko2009,Evtushenko2013}, диагональный~\cite{Sergeyev2017} и симплексный~\cite{Zilinskas2014} методы гарантируют (в пределе) сходимость к глобальному решению задачи, но могут потребовать большого числа поисковых испытаний.
+Наконец, эвристические методы, такие как эволюционные алгоритмы и имитация отжига, также требуют очень большого количества вычислений функций для получения хороших оценок решений в задачах глобальной оптимизации, и одновременно проигрывают в качестве  детерминированным алгоритмам~\cite{Sergeyev2018,Kvasov2018}.
 
-For example, the use of the radial basis functions has been considered in detail in~\cite{Gutmann2001,Regis2005}. In~\cite{Jones1998,UrRehman2014,Ollar2017_1}, Kriging-based methods have been proposed. A novel approach to constructing the metamodels and trust-region methods based on these ones has been presented in~\cite{Polynkin2012,Ollar2017_2,Toropov2018}. 
+Таким образом, применение оптимизационных алгоритмов к поиску минимума непосредственно трудоёмких функций может оказаться чрезмерно дорогим, если проведение одного испытания занимает много машинного времени.
+Известным способом преодоления этой проблемы является построение аппроксимации целевой функции (также известной как модель поверхности отклика, метамодель или суррогатная модель), вычисление значений которой является дешевой операцией, и дальнейшее использование этой аппроксимации для поиска минимума. 
+Существует множество вариантов построения аппроксимаций для функций многих переменных. К ним относятся, например, различные методы методы интерполяции, использующие полиномы, сплайны, радиальные базисные функции, кригинг, а также различные регрессионные модели. Многие из данных алгоритмов используются для построения методов глобальной оптимизации. 
 
-In the present study, we used an efficient global search algorithm~\cite{Strongin2000,Sergeyev2013} for solving the Lipschitz global optimization problems combined with function approximations based on the regression models. At the first search stage, the algorithm worked with the objective function as a direct method. Then, an approximation of the objective function was constructed using the accumulated information. This approximation was used at the second stage of the search.
-To construct the approximations, we applied Neural Network Regression (NNR).
+Например, в \cite{Gutmann2001,Regis2005} детально проработано использование радиальных базисных функций. В \cite{Jones1998,UrRehman2014,Ollar2017_1} предлагаются методы на основе кригинга. Оригинальный подход к построению метамоделей и методов доверительных областей на их основе представлен в \cite{Polynkin2012,Ollar2017_2,Toropov2018}. 
 
-To study the parameters of slope flows, it is advisable to use interdisciplinary approaches from the fields of computational and experimental hydrodynamics, optimization theory, parallel computing, and neural networks. This paper uses the results of an experiment in a chute with a different angle of inclination, a mathematical model for modeling a two-phase flow, global optimization methods, and an artificial neural network. The mathematical model is based on the averaged Reynolds equations and a two-parameter turbulence model. 
+В проведенном исследовании мы использовали эффективный алгоритм глобального поиска \cite{Strongin2000,Sergeyev2013} для решения задач липшицевой глобальной оптимизации в сочетании с аппроксимацией функции на основе регрессионных моделей. На первой стадии поиска GSA работал как прямой метод непосредственно с целевой функцией. Затем по накопленной информации строилась аппроксимация целевой функции. Построенная аппроксимация использовалась на второй стадии поиска.
+Для построения аппроксимаций мы применяли регрессию нейронной сети (NNR). 
 
-The turbulence model $k-\omega\ SST$ contains a number of coefficients calibrated for canonical flows in pipes and channels, air flow around various profiles, etc.~\cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. Calibration of turbulence model coefficients was not carried out for calculating the free surface flows on slopes using the multiphase model for interphase tracking was performed. In this work, the coefficients of the $k-\omega\ SST$ turbulence model were optimized for calculating the turbulent fluid flow in the chute.
 
-The main part of the paper has the following structure. 
-Section \ref{sec2} contains a description of the experiment. Section \ref{math_model} describes the mathematical model of turbulent two-phase flows. Section \ref{sec4} contains the details of numerical methods. 
-Section \ref{sec5} describes the results of numerical experiments. 
-Section \ref{sec6} contains a discussion.
-Section \ref{sec7} concludes the paper.
-%Nomenclature and a list of abbreviations are presented in Appendix \ref{app}.  
+Для изучения параметров склоновых течений целесообразно использовать междисциплинарные подходы из области вычислительной и экспериментальной гидродинамики, теории оптимизации, параллельных вычислений и нейронных сетей. В работе использованы результаты эксперимента в желобе с разным углом наклона, математическая модель моделирования двухфазного течения, методы глобальной оптимизации и искусственная нейронная сеть. Математическая модель основана на усредненных уравнениях Рейнольдса и двухпараметрической модели турбулентности.
+
+Модель турбулентности $k-\omega\ SST$ содержит ряд коэффициентов, калиброванных для канонических течений в трубах и каналах, обтекания воздухом различных профилей и т. д.~\cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}. Калибровка коэффициентов модели турбулентности не проводилась, для расчета течений свободной поверхности на склонах с использованием многофазной модели для межфазного слежения выполнялась. В данной работе проведена оптимизация коэффициентов модели турбулентности $k-\omega\ SST$ для расчета турбулентного течения жидкости в желобе.
+
+Основная часть статьи имеет следующую структуру.
+Раздел \ref{sec2} содержит описание эксперимента. Раздел \ref{math_model} описывает математическую модель турбулентных двухфазных течений. Раздел \ref{sec4} содержит детали численных методов.
+Раздел \ref{sec5} описывает результаты численных экспериментов.
+Раздел \ref{sec6} содержит обсуждение.
+Раздел \ref{sec7} завершает статью.%Nomenclature and a list of abbreviations are presented in Appendix \ref{app}.  
 %MDPI: there are Section 7 in totally, and Section 7 is Conclusions, please check if the explanation of section is all right here.
 %Authors: Fixed
 
@@ -289,44 +284,26 @@ Section \ref{sec7} concludes the paper.
 %To study slope flow parameters, experimental setups were used. The objects of study were such measurements as flow depth, flow velocity, and force of interaction with an obstacle. In our study, the velocity profile was studied.
 Для исследования параметров склонового течения использовались экспериментальные данные. Объектами исследования были такие параметры потока, как глубина потока, скорость потока и сила взаимодействия с препятствием. В настоящем исследовании изучался профиль скорости.
 
-%An experimental setup at the Research Institute of Mechanics, Lomonosov Moscow State University~\cite{fluids7030111}, was used for this purpose. To carry out the calibration, a turbulent flow in an inclined chute was studied. Three different angles of inclination were used during the work. The chute had a simple rectangular geometry 1~m long, 12~cm wide, and 10~cm high. The section of the chute to be examined was between two points of velocity and depth measurements located at the distances of 23~cm and 82~cm from the top side of chute. The schematic diagram of the experimental setup is shown in Figure~\ref{NIIMexLinearUProfileInlet}. Tap water was used in the experiment.
-Проводилась калибровка коэффициентов турбулентной модели по результатам исследования турбулентного течения в наклонном желобе. Для этого использовалась экспериментальная установка НИИ механики МГУ~\cite{fluids7030111}. При работе использовались три различных угла наклона. Желоб имел простую прямоугольную форму длиной 1 м, шириной 12 см и высотой 10 см. Исследуемый участок желоба находился между двумя точками измерения скорости и глубины, расположенными на расстоянии 23~см и 82~см от верхней границы желоба. Принципиальная схема экспериментальной установки представлена на рисунке~\ref{NIIMexLinearUPProfileInlet}. В эксперименте использовалась водопроводная вода.
+Проводилась калибровка коэффициентов турбулентной модели по результатам исследования турбулентного течения в наклонном желобе. Для этого использовалась экспериментальная установка НИИ механики МГУ~\cite{fluids7030111}. При работе использовались три различных угла наклона. Желоб имел простую прямоугольную форму длиной 1 м, шириной 12 см и высотой 10 см. Исследуемый участок желоба находился между двумя точками измерения скорости и глубины, расположенными на расстоянии 23~см и 82~см от верхней границы желоба. Принципиальная схема экспериментальной установки представлена на рисунке~\ref{NIIMexLinearUProfileInlet}. В эксперименте использовалась водопроводная вода.
 
 \begin{figure}[H]
  
 \includegraphics[width=10.5 cm]{NIIMexLinearUProfileInlet.png}
-\caption{Schematic diagram of the experimental chute.\label{NIIMexLinearUProfileInlet}}
+\caption{Принципиальная схема экспериментального желоба.\label{NIIMexLinearUProfileInlet}}
  
 \end{figure}   
  
 
-The experiment was carried out in a stationary mode. Stationarity was provided by a submersible pump ``JEELEX Fekalnik 200'' with a capacity of 200 L per minute. The measurement was carried out using a Pitot tube connected to a ``KORUND-DDN-001M'' pressure sensor with an error of 0.1\%. Measurement points were spaced every 0.5 mm. A 10 s average was used for each measurement. The water temperature in the experiment was 20 degrees Celsius (room temperature). All temperature-related model coefficients were chosen based on this value. 
+Эксперимент проводился в стационарном режиме. Стационарность обеспечивал погружной насос ``ДЖИЛЕКС Фекальник 200'' производительностью 200 л в минуту. Измерение проводилось с помощью трубки Пито, соединенной с датчиком давления ``КОРУНД-ДДН-001М'' с погрешностью 0,1\%. Точки измерения располагались через каждые 0.5 мм. Для каждого измерения использовалось осреднение значения в течении 10 с. Температура воды в эксперименте составляла 20 градусов Цельсия (комнатная температура). Все коэффициенты модели, связанные с температурой, были выбраны на основе этого значения. 
 
-%Было проведено 3 серии экспериментов, в которых менялся угол наклона склона, начальная глубина потока, начальный профиль потока, как показано в таблице \ref{tabNIIMexLinear}
-Three series of experiments were performed; the initial flow profile, the initial flow depth, the slope angle were varied as shown in Table~\ref{tabNIIMexLinear}~\cite{fluids7030111}, where $u_0$ is the depth-averaged velocity, $h_0$ is the flow depth, $\theta$ is the slope inclination angle.
-
-%\begin{table}[H]
-%	\caption{Параметры расчётов}
-%	\label{tabNIIMexLinear}
-%	\begin{center}
-%		\begin{tabular}{ | c | c | c | } 
-%			\hline
-%			$u_0$ среднее по глубине, м/с & $h_0$, мм & $\theta$\\
-%			\hline
-%			1.63 & 4.20 & 25$^\circ$\\
-%			2.00 & 4.95 & 28$^\circ$\\
-%			1.78 & 3.45 & 33$^\circ$\\
-%			\hline
-%		\end{tabular}
-%	\end{center}
-%\end{table}
+Было проведено 3 серии экспериментов, в которых менялся угол наклона склона, начальная глубина потока, начальный профиль потока, как показано в таблице~\ref{tabNIIMexLinear}~\cite{fluids7030111}, где $u_0$~--- осреднённая по глубине скорость, $h_0$~--- глубина потока, $\theta$~--- угол наклона склона.
 
 \begin{table}[H] 
-\caption{{Parameters} of the experiments~\cite{fluids7030111}.\label{tabNIIMexLinear}}
+\caption{Параметры эксперимента~\cite{fluids7030111}.\label{tabNIIMexLinear}}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{CCC}
 \toprule
-    \textbf{$\boldsymbol{u_0}$, m/s}	&    \textbf{$\boldsymbol{h_0}$, mm}	&     \textbf{$\boldsymbol{\theta}$}\\
+    \textbf{$\boldsymbol{u_0}$, м/с}	&    \textbf{$\boldsymbol{h_0}$, мм}	&     \textbf{$\boldsymbol{\theta}$}\\
 \midrule
 	1.63 & 4.20 & 25$^\circ$\\
 	2.00 & 4.95 & 28$^\circ$\\
@@ -340,13 +317,11 @@ Three series of experiments were performed; the initial flow profile, the initia
 
 %ННГУ
 
-\section{Mathematical Model}\label{math_model}
+\section{Математическая модель}\label{math_model}
 
-%Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году~\cite{Hirt1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
-The Reynolds-averaged Navier--Stokes equations~\cite{Wilcox2006, Hirsch2007,FerzigerPeric2002} were used to model the experiment carried out at the Research Institute of Mechanics of Lomonosov Moscow State University. The $k-\omega\ SST$ turbulence model~\cite{Menter1993, Menter1994} was used to obtain the values of the Reynolds stress tensor. The position of the free surface of the flow is determined using the VOF (Volume Of Fluid) method suggested by C.W.~Hirt and B.D.~Nichols in 1981~\cite{Hirt1981}. In this method, the volume fraction of water phase $\alpha$ in the cell is used to determine the free surface so that if $\alpha>0.6$, the cell is considered to be filled with liquid, otherwise---to be filled with air.
+Для расчёта эксперимента поставленного в НИИ Механики МГУ используются осреднённые по Рейнольдсу уравнения Навье-Стокса~\cite{Wilcox2006, Hirsch2007,FerzigerPeric2002}. Для получения значений тензора напряжений Рейнольдса используется замыкание в виде $k-\omega\ SST$ модели турбулентности~\cite{Menter1993, Menter1994}. Положение свободной поверхности потока определяется с использованием метода объёма жидкости VOF (Volume Of Fluid), предложенного Хиртом и Николсом в 1981 году~\cite{Hirt1981}. В данном методе используется величина объёмной доли фазы воды $\alpha$ в ячейке для определения свободной поверхности таким образом, что при $\alpha>0.6$ считается что ячейка заполнена жидкостью, в противном случае~--- воздухом.
 
-%Течение в экспериментальной у становке описывается системой из пяти уравнений. Это уравнения Навье-Стокса, осреднённые по Рейнольдсу (уравнение неразрывности и уравнение сохранения импульса). Так же в систему входит уравнение переноса объёмной доли фазы для отслеживания межфазной границы. Замыкают систему уравнения сохранения для турбулентной кинетической энергии и специальной диссипации турбулентной кинетической энергии, которые используются для вычисления напряжений Рейнольдса, возникающих при осреднении уравнений Навье-Стокса.
-The flow in the experimental setup is described by a system of five equations \eqref{vofKWSST}. These are the Reynolds-averaged Navier--Stokes equations (continuity equation and momentum conservation equation). The system also includes a transfer equation for the phase volume fraction to track the interface. The system of equations is closed by two equations of conservation of turbulent kinetic energy and a special dissipation of turbulent kinetic energy, which are used to calculate the Reynolds stresses that arise when averaging the Navier--Stokes equations.
+Течение в экспериментальной у становке описывается системой из пяти уравнений \eqref{vofKWSST}. Это уравнения Навье-Стокса, осреднённые по Рейнольдсу (уравнение неразрывности и уравнение сохранения импульса). Так же в систему входит уравнение переноса объёмной доли фазы для отслеживания межфазной границы. Замыкают систему уравнения сохранения для турбулентной кинетической энергии и специальной диссипации турбулентной кинетической энергии, которые используются для вычисления напряжений Рейнольдса, возникающих при осреднении уравнений Навье-Стокса.
 \begin{linenomath} 
 %MDPI: Please confirm if bold in equations is necessary. Please check the whole paper
 %Authors: Bold is not necessary. Removed
@@ -365,31 +340,28 @@ The flow in the experimental setup is described by a system of five equations \e
 \end{equation}
 \end{linenomath}
 
-%Здесь ${u}$~--- скорость смеси; $\alpha$~--- объёмная доля выбранной фазы; $\rho$~--- плотность смеси, рассчитываемая по принципу весового среднего; $\bar{ {\tau}} = 2 \mu_{eff} \bar{ {s}}$~--- тензор напряжений, выраженный через тензор скоростей деформации $\bar{ {s}}$, горизонтальной чертой над буквами обозначается осреднение по Рейнольдсу; $\mu_{eff} = \mu + \mu_t$~--- эффективный коэффициент вязкости, сумма молекулярной вязкости и турбулентной, последняя вычисляется по формуле $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\bar{p}$~--- давление; $\bar{ {f}}$~--- плотность массовых сил; $k$---плотность турбулентной кинетической энергии; $\omega$---скорость диссипации плотности турбулентной кинетической энергии; $F_1 = F_1(\beta^*, \alpha_{\omega 1})$~--- функция перемешивания ($F_1$ равняется нулю вдалеке от стены и получается $k-\varepsilon$ модель, и переключается на единицу внутри пограничного слоя, реализуя $k-\omega$ модель); $\dot{s}$~--- скорость сдвига (инвариантная мера $\overline{ {s}}$); $F_2 = F_2(\beta^*)$~--- вторая функция перемешивания, $\widetilde{P}_k$~--- ограничитель на нарастание турбулентности в режимах стагнации.
-Here, $\alpha$~is the water volume fraction, $\bar{ {\tau}} = 2 \mu_{eff} \bar{ {s}}$~is the stress tensor, $\bar{ {s}}$~is the strain rate tensor, $\mu_{eff} = \mu + \mu_t$~is the effective viscosity, $\mu$~is a molecular viscosity, $\mu_t = \rho a_1 k / \max(a_1 \omega, \ b_1 \dot{s} F_2)$~is a turbulent viscosity, $\bar{ {f}}$~is the density of the body forces, $\bar{ {u}}$~is the mixture velocity, $\rho$~is the mixture density, $\bar{p}$~is the pressure, $\omega$~is the specific dissipation rate of the turbulent kinetic energy, $k$~is the turbulent kinetic energy, $F_1 = \tanh \left( \left( \min\left( \max \left( \frac{\sqrt{k}}{\beta^* \omega y},\ \frac{500 \nu}{y^2 \omega} \right),\ \frac{4 \rho \alpha_{\omega 2} k}{CD_{k \omega} y^2} \right) \right)^4 \right)$~is the blending function ($F_1$ equals zero away from the wall and the model turns into the $k-\varepsilon$ model, while inside the boundary layer $F_1$ equals one and the $k-\omega$ model is realized),  $\dot{s}$~is the strain rate (invariant of $\overline{ {s}}$), $CD_{k\omega} = \max \left( 2 \rho \alpha_{\omega 2} \frac{1}{\omega}  {\nabla} k \cdot  {\nabla} \omega,\ 10^{-10} \right)$, $F_2 = \tanh \left( \left( \max \left( \frac{2 \sqrt{k}}{\beta^* \omega y},\ \frac{500 \nu}{y^2 \omega} \right) \right)^2 \right)$~is the second blending function, and $\widetilde{P}_k = \min (\mu_t  {\nabla} \bar{ {u}} \cdot \left[  {\nabla} \bar{ {u}} + ( {\nabla} \bar{ {u}})^T\right],\ 10 \cdot \beta^* \rho k \omega)$~is the limiter on the growth of turbulence used in stagnation modes. Details can be found in the OpenFOAM package user guide~\cite{OFUG}.
-\nomenclature{$u_0$		}{ depth-averaged velocity on the inlet plane of the experiment chute	}
-\nomenclature{$h_0$		}{ flow depth on the inlet plane of the experiment chute	}
-\nomenclature{$\theta$	}{ inclination angle of the experiment chute }
-\nomenclature{$\alpha$	}{ water volume fraction	}
-\nomenclature{$\bar{ {\tau}}$	}{ Reynolds-averaged stress tensor	}
-\nomenclature{$\bar{ {s}}$		}{ Reynolds-averaged strain rate tensor	}
-\nomenclature{$\mu_{eff}$		}{ effective viscosity	}
-\nomenclature{$\mu$		}{ molecular viscosity	}
-\nomenclature{$\mu_{t}$		}{ turbulent viscosity	}
-\nomenclature{$\bar{ {f}}$		}{ Reynolds-averaged density of body forces	}
-\nomenclature{$\bar{ {u}}$		}{ Reynolds-averaged velocity of the mixture	}
-\nomenclature{$\rho$		}{ density of the mixture	}
-\nomenclature{$\bar{p}$		}{ pressure of the mixture	}
-\nomenclature{$\omega$		}{ specific dissipation rate of the turbulent kinetic energy	}
-\nomenclature{$k$		}{ 	turbulent kinetic energy }
-\nomenclature{$F_1$		}{ first blending function	}
-\nomenclature{$\dot{ {s}}$		}{ Reynolds-averaged strain rate	}
-\nomenclature{$F_2$		}{ second blending function	}
-\nomenclature{$\widetilde{P}_k$ }{ the limiter on the growth of turbulence used in stagnation modes }
+Здесь ${u}$~--- скорость смеси; $\alpha$~--- объёмная доля выбранной фазы; $\rho$~--- плотность смеси, рассчитываемая по принципу весового среднего; $\bar{ {\tau}} = 2 \mu_{eff} \bar{ {s}}$~--- тензор напряжений, выраженный через тензор скоростей деформации $\bar{ {s}}$, горизонтальной чертой над буквами обозначается осреднение по Рейнольдсу; $\mu_{eff} = \mu + \mu_t$~--- эффективный коэффициент вязкости, сумма молекулярной вязкости и турбулентной, последняя вычисляется по формуле $\mu_t = \rho a_1 k / \max(a_1 \omega,\ b_1 \dot{s} F_2)$; $\bar{p}$~--- давление; $\bar{ {f}}$~--- плотность массовых сил; $k$---плотность турбулентной кинетической энергии; $\omega$---специальная скорость диссипации турбулентной кинетической энергии; $F_1 = \tanh \left( \left( \min\left( \max \left( \frac{\sqrt{k}}{\beta^* \omega y},\ \frac{500 \nu}{y^2 \omega} \right),\ \frac{4 \rho \alpha_{\omega 2} k}{CD_{k \omega} y^2} \right) \right)^4 \right)$~--- функция перемешивания ($F_1$ равняется нулю вдалеке от стены и получается $k-\varepsilon$ модель, и переключается на единицу внутри пограничного слоя, реализуя $k-\omega$ модель); $\dot{s}$~--- скорость сдвига (инвариантная мера $\overline{ {s}}$);  $CD_{k\omega} = \max \left( 2 \rho \alpha_{\omega 2} \frac{1}{\omega}  {\nabla} k \cdot  {\nabla} \omega,\ 10^{-10} \right)$; $F_2 = \tanh \left( \left( \max \left( \frac{2 \sqrt{k}}{\beta^* \omega y},\ \frac{500 \nu}{y^2 \omega} \right) \right)^2 \right)$~--- вторая функция перемешивания, $\widetilde{P}_k = \min (\mu_t  {\nabla} \bar{ {u}} \cdot \left[  {\nabla} \bar{ {u}} + ( {\nabla} \bar{ {u}})^T\right],\ 10 \cdot \beta^* \rho k \omega)$~--- ограничитель на нарастание турбулентности в режимах стагнации. Подробности можно найти в руководстве пользователя пакета OpenFOAM~\cite{OFUG}.
+\nomenclature{$u_0$		}{ осредненная по глубине скорость на входной плоскости экспериментального желоба	}
+\nomenclature{$h_0$		}{ глубина потока на входной плоскости экспериментального желоба	}
+\nomenclature{$\theta$	}{ угол наклона экспериментального желоба }
+\nomenclature{$\alpha$	}{ объемная доля воды	}
+\nomenclature{$\bar{ {\tau}}$	}{ тензор напряжений осредненный по Рейнольдсу	}
+\nomenclature{$\bar{ {s}}$		}{ тензор скоростей деформаций осредненный по Рейнольдсу	}
+\nomenclature{$\mu_{eff}$		}{ эффективная вязкость	}
+\nomenclature{$\mu$		}{ молекулярная вязкость	}
+\nomenclature{$\mu_{t}$		}{ турбулентная вязкость	}
+\nomenclature{$\bar{ {f}}$		}{ плотность массовых сил, осреднённая по Рейнольдсу	}
+\nomenclature{$\bar{ {u}}$		}{ скорость смеси осреднённаятпо Рейнольдсу	}
+\nomenclature{$\rho$		}{ плотность смеси	}
+\nomenclature{$\bar{p}$		}{ давление в смеси	}
+\nomenclature{$\omega$		}{ специальная скорость диссипации турбулентной кинетической энергии	}
+\nomenclature{$k$		}{ 	турбулентная кинетиченская энергия }
+\nomenclature{$F_1$		}{ первая функция перемешивания	}
+\nomenclature{$\dot{ {s}}$		}{ осредненная по Рейнольдсу скорость деформации	}
+\nomenclature{$F_2$		}{ вторая функция перемешивания	}
+\nomenclature{$\widetilde{P}_k$ }{ ограничитель нарастания турбулентности, используемый в режимах стагнации }
 
-
-%Все константы турбулентной модели рассчитываются по принципу весового среднего между константами $k-\varepsilon$ и $k-\omega$ моделей по принципу $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$ и т.д. Стандартно константы турбулентной модели задаются следующими значениями~\cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
-The turbulence model contains four coefficients: $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$. $\alpha_k$, $\alpha_\omega$, $\gamma$ are calculated using the weighted average principle: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. By default, the coefficients of the turbulent model are set by the following values~\cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
+Турбулентная модель содержит четыре коэффициента: $\alpha_k$, $\alpha_\omega$, $\beta$, $\gamma$. $\alpha_k$, $\alpha_\omega$, $\gamma$ рассчитываются по принципу весового среднего: $\gamma = \gamma_1 F_1 + \gamma_2 (1 - F_1)$. Стандартно константы турбулентной модели задаются следующими значениями~\cite{LaunderSpalding1974, Tahry1983, LaunderMorseRodiSpaldiug1972}:
 \begin{linenomath}
 \begin{equation}
 	\label{kOmegaSstConstantsInit}
@@ -401,113 +373,85 @@ The turbulence model contains four coefficients: $\alpha_k$, $\alpha_\omega$, $\
 \end{equation}
 \end{linenomath}
 
-\nomenclature{$\alpha_k$ }{ turbulence model closure coefficient }
-\nomenclature{$\alpha_{k1}$ }{ turbulence model closure coefficient }
-\nomenclature{$\alpha_{k2}$ }{ turbulence model closure coefficient }
-\nomenclature{$\alpha_\omega$ }{ turbulence model closure coefficient }
-\nomenclature{$\alpha_{\omega1}$ }{ turbulence model closure coefficient }
-\nomenclature{$\alpha_{\omega2}$ }{ turbulence model closure coefficient }
-\nomenclature{$\beta$ }{ turbulence model closure coefficient }
-\nomenclature{$\beta_1$ }{ turbulence model closure coefficient }
-\nomenclature{$\beta_2$ }{ turbulence model closure coefficient }
-\nomenclature{$\gamma$ }{ turbulence model closure coefficient }
-\nomenclature{$\gamma_1$ }{ turbulence model closure coefficient }
-\nomenclature{$\gamma_2$ }{ turbulence model closure coefficient }
-\nomenclature{$\beta^*$ }{ turbulence model closure coefficient }
-\nomenclature{$a_1$ }{ turbulence model closure coefficient }
-\nomenclature{$b_1$ }{ turbulence model closure coefficient }
-\nomenclature{$c_1$ }{ turbulence model closure coefficient }
+\nomenclature{$\alpha_k$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\alpha_{k1}$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\alpha_{k2}$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\alpha_\omega$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\alpha_{\omega1}$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\alpha_{\omega2}$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\beta$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\beta_1$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\beta_2$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\gamma$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\gamma_1$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\gamma_2$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$\beta^*$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$a_1$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$b_1$ }{ коэффициент замыкания модели турбулентности }
+\nomenclature{$c_1$ }{ коэффициент замыкания модели турбулентности }
 
-The details of the turbulence model description are presented in~\cite{Menter1993, MenterKuntzLangtry2003}.
-
-
-
+Детали описания модели турбулентности представлены в~\cite{Menter1993, MenterKuntzLangtry2003}.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Methods}\label{sec4}
+\section{Методы}\label{sec4}
 %ИСП
 %\subsection{Используемый численный метод решения ДУЧП}
-\subsection{CFD Numerical Method}
+\subsection{Вычислительные методы гидродинамики}
 
-%Для реализации трёхмерного многофазного односкоростного подхода использовался решатель interFoam.
-To implement the three-dimensional multiphase single-rate approach, the interFoam~\cite{Rusche2003ComputationalFD} solver of OpenFOAM package (v2012, created by Henry Weller in 1989, Bracknell, United Kingdom) was used.
+Для реализации трехмерного многофазного односкоростного подхода использовался решатель interFoam~\cite{Rusche2003ComputationalFD} пакета OpenFOAM (v2012, созданный Генри Веллером в 1989 г., Бракнелл, Великобритания).
 
-%Используются следующие аппроксимационные схемы:
-%\begin{itemize}
-%	\item производные по времени $\frac{\partial}{\partial t}$ аппроксимируются с помощью неявного метода Эйлера;
-%	\item поток объёмной доли фазы $ {\nabla} \cdot (\bar{ {u}} \alpha)$ аппроксимируется при помощи схемы Ван Лира;
-%	\item поток массы смеси $ {\nabla} \cdot (\rho \bar{ {u}} \bar{ {u}})$ аппроксимируется с помощью противопоточной схемы с весами;
-%	\item дивергенция тензора вязких напряжений $ {\nabla} \cdot \bar{ {\tau}}$ аппроксимируется с помощью центральной разностной схемы;
-%	\item поток турбулентной кинетической энергии $ {\nabla} \cdot (\rho \bar{ {u}} k)$ аппроксимируется противопоточной схемой;
-%	\item поток специальной диссипации турбулентной кинетической энергии $ {\nabla} \cdot (\rho \bar{ {u}} \omega)$ используется противопоточная схема;
-%	\item оператор градиента $ {\nabla}$ аппроксимируется центрально-разностной схемой;
-%	\item оператор Лапласа $ {\nabla}^2$ аппроксимируется центрально-разностной схемой с явной неортогональной коррекцией;
-%	\item другие, не перечисленные выше члены описываются с помощью центрально-разностной схемы.
-%\end{itemize}
-
-The approximation schemes used in the work are listed below.
+Используются следующие аппроксимационные схемы:
 \begin{itemize}
-	\item The time terms were approximated with first order Euler numerical scheme;
-	\item The convection term, the water volume fraction flux term, divergence of the stress tensor term were approximated with second order numerical scheme;
-	\item The turbulent kinetic energy flux, the dissipation flux of the specific turbulent kinetic energy term were approximated with first order bounded numerical scheme;
-	\item The gradient terms were calculated using Gaussian integration with linear interpolation;
-	\item The Laplacian terms were calculated using Gaussian integration with linear interpolation with explicit non-orthogonal correction;
-	\item All other terms in the equations were discretized using a central difference numerical scheme.
+	\item производные по времени $\frac{\partial}{\partial t}$ аппроксимируются с помощью неявного метода Эйлера;
+	\item поток объёмной доли фазы $ {\nabla} \cdot (\bar{ {u}} \alpha)$ аппроксимируется при помощи схемы Ван Лира;
+	\item поток массы смеси $ {\nabla} \cdot (\rho \bar{ {u}} \bar{ {u}})$ аппроксимируется с помощью противопоточной схемы с весами;
+	\item дивергенция тензора вязких напряжений $ {\nabla} \cdot \bar{ {\tau}}$ аппроксимируется с помощью центральной разностной схемы;
+	\item поток турбулентной кинетической энергии $ {\nabla} \cdot (\rho \bar{ {u}} k)$ аппроксимируется противопоточной схемой;
+	\item поток специальной диссипации турбулентной кинетической энергии $ {\nabla} \cdot (\rho \bar{ {u}} \omega)$ используется противопоточная схема;
+	\item оператор градиента $ {\nabla}$ аппроксимируется центрально-разностной схемой;
+	\item оператор Лапласа $ {\nabla}^2$ аппроксимируется центрально-разностной схемой с явной неортогональной коррекцией;
+	\item другие, не перечисленные выше члены описываются с помощью центрально-разностной схемы.
 \end{itemize}
 
-The second order linear upwind scheme used for the convection term is most efficient and accurate for Reynolds Averaged Navier--Stokes (RANS) simulations~\cite{ROBERTSON2015122}.
+Линейная противопоточная схема второго порядка, используемая для конвекционного члена, является наиболее эффективной и точной для моделирования усредненного Рейнольдса Навье--Стокса (RANS)~\cite{ROBERTSON2015122}.
 
-%Для решения системы уравнений используется алгоритм PIMPLE, являющийся комбинацией алгоритмов PISO (Pressure Implicit with Splitting of Operator) и SIMPLE (Semi-Implicit Method for Pressure-Linked Equations).
-The PIMPLE algorithm~\cite{Holzmann2019, Yin2003}, which was developed to run the equations with a large Courant number, was used to solve the system equations. The PIMPLE is a combination of PISO~\cite{Issa1986_2} and SIMPLE~\cite{Issa1986_1} algorithms.
+Алгоритм PIMPLE~\cite{Holzmann2019, Yin2003}, который был разработан для решения уравнений с большим числом Куранта, использовался для решения системны уравнений. PIMPLE представляет собой комбинацию алгоритмов PISO~\cite{Issa1986_2} и SIMPLE~\cite{Issa1986_1}.
 
 % To solve the system of equations, the PIMPLE~\cite{Holzmann2019, Yin2003} algorithm was used. This algorithm is a combination of the PISO (Pressure Implicit with Splitting of Operator)~\cite{Issa1986_2} and the SIMPLE (Semi-Implicit Method for Pressure-Linked Equations) algorithms~\cite{Issa1986_1}.
 %
 
-The conjugate gradient method with preconditioner GAMG is used to solve the system of linear equations for pressure. The GaussSeidel method is used as a smoother. The values for volume fraction of water, velocity, $k$, $\omega$ are defined using smoothSolver and  symGaussSeidel method as a smoother. 
+Метод сопряженных градиентов с предобуславливателем GAMG используется для решения системы линейных уравнений для давления. В качестве сглаживателя используется метод Гаусса-Зейделя. Значения объемной доли воды, скорости, $k$, $\omega$ вычисляются с помощью smoothSolver и метода symGaussSeidel для сглаживания.
 
-\subsubsection{Definition of the Calculation Domain}
+\subsubsection{Расчётная область}
 
-The advantage of mathematical modeling is that the model allows virtual sensors to be placed at any point in the computational domain to measure the values of physical quantities. In the experiment, the physical sensors were placed at the exit from the chute. To compare the results of the experiment and the calculation, the virtual sensors were positioned in the same place.
+Преимущество математического моделирования состоит в том, что модель позволяет размещать виртуальные датчики в любой точке расчетной области для измерения значений физических величин. В эксперименте физические датчики располагались на выходе из желоба. Для сравнения результатов эксперимента и расчета виртуальные датчики располагались в одном и том же месте.
 
-A section of the experimental chute located between two velocity profile and flow depth measurement points was simulated. 
-The simulations were performed for the thick  10~mm part of the chute where the influence of the side walls was small.
-The first measured profile was used for the input data for the computational domain. The second one was the object of comparison. 
+Моделировался участок экспериментального желоба, расположенный между двумя точками измерения профиля скорости и глубины потока.
+Моделирование проводилось для 10-мм среза части желоба, где влияние боковых стенок было небольшим.
+Первый измеренный профиль использовался в качестве входных данных для расчетной области. Второй был объектом сравнения. 
 %
-The parallelepiped with a size of 590 mm in length, 10 mm in width, and 10 mm in height was used for the  numerical domain.
+В качестве числовой области использовался параллелепипед размером 590 мм в длину, 10 мм в ширину и 10 мм в высоту.
 %
-We tested the effect of grid resolution. Grid convergence was studied for various grid sizes of $290 \times 10 \times 30$, $590 \times 10 \times 60$, $1080 \times 10 \times 120$, and $2160 \times 10 \times 240$. For each run, the output velocity profile was compared with the experimental one using the loss function \eqref{LossFunction}. The values of the loss functions for the last three mesh sizes varied within 0.1\%. Therefore, the number of cells was chosen to be $590 \times 10 \times 60$ for reasons of reducing computer time while maintaining accuracy.
+Мы проверили влияние разрешения сетки. Сходимость по сетке изучалась для различных размеров сетки: $290 \times 10 \times 30$, $590 \times 10 \times 60$, $1080 \times 10 \times 120$, и $2160 \times 10 \times 240$. Для каждого прогона профиль выходной скорости сравнивался с экспериментальным с использованием функции потерь \eqref{LossFunction}. Значения функций потерь для трех последних размеров сетки варьировались в пределах 0.1\%. Поэтому количество ячеек было выбрано равным $590 \times 10 \times 60$ из соображений сокращения машинного времени при сохранении точности.
 
-\subsubsection{Initial and Boundary Conditions}
+\subsubsection{Начальные и граниченые условия}
 
-%Были выделены следующие границы расчётной области: дно лотка, боковые стенки лотка, верхняя граница лотка, плоскость на входе в лоток, плоскость на выходе из лотка.
-The special boundaries for numerical domain were defined: the chute bottom, the chute sides, the upper border for numerical domain, and the inlet and outlet planes.
+Были выделены следующие границы расчётной области: дно лотка, боковые стенки лотка, верхняя граница лотка, плоскость на входе в лоток, плоскость на выходе из лотка.
 
-%Были заданы следующие граничные условия:
-%\begin{itemize}
-%	\item дно лотка: является твёрдой стенкой с условием прилипания потока; 
-%	\item боковые стенки лотка: задано условие нулевого градиента для реализации отсутствия влияния стенок на поток;
-%	\item верхняя граница лотка: смешанное условие с заданием атмосферного давления, и условия отсутствия притока среды через данную границу, отток происходит по принципу нулевого градиента;
-%	\item входная плоскость: заданы фиксированные значения объёмной доли воды и профиля скорости потока;
-%	\item выходная плоскость: для всех величин установлено условие нулевого градиента.
-%\end{itemize}
-The following boundary conditions were set:
-
+Были заданы следующие граничные условия:
 \begin{itemize}
-    \item The solid wall with the no-slip condition was used for the chute bottom;
-    \item The zero gradient condition was used for the chute side;
-    \item The mixed condition with atmospheric pressure was used for the upper border of numerical domain, no inflow through the border and outflow according to zero gradient condition and fixed value condition for $k$ and $\omega$;
-    \item The fixed values were used for inlet plane for water volume fraction, velocity profile, $k$ and $\omega$ values;
-    \item The zero gradient condition was used for outlet plane.
+	\item Дно лотка является твёрдой стенкой с условием прилипания потока; 
+	\item На боковых стенках лотка задано условие нулевого градиента для реализации отсутствия влияния стенок на поток;
+	\item Для верхней границы расчетной области использовалось смешанное условие с атмосферным давлением, отсутствием притока через границу и оттоком по условию нулевого градиента, задано условию фиксированного значения для $k$ и $\omega$;
+	\item Для входной плоскости использовались фиксированные значения объемной доли воды, профиля скорости, значений $k$ и $\omega$;
+	\item Для выходной плоскости использовалось условие нулевого градиента.
 \end{itemize}
 
-The mathematical formulation of the listed initial and boundary conditions is presented in the OpenFOAM user manual~\cite{OFUG}.
+Математическая формулировка перечисленных начальных и граничных условий представлена в руководстве пользователя OpenFOAM~\cite{OFUG}.
 
-%High Reynolds wall functions used in $k-\omega\ SST$ turbulence model.
-The average value of $Y+$ was 17 which satisfied the model of wall functions. The nutkWallFunction was used for boundary condition for the wall, which provides a wall constraint on the turbulent viscosity, based on the turbulent kinetic energy for both low- and high-Reynolds number turbulence models.
+Среднее значение $Y+$ равно 17, что допускает использование модели пристеночных функций. Функция nutkWallFunction использовалась в качестве граничного условия для стенки, которая обеспечивает ограничение турбулентной вязкости стенкой на основе турбулентной кинетической энергии для моделей турбулентности как с низким, так и с высоким числом Рейнольдса.
 
-%Начальные условия в задаче таковы, что объём полностью заполнен неподвижным воздухом и подаётся жидкость через входную плоскость, спустя время поток устанавливается и снимаются замеры на выходной плоскости для сравнения с экспериментальными данными. Поток считается установившимся спустя 5 секунды.
-
-The initial conditions in the problem are set so that the volume is completely filled with stationary air and the liquid flows in through the inlet plane. After a while, the flow is established and measurements are taken on the outlet plane for comparison with the experimental data. The time step $dt$ is equal to 0.001 s. The flow is considered steady after 5 s.
+Начальные условия в задаче задаются так, чтобы объем был полностью заполнен неподвижным воздухом, а жидкость втекала через входную плоскость. Через некоторое время поток устанавливается и проводятся измерения на выходной плоскости для сравнения с экспериментальными данными. Шаг по времени $dt$ равен 0,001 с. Поток считается установившимся через 5 с.
 
 
 %%%%%%%%%%%%%%%%%%%%Перенести в раздел с оптимизацией
@@ -529,24 +473,19 @@ The initial conditions in the problem are set so that the volume is completely f
 
 
 %ННГУ
-\subsection{Global Optimization Problem Statement}
-The Globalizer software (Lobachevsky University) was used to solve the optimization problem.
-
-Let us assume that the choice of some set of values of the model parameters is determined by the values of vector $y=(y_1,y_2,...,y_N)$ and the quality of the model corresponding to a given value of the vector of parameters is described by the function $\varphi(y)$. Let us call this function the optimization criterion: a decrease in the criterion value corresponds to a better mathematical model. Additionally, assume that some requirements must be satisfied to guarantee the applicability of the model. Meeting these requirements is usually formulated as the condition for the vector $y$ to belong to the hyperinterval $D$,
-%MDPI: Is italic necessary?
-%Authors: Italic is not necessary. Removed
+\subsection{Постановка задачи глобальной оптимизации}
+Программное обеспечение Globalizer (ННГУ им. Н.И. Лобачевского) использовалось для решения оптимизационный задачи.
+Будем предполагать, что выбор того или иного набора значений параметров модели определяется значениями вектора $y=(y_1,y_2,...,y_N)$, а качество модели, соответствующие заданному значению вектора параметров, описывается функцией $\varphi(y)$. Будем называть данную функцию критерием оптимизации, причем уменьшение значения критерия соответствует более хорошей математической модели. Также будем предполагать, что должны выполняться некоторые требования, гарантирующие применимость модели. Выполнение указанных требований обычно формулируется как условие принадлежности вектора $y$ гиперинтервалу $D$,
 \begin{linenomath}
 \begin{equation}
 D=\{a_i \leq y_i \leq b_i, \; 1 \leq i \leq N\}.
 \end{equation}
 \end{linenomath}
+\nomenclature{$y = (y_1, ..., y_N)$ }{ вектор параметров}
+\nomenclature{$\varphi(y)$ }{целевая функция }
+\nomenclature{$D$ }{гиперинтервал}
 
-\nomenclature{$y = (y_1, ..., y_N)$ }{ vector of parameter}
-\nomenclature{$\varphi(y)$		}{ objective function	}
-\nomenclature{$D$	}{ hyperinterval	}
-
-
-So far, the process of choosing the optimal set of the model parameters corresponds to a global optimization problem of the kind:
+Таким образом, процессу выбора оптимального набора параметров модели соответствует задача глобальной оптимизации вида:
 \begin{linenomath}
 \begin{equation}\label{main_problem}
 \begin{aligned}
@@ -555,98 +494,93 @@ So far, the process of choosing the optimal set of the model parameters correspo
 \end{aligned}
 \end{equation}
 \end{linenomath}
-
-When optimizing the coefficients of the turbulent model, the Root-Mean-Square Error (RMSE) of differentiation of the calculated flow velocity profile and the experimental one on the outlet plane is taken into account. 
+При оптимизации коэффициентов турбулентной модели учитывается среднеквадратическая ошибка дифференцирования расчетного профиля скорости потока и экспериментального на выходной плоскости 
 %MDPI: Please confirm if bold in equations is necessary. Please check the whole paper
 %Authors: Bold is not necessary. Removed
 \begin{linenomath}
 \begin{equation}
 	\label{LossFunction}
-	 {L_{RMSE}} = \sqrt{\frac{\sum\limits_{i=1}^{N} \left( u_{EXP}^i - u_{k-\omega\ SST}^i \right)^2}{N}}
+	 {L_{RMSE}} = \sqrt{\frac{\sum\limits_{i=1}^{N} \left( u_{EXP}^i - u_{k-\omega\ SST}^i \right)^2}{N}}.
 \end{equation}
 \end{linenomath}
-is minimized. 
-%где $h$~--- глубина потока на выходной плоскости.
-Here, $u_{EXP}^i$ is the horizontal component of velocity at the control point obtained by experiment, and $u_{k-\omega\ SST}^i$  is the horizontal component of velocity at the control point calculated by computational fluid dynamic (CFD), $N$ is the number of comparison points for the horizontal component of velocity over the flow depth at the outlet plane (right cross-section displayed in Figure \ref{NIIMexLinearUProfileInlet}). Approximately 10 comparison points are used. Their number is determined by the number of measurements performed in the experiment and varies depending on the change in the flow depth at different chute inclination angles. The points are evenly distributed in depth for the operation of measurement tools used in the experiment.
-\nomenclature{$N$		}{ number of measuring points of velocity over the flow depth at the outlet plane	}
-\nomenclature{$u^i_{EXP}$		}{ horizontal component of velocity at the control point obtained by experiment	}
-\nomenclature{$u^i_{k-\omega}\ SST$		}{ horizontal component of velocity at the control point calculated by CFD	}
-\nomenclature{$ {L_{RMSE}}$		}{ loss function	}
 
+Здесь $u_{EXP}^i$ — горизонтальная составляющая скорости в контрольной точке, полученная опытным путем, а $u_{k-\omega\ SST}^i$ — горизонтальная составляющая скорости в контрольной точке, рассчитанная по формуле гидродинамики, $N$ - количество точек сравнения горизонтальной составляющей скорости по глубине потока в выходной плоскости (правое сечение показано на рисунке \ref{NIIMexLinearUProfileInlet}). Используется примерно 10 точек сравнения. Их количество определяется количеством измерений, выполненных в эксперименте, и варьируется в зависимости от изменения глубины потока при различных углах наклона желоба. Точки равномерно распределены по глубине для работы средств измерения, используемых в эксперименте.
 
-We will consider the loss function (\ref{LossFunction}) as the objective function $\varphi(y)$ in the global optimization problem (\ref{main_problem}). 
-The problems considered are characterized by the fact that the objective function $\varphi(y)$ is not defined analytically; there is only an algorithm for computing its values at the points of the domain $D$. In this case, one search trial corresponds to one computation according to the model and is a time- consuming operation~\cite{Kalyulin2017,Paulavicius2020}.
+\nomenclature{$N$ }{ количество точек измерения скорости по глубине потока в выходной плоскости }
+\nomenclature{$u^i_{EXP}$ }{ горизонтальная составляющая скорости в контрольной точке, полученная экспериментальным путем }
+\nomenclature{$u^i_{k-\omega}\ SST$ }{ горизонтальная составляющая скорости в контрольной точке, рассчитанная методом CFD }
+\nomenclature{$ {L_{RMSE}}$ }{ функция потерь }
 
-Multi-extremal optimization problems have much higher computation costs for solving them as compared to other types of optimization problems since the global optimum is an integral characteristic of the problem being solved and requires investigating the whole search domain. As a result, the search for the global optimum is reduced to constructing some coverage (grid) in some range of parameters and choosing the optimal function value on this grid. The amount of computations may be reduced by constructing a non-uniform coverage of the search domain: the grid should be dense enough in the vicinity of the global optimum and less dense far away from the sought solution
+Будем рассматривать функцию потерь (\ref{LossFunction}) как целевую функцию $\varphi(y)$ в задаче глобальной оптимизации (\ref{main_problem}). Рассматриваемые задачи характеризуются тем фактом, что целевая функция $\varphi(y)$ не задана аналитически; есть лишь некоторый алгоритм вычисления ее значений в точках области $D$. При этом одно поисковое испытание соответствует одному расчету по модели и является вычислительно-трудоемкой операцией \cite{Kalyulin2017,Paulavicius2020}.
 
-The assumption that the objective function $\varphi(y)$ satisfies the Lipschitz condition
+Задачи многоэкстремальной оптимизации имеют существенно более высокую трудоемкость решения по сравнению с другими типами оптимизационных задач, т.к. глобальный оптимум является интегральной характеристикой решаемой задачи и требует исследования всей области поиска. Как результат, поиск глобального оптимума сводится к построению некоторого покрытия (сетки) в области параметров, и выборе наилучшего значения функции на данной сетке. Снижение объема вычислений может быть достигнуто при построении неравномерного покрытия области поиска: сетка должна быть достаточно плотной в окрестности глобального оптимума и более редкой вдали от искомого решения.
+
+Типичным предположением, которое используют многие методы глобальной оптимизации \cite{Sergeyev2013,Evtushenko2013,Jones2009,Zilinskas2010}, является предположение о том, что целевая функция $\varphi(y)$ удовлетворяет условию Липшица
 \begin{linenomath}
 \begin{equation}
 \left|\varphi(y_1)-\varphi(y_2)\right|\leq L\left\|y_1-y_2\right\|,\; y_1,y_2 \in D, \; 0<L<\infty,
 \end{equation}
 \end{linenomath}
-is a typical and is used in many global optimization methods~\cite{Sergeyev2013,Evtushenko2013,Jones2009,Zilinskas2010}.
-The assumption of this kind is natural enough for many applied problems since the relative variations of the function characterizing the process being simulated cannot usually exceed some threshold imposed by the limited energy of variation. The question of estimating the Lipschitz constant values unknown {\textit a priori} arising here can be resolved by introducing some additive schemes~\cite{Strongin2020,Strongin2020_1}.
-\nomenclature{$L$		}{ Lipschitz constant	}
 
-There are several ways to adapt efficient one-dimensional algorithms for solving multidimensional problems (see, e.g.,~\cite{Sergeyev2017,Zilinskas2014}). In this study we apply the dimensionality reduction using Peano curve $y(x)$ continuously mapping the unit interval [0,1] onto the $n$-dimensional cube
+Предположение такого рода является достаточно естественным для многих прикладных задач, поскольку относительные изменения функции, характеризующей моделируемый процесс, обычно не могут превышать некоторый порог, определяемый ограниченной энергией изменений. Возникающий при этом вопрос об оценке априори неизвестных значений константы Липшица может решаться путем введения адаптивных схем \cite{Strongin2020,Strongin2020_1}.
+\nomenclature{$L$		}{ константа Липшица	}
+
+Существует несколько способов адаптации эффективных одномерных алгоритмов для решения многомерных задач (см., например,~\cite{Sergeyev2017,Zilinskas2014}). В этом исследовании мы применяем уменьшение размерности с помощью кривой Пеано $y(x)$, непрерывно отображающей единичный интервал [0,1] на $n$-мерный куб
 \begin{linenomath}
 \begin{equation}
 \left\{y\in R^N: -2^{-1}\leq y_i \leq 2^{-1}, 1 \leq i \leq N\right\}=\left\{y(x):0\leq x \leq 1 \right\}.
 \end{equation}
 \end{linenomath}
 
-Algorithms for constructing Peano-type space filling curves and the corresponding theory are considered in detail in~\cite{Strongin2000,Sergeyev2013}.
+Алгоритмы построения кривых заполнения пространства типа Пеано и соответствующая теория подробно рассмотрены в~\cite{Strongin2000,Sergeyev2013}.
 
-By using this kind of mapping, the multivariate problem~(\ref{main_problem}) could be reduced to a univariate problem
+С помощью такого отображения многомерная задача~(\ref{main_problem}) может быть сведена к одномерной задаче вида
 \begin{linenomath}
 \begin{equation}
 \varphi(y^\ast)=\varphi(y(x^\ast))=\min{\left\{\varphi(y(x)): x\in[0,1]\right\}}.
 \end{equation}
 \end{linenomath}
 
-An important property of such mapping is that if the function $\varphi(y)$ in the domain $D$ satisfies the Lipschitz condition, then the function $\varphi(y(x))$ on the interval $[0,1]$ will satisfy a uniform H{\"o}lder condition
+Важным свойством такого отображения является то, что если функция $\varphi(y)$ в области $D$ удовлетворяет условию Липшица, то функция $\varphi(y(x))$ на интервале $[0,1 ]$ будет удовлетворять равномерному условию Гёльдера
 \begin{linenomath}
 \begin{equation}
 \left|\varphi(y(x_1))-\varphi(y(x_2))\right|\leq H\left|x_1-x_2\right|^{1/N},
 \end{equation}
 \end{linenomath}
-where the H{\"o}lder constant $H$ is linked to the Lipschitz constant $L$ by the relation $H=2L\sqrt{N+3}$~\cite{Strongin2000}.
-\nomenclature{$H$		}{ H{\"o}lder constant	}
+где константа Гельдера $H$ связана с константой Липшица $L$ соотношением $H=2L\sqrt{N+3}$~\cite{Strongin2000}.
+\nomenclature{$H$		}{ константа Гёльдера	}
 
 
-Therefore, we can consider minimization of univariate function
+Следовательно, мы можем рассмотреть минимизацию одномерной функции
 \begin{linenomath}
 \begin{equation}
 f(x)=\varphi(y(x)), \;\; x\in[0,1],
 \end{equation}
 \end{linenomath}
-satisfying the H{\"o}lder condition.
-\nomenclature{$y(x)$		}{ Peano curve	}
-\nomenclature{$f(x) = \varphi(y(x))$		}{ univariate function	}
+удовлетворяющее условию Гёльдера.
+\nomenclature{$y(x)$		}{ кривая Пеано	}
+\nomenclature{$f(x) = \varphi(y(x))$		}{ одномерная функция	}
 
 
-\newpage
+%\newpage
 
 
-\subsection{The Global Search Algorithm}\label{GSA}
+\subsection{Алгоритм Глобального Поиска}\label{GSA}
 
-The algorithm for solving the problem (\ref{main_problem}) involves constructing a sequence of points $x^k$, where the values of the objective function $z^k = f(x^k)=\varphi(y(x^k))$ are calculated. Let us call the process of calculating the function value (including the construction of an image $y^k=y(x^k)$) the ``trial'', and the pair $(y^k, z^k)$, the ``trial result''. The set of pairs $\left\{(y^k, z^k), 0\leq k\leq n\right\}$ makes up the search data collected using the method after carrying out $n$ steps. The rules that determine the work of the \textit{global search algorithm} are as follows.
+Алгоритм решения задачи (\ref{main_problem}) заключается в построении последовательности точек $x^k$, в которых вычисляются значения целевой функции $z^k = f(x^k)=\varphi(y(x ^k))$. Назовем процесс вычисления значения функции (включая построение изображения $y^k=y(x^k)$) "испытанием", а пару $(y^k, z^k) $, "результатом испытания". Набор пар $\left\{(y^k, z^k), 0\leq k\leq n\right\}$ составляет поисковую информацию, собранную методом после выполнения $n$ шагов. Правила, определяющие работу \textit{алгоритма глобального поиска}, следующие.
 
-The first two trials are performed at the boundary points of the segment $[0,1]$, i.e., $x^0 = 0$ and $x^1 = 1$. The values $z^0 = f(x^0)$ and $z^1 = f(x^1)$ of the objective function are calculated, and the counter $k = 1$ is set. A next trial point $x^{k+1}, k \geq 1,$ is chosen using the following rules.
+Первые два испытания выполняются в граничных точках отрезка $[0,1]$, т.е. $x^0 = 0$ и $x^1 = 1$. Вычисляются значения целевой функции $z^0 = f(x^0)$ и $z^1 = f(x^1)$ и устанавливается счетчик $k = 1$. Очередная точка испытания $x^{k+1}, k \geq 1,$ выбирается по следующим правилам.
 
-Step 1. Renumber points of the set $X_k=\{x^0,\dots,x^k\} $ with subscripts in increasing order of coordinate values, i.e.,
+Шаг 1. Перенумеровать точки множества $X_k=\{x^0,\dots,x^k\}$ нижними индексами в порядке возрастания значений координат, т.е.
 \begin{linenomath}
 \begin{equation}
 0=x_0<x_1<\dots <x_{k-1}<x_{k}=1.
 \end{equation}
 \end{linenomath}
+\nomenclature{$X_k=\{x^0,\dots,x^k\} $ }{ набор точек испытаний }
+Обратите внимание, что здесь и далее верхние индексы используются для обозначения номера итерации, а нижние индексы — для нумерации точек по порядку.
 
-\nomenclature{$X_k=\{x^0,\dots,x^k\} $ }{ set of the trial points }
-
-Note that hereinafter superscripts are used to denote the iteration number, and subscripts are used to number the points in order.
-
-Step 2. Supposing that  $z_i=f(x_i), \; 1\leq i \leq k$, calculate values 
+Шаг 2. Предположим, что $z_i=f(x_i), \; 1\leq i \leq k$. Рассчитать значения
 \begin{linenomath}
 \begin{equation}\label{mu}
 \mu = \max_{1\leq i \leq k}\frac{\left|z_i-z_{i-1}\right|}{\Delta_i},
@@ -662,81 +596,78 @@ M = \left\{
 \right.
 \end{equation}
 \end{linenomath}
-where the real number $r>1$ is the method input parameter, and $\Delta_i=\left(x_i-x_{i-1}\right)^{1/N}$.
+где действительное число $r>1$ — входной параметр метода, а $\Delta_i=\left(x_i-x_{i-1}\right)^{1/N}$.
 
-\nomenclature{$z^k = f(x^k)$ }{ value of the objective function }
-\nomenclature{$M$		}{ adaptive estimation of the Lipschitz constant }
-\nomenclature{$r>0$		}{ method parameter	}
+\nomenclature{$z^k = f(x^k)$ }{ значение целевой функции }
+\nomenclature{$M$ }{ адаптивная оценка константы Липшица }
+\nomenclature{$r>0$ }{ параметр метода }
 
-Step 3. For each interval $(x_{i-1}, x_i), \; 1\leq i \leq k,$ calculate a characteristic according to the following formula
+Шаг 3. Для каждого интервала $(x_{i-1}, x_i), \; 1\leq i \leq k,$ рассчитать характеристику по следующей формуле
 \begin{equation}\label{R}
 R(i)=\Delta_i+\frac{(z_i-z_{i-1})^2}{M^2\Delta_i}-2\frac{z_i+z_{i-1}}{M},1 \leq i \leq k.
 \end{equation}
 
-\nomenclature{$R(i)$		}{ characteristic of the $i$-th search interval}
+\nomenclature{$R(i)$ }{ характеристика $i$-го интервала поиска}
 
-Step 4. Select the interval $(x_{t-1},x_t)$ corresponding to the maximum characteristic
+Шаг 4. Выбрать интервал $(x_{t-1},x_t)$, соответствующий максимальной характеристике
 \begin{equation}\label{MaxR}
 R(t)=\max{\left\{R(i): 1 \leq i \leq k \right\}}.
 \end{equation}
 
-Step 5. Execute the new trial at the point $x^{k+1}\in(x_{t-1},x_t)$, calculated using the following formula
+Шаг 5. Выполнить новое испытание в точке $x^{k+1}\in(x_{t-1},x_t)$, рассчитанной по следующей формуле
 \begin{equation}\label{NewX}
 x^{k+1} = \frac{x_t+x_{t-1}}{2} - \mathrm{sign}(z_t-z_{t-1})\frac{1}{2r}\left[\frac{\left|z_t-z_{t-1}\right|}{\mu}\right]^N.
 \end{equation}
 
-The algorithm stops when $\Delta_t<\epsilon$, where $\epsilon>0$ is the preset accuracy. For estimation of the global optimum, values
+Алгоритм останавливается, когда $\Delta_t<\epsilon$, где $\epsilon>0$ — заданная точность. Для оценки значения глобального оптимума использовать формулу
 \begin{linenomath}
 \begin{equation}
 f_k^\ast=\min_{0\leq i \leq k}f(x^i), \ x_k^\ast=\arg \min_{0\leq i \leq k}f(x^i),
 \end{equation}
 \end{linenomath}
-are chosen.
 
-A rigorous proof of this algorithm's convergence is provided in~\cite{Strongin2000}. 
+Строгое доказательство сходимости этого алгоритма приведено в~\cite{Strongin2000}.
 %The modifications taking into account existence of inequality constraints in the problem and the information about the objective function derivative are given in~\cite{RefBarkalov,RefGergel1996,RefGergel1997}
 
-\newpage
+%\newpage
 
-\subsection{Construction of the Objective Function Approximation}
+\subsection{Построение аппроксимации целевой функции}
 
-\subsubsection{The Use of Neural Networks}
+\subsubsection{Использование нейронных сетей}
 
-There are no universal rules for the choice of the neural network topology to solve a particular problem. However, in~\cite{Cybenko1989} the Kolmogorov theorem has been generalized and it was proved that any continuous function of $N$ variables can be approximated by a three-layered artificial feedforward neural network with one hidden layer and an error backpropagation algorithm as a learning one with any degree of precision. This theorem is called the Universal Approximation Theorem or the Cybenko theorem~\cite{Hassoun1995}.
+Не существует универсальных правил выбора топологии нейронной сети для решения конкретной задачи. Однако в~\cite{Cybenko1989} теорема Колмогорова была обобщена и доказано, что любая непрерывная функция от $N$ переменных может быть аппроксимирована трехслойной искусственной нейронной сетью прямого распространения с одним скрытым слоем и алгоритмом обратного распространения ошибки в виде обучающий с любой степенью точности. Эта теорема называется теоремой универсального приближения или теоремой Цыбенко~\cite{Hassoun1995}.
 
-Neural networks as approximators were implemented in many machine learning libraries.
-In the present study, MLPRegressor class from scikit-learn machine learning library was used  to construct the objective function approximation. It implements a multi-layer perceptron (MLP), which is learned using error backpropagation without activation function in the output layer~\cite{Nielsen1989}. MLPs have demonstrated an ability to find approximate solutions for very complex problems.
+Универсальных правил выбора топологии нейронной сети для решения той или иной задачи не существует. Однако в~\cite{Cybenko1989} была обобщена теорема Колмогорова и было доказано, что любая непрерывная функция $N$ переменных может быть аппроксимирована трехслойной искусственной нейронной сетью прямой связи с одним скрытым слоем и алгоритмом обратного распространения ошибки в качестве обучающего алгоритма с любой степенью точности. Данная теорема носит название \textit{Универсальная теорема аппроксимации} или теорема Цыбенко \cite{Hassoun1995}.
 
-A MLP with one hidden layer with a scalar output is shown in Figure \ref{fig1}.
+Нейронные сети в качестве аппроксиматора реализованы во многих библиотеках машинного обучения. 
+В проведенном исследовании для построения аппроксимации целевой функции был использован класс MLPRegressor из библиотеки машинного обучения Scikit-learn. Он реализует многослойный персептрон (MLP), который обучается с использованием обратного распространения ошибки без функции активации в выходном слое~\cite{Nielsen1989}. MLP продемонстрировали способность находить приближенные решения для чрезвычайно сложных задач.
+На Figure \ref{fig1} показан MLP с одним скрытым слоем со скалярным выходом
 
 \begin{figure}[H]
  
 \includegraphics[width=5 cm]{perceptron.jpg}
-\caption{Three-layer perceptron with scalar output.\label{fig1}}
+\caption{Трехслойный перцептрон со скалярным выходом.\label{fig1}}
  
 \end{figure}
- 
 
-The left layer called the input layer consists of a set of neurons $y_i, \; i=\overline{1,k}$ representing the input signals (the values of variables). Each neuron in the hidden layer transforms the values from the previous layer with weighted linear summing 
+Левый слой, называемый входным, состоит из набора нейронов $y_i, \; i=\overline{1,k}$, представляющих входные сигналы (значения переменных). Каждый нейрон скрытого слоя преобразует значения из предыдущего слоя взвешенным линейным суммированием.
 \begin{linenomath}
 \begin{equation}
 w_1 y_1 + w_2 y_2+...+w_k y_k+bias,
 \end{equation}
 \end{linenomath}
-where $w_i$ are the weights of the neurons and $bias$ is a special weight, which does not include a factor in the form of an input value. Next, the value obtained is transformed into an output (predicted) value of the layer with a transmission function (the \textit{activation function}). The output layer receives the values from the last hidden layer and transforms them into the output values. The network was trained by the error backpropagation method.
+где $w_i$ — веса нейронов, а $bias$ — специальный вес, который не имеет множителя в виде входного значения. Далее полученное значение преобразуется в выходное (прогнозируемое) значение слоя с помощью передаточной функции (функции активации). Выходной слой получает значения из последнего скрытого слоя и преобразует их в выходные значения. Обучение сети осуществляется методом обратного распространения ошибки.
 
-We used a three-layered neural network for solving the approximation problem due to the following reasons. From the theoretical point of view, such a network will be sufficient to approximate the function with a high accuracy. From the practical point of view, the use of deep neural networks here will be redundant, because the set of trial results used to build the approximation is small and will not be sufficient to train a deep network.
+Мы использовали трехслойную нейронную сеть для решения задачи аппроксимации по следующим причинам. С теоретической точки зрения такой сети будет достаточно для аппроксимации функции с высокой точностью. С практической точки зрения использование глубоких нейронных сетей здесь будет избыточным, так как набор результатов испытаний, используемых для построения аппроксимации, невелик и не будет достаточным для обучения глубокой сети.
 
-\subsubsection{Selection of the Model Parameters}
+\subsubsection{Выбор параметров модели}
 
-The choice of the solver, the activation function, the value of the regularization parameter, the number of neurons in the hidden layer, etc., are the variable adjustment parameters of the neural network.
-For example, for small sets of the multidimensional data, the ``lbfgs'' solver was demonstrated to be better and faster. This solver is a modification of the Broyden--Fletcher--Goldfarb--Shanno algorithm~\cite{Nocedal2006} and belongs to the quasi-Newton methods. All numerical experiments were carried out using this algorithm.
-The sigmoidal functions (logistic or hyperbolic tangent) were used as the neuron activation functions.
-The number of neurons in each layer and the regularization parameter (alpha) were adjusted in the experiments and depended on a particular problem.
+Выбор решателя, функция активации, значение параметра регуляризации, количество нейронов в скрытом слое и т. д. являются переменными параметрами настройки нейронной сети.
+Например, для небольших наборов многомерных данных лучше и быстрее демонстрирует себя решатель lbfgs, являющийся модификацией алгоритма Бройдена--Флетчера--Гольдфарба--Шанно~\cite{Nocedal2006} и относящийся к квазиньютоновским методам. Все численные эксперименты проводились по этому алгоритму.
+В качестве функций активации нейронов использовались сигмоидальные функции (логистическая функция или гиперболический тангенс).
+Количество нейронов в каждом слое и параметр регуляризации (alpha) подбирались в экспериментах и зависели от конкретной задачи.
 
-In the experiments conducted, we chose the following network architecture:
-
- 
+В проведенных экспериментах мы выбрали следующую архитектуру сети:
 
 \begin{verbatim}
     model = MLPRegressor(activation='logistic',
@@ -749,36 +680,37 @@ In the experiments conducted, we chose the following network architecture:
 \end{verbatim}
 
 
-\subsection{The Use of Approximations in Solving the Optimization Problem}\label{GSA_Appr}
+\subsection{Использование аппроксимаций при решении задачи оптимизации}\label{GSA_Appr}
 
-In the present study, we applied the following method of using the objective function approximation in the optimization problems: to construct the objective function approximation using the accumulated search information, to find the minimum of the approximation, and to repeat this process, either until the computation resources are exhausted or until the convergence is achieved.
+В настоящей работе мы применили следующий метод использования аппроксимации целевой функции в задачах оптимизации: по накопленной поисковой информации построить аппроксимацию целевой функции, найти минимум аппроксимации и повторить этот процесс либо до исчерпания вычислительного ресурса, либо до тех пор, пока не будет достигнута сходимость.
 
-The method proposed will make sense either in the case when the amount of the search information accumulated is large enough (that allows constructing a relatively precise approximation of a multi-extremal function) or in the case when the problem is similar to a local extremum search problem.
-The first case corresponds to the final stage of search and can be interpreted as a method of refining the current solution. However, if the objective function is time-consuming, it is impossible to conduct a large enough number of trials. This is where we will encounter an exhaustion of computing resources.
+Предлагаемый метод будет иметь смысл либо в том случае, когда объем накопленной поисковой информации достаточно велик (что позволяет построить относительно точную аппроксимацию многоэкстремальной функции), либо в случае, когда задача подобна задаче на поиск локального экстремума.
+Первый случай соответствует заключительной фазе поиска и может быть интерпретирован как метод уточнения текущего решения. Однако если целевая функция является вычислительно-трудоемкой, невозможно провести достаточно большое количество испытаний. Здесь мы столкнемся с исчерпанием вычислительных ресурсов.
 
-The second case implies constructing a good approximation based on a relatively small number of trials and, in fact, includes an assumption on a weak multi-extremality of the objective function that matches well with the problem considered within the framework of the present study.
- 
-The global search algorithm using the objective function approximation can be formulated as follows.
-Let us assume that the available resources allow for $K_{max} = K_1 + K_2$ trials to be performed.
+Второй случай предполагает построение хорошей аппроксимации на основе относительно небольшого числа испытаний и, по сути, включает предположение о слабой многоэкстремальности целевой функции, что хорошо согласуется с задачей, рассматриваемой в рамках настоящего исследования.
 
-At the first stage, $k = K_1$ trials are performed using the core global search algorithm from Section \ref{GSA}.
-In the course of performing the first stage, a set of the trial results $\Omega = \left\{(y^k, \varphi(y^k)), 0\leq k\leq K_1\right\}$ necessary to construct the objective function approximation is accumulated.
+Алгоритм глобального поиска с использованием аппроксимации целевой функции можно сформулировать следующим образом.
+Предположим, что имеющиеся ресурсы позволяют выполнить $K_{max} = K_1 + K_2$ испытаний.
 
-At the second stage, the algorithm works using the approximation. To compute the point $y^{k+1}$ of the next $(k+1)^{\rm th}$ trial, the following operations are performed.
+На первом этапе выполняются $k = K_1$ испытаний с использованием базового алгоритма глобального поиска из раздела \ref{GSA}.
+Во время выполнения первого этапа происходит накопление множества результатов испытаний $\Omega = \left\{(y^k, \varphi(y^k)), 0\leq k\leq K_1\right\}$, необходимого для построения аппроксимации функции.
+
+На втором этапе алгоритм работает с использованием аппроксимации. Для вычисления точки $y^{k+1}$ очередного $(k+1)$-го испытания выполняются следующие действия.
 
 %Описание работы алгоритма
-Step 1. Using the set of the trial results $\Omega$ formed in the course of the algorithm execution, to construct an approximation of the objective function $\overline{\varphi}(y)$;
+Шаг 1. По набору результатов испытаний $\Omega$, сформированному в ходе выполнения алгоритма, построить аппроксимацию целевой функции $\overline{\varphi}(y)$;
 
-Step 2. Using the core global search algorithm from Section \ref{GSA} to find the global minimum of the function $\overline{\varphi}(y)$ and to use this value as the next trial point, i.e., $y^{k+1} = \arg \min_{y \in D} \overline{\varphi}(y)$;
+Шаг 2. Используя базовый алгоритм глобального поиска из раздела \ref{GSA}, найти глобальный минимум функции $\overline{\varphi}(y)$ и использовать это значение в качестве следующей точки испытания, т. е. $y ^{k+1} = \arg \min_{y \in D} \overline{\varphi}(y)$;
 
-Step 3. If either the condition $k>K_{max}$ or the condition $\left\|y^k - y^{k+1}\right\| \leq \epsilon$ is satisfied, to stop the algorithm.
-Else, to perform the trial at the point $y^{k+1}$, to store its result in the set $\Omega$, to increment the trial counter $k = k+1$, and to proceed to Step 1.
+Шаг 3.Если выполнено условие $k>K_{max}$, или же выполнено условие $\left\|y^k - y^{k+1}\right\| \leq \epsilon$,  то завершить работу алгоритма.
+Иначе выполнить испытание в точке $y^{k+1}$, сохранить его результат в множестве $\Omega$, увеличить счетчик испытаний $k = k+1$ и перейти к шагу 1.
 
-\nomenclature{$\epsilon > 0$		}{ search accuracy	}
-\nomenclature{$\Omega $ }{ set of the trial results }
-\nomenclature{$\overline{\varphi}(y)$ }{ approximation of the objective function }
+\nomenclature{$\epsilon > 0$ }{ точность поиска }
+\nomenclature{$\Omega $ }{ набор результатов испытаний }
+\nomenclature{$\overline{\varphi}(y)$}{аппроксимация целевой функции}
 
-The algorithm proposed here ensures the convergence to the global solution in the case if $K_1$ trials executed at the first stage are sufficient to construct an approximation of the objective function reflecting the main features of its behavior adequately.
+Предложенный алгоритм обеспечивает сходимость к глобальному решению в том случае, если выполненных на первом этапе $K_1$ испытаний достаточно для построения аппроксимации целевой функции, адекватно отражающей основные особенности ее поведения.
+
 
 %пример работы алгоирмта на тестовой задаче?
 
@@ -787,7 +719,7 @@ The algorithm proposed here ensures the convergence to the global solution in th
 %\subsection{Loss function definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}\label{sec5}
+\section{Результаты}\label{sec5}
 
 %Описание оборудования и программного обеспечения, которое было задействовано при проведении экспериментов.
 
@@ -797,15 +729,14 @@ The algorithm proposed here ensures the convergence to the global solution in th
 
 %Сравнение нескольких разных решений (это можно перенести и в следующую секцию)
 
-The simulations were conducted using the supercomputer of Lobachevsky University of Nizhni Novgorod (operated under the Linux CentOS 7.2 operation system). Each supercomputer node included two Intel Sandy Bridge E5-2660 2.2 GHz processors, 64 Gb RAM. The central processor unit had 8 cores. 
-The global optimization methods considered in the present work were implemented in C++ using GCC 5.5.0 compiler and Open MPI v4.1.1. To construct the objective function approximations using a neural network, scikit-learn machine learning library from Python 3.9 was applied. 
-To numerically solve the problem described in Section \ref{math_model}, the open source CFD software OpenFOAM v2012~\cite{OpenFOAM} was~used.
+Вычислительные эксперименты проводились на вычислительном кластере ННГУ им. Н.И. Лобачевского (работает под управлением операционной системы CentOS 7.2). Узел кластера располагает 2-я процессорами Intel Sandy Bridge E5-2660 2.2 GHz, 64 Gb RAM. Центральный процессор является 8-ми ядерным. Рассмотренные в данной работе методы глобальной оптимизации были реализованы на языке C++, использовался компилятор GCC 5.5.0 и openMPI 4.1.1, для построения аппроксимации целевой функции с помощью нейросети использовалась библиотека машинного обучения Scikit-learn из Python 3.9. Для численного решения задачи, описанной в разделе \ref{math_model}, использовалась программа CFD с открытым исходным кодом OpenFOAM v2012~\cite{OpenFOAM}.
 
 %В процессе оптимизации исследовались такие константы, как $\beta^*$, $a_1$, $\alpha_{k 1,2}$, $\alpha_{\omega 1,2}$, которые регулируют скорость диссипации турбулентной кинетической энергии, напряжения Рейнольдса, поток диффузии турбулентной кинетической энергии, поток диффузии диссипации турбулентной кинетической энергии, соответственно.
-Before starting the calibration, a small study of the significance of each of the 12~coefficients of the turbulent model was carried out. As a result, it was revealed that the coefficients $\beta^*$, $a_1$, $\alpha_{k 1,2}$, and $\alpha_{\omega 1,2}$ make the most significant contribution to the calculation results. It was decided to calibrate these coefficients. These coefficients determine the dissipation rate of turbulent kinetic energy, the Reynolds stress, the diffusion fluxes of turbulent kinetic energy, and the specific dissipation rate. The coefficient $\beta^*$ is used in the mixing functions that describe the mechanism for switching between the $k-\varepsilon$ and $k-\omega$ models. The coefficient $a_1$ determines the turbulent viscosity. $\alpha_{k 1,2}$ characterize the diffusion flux of the kinetic energy of turbulence. $\alpha_{\omega 1,2}$ characterize the diffusion flow by the specific rate of dissipation of the kinetic energy of turbulence.
+
+Перед началом калибровки было проведено небольшое исследование значимости каждого из 12 коэффициентов турбулентной модели. В результате были выявлены несколько наиболее существенных параметров. Было принято решение откалибровать эти коэффициенты. Эти коэффициенты определяют скорость диссипации турбулентной кинетической энергии, напряжение Рейнольдса, диффузионные потоки турбулентной кинетической энергии и удельную скорость диссипации. Коэффициент $\beta^*$ используется в функциях смешивания, описывающих механизм переключения между $k-\varepsilon$ и $k-\omega$. Коэффициент $a_1$ определяет турбулентную вязкость. $\alpha_{k 1,2}$ характеризует поток диффузии турбулентной кинетической энергии. $\alpha_{\omega 1,2}$ характеризуют поток диффузии диссипации турбулентной кинетической энергии.
 
 %Начальные значения коэффициентов были заданы следующими:
-The initial values of the coefficients are 
+Начальные значения коэффициентов
 \begin{linenomath}
 \begin{equation}
 	\begin{aligned}
@@ -814,41 +745,37 @@ The initial values of the coefficients are
 \end{equation}
 \end{linenomath}
 
-One calculation of the objective function for given values of parameters took 15 min in average with the use of 8 MPI-processes per node. 
+Один расчет целевой функции при заданных значениях параметров занимал в среднем 15 минут с использованием 8 MPI-процессов на узле. 
+Подбор оптимальных значений параметров проводился парами, при этом значения остальных параметров -- фиксировались. 
+Сначала была выбрана пара наиболее важных параметров $\beta^*$ и $a_1$.
+Для исследования поставленной оптимизационной задачи применялись оба возможных подхода к ее решению: без использования аппроксимации целевой функции и с использованием аппроксимации.
 
-The optimal values of parameters were adjusted for pairs, the values of the remaining parameters were fixed. 
-First, a pair of the most important parameters $\beta^*$ and $a_1$ was selected. 
-To investigate the optimization problem posed, both possible approaches to solving it were applied: without the use of the objective function approximation  and with the use of the approximation.
+В первом эксперименте алгоритм глобального поиска, описанный в разделе \ref{GSA}, применялся без использования аппроксимации.
+Параметры метода задавались следующими: $r = 3$ и $\epsilon = 10^{-3}$.
+За сутки выполнено 100 итераций алгоритма; требуемая точность не была достигнута.
 
-In the first experiment, the global search algorithm described in Section \ref{GSA} was applied without the use of approximation. 
-The parameters of the method were set as follows: $r = 3$ and $\epsilon = 10^{-3}$. 
-In 24 h, 100 iterations of the algorithm were performed; the required accuracy was not achieved. 
+Во втором эксперименте для решения той же задачи был применен подход, описанный в разделе \ref{GSA_Appr}.
+Сначала было выполнено $K_1 = 30$ итераций алгоритма глобального поиска.
+После этого был запущен алгоритм, использующий аппроксимацию нейронной сетью.
+Всего было выполнено $K_1 + K_2 = 65$ итераций алгоритма, после чего алгоритм остановился на точности.
+В результате было найдено наилучшее значение целевой функции 0,375.
+Общее время поиска сократилось до 16 ч, что обеспечило более точное решение задачи за разумное время.
 
-In the second experiment, the approach described in Section \ref{GSA_Appr} was applied to solve the same problem.
-First, $K_1 = 30$ iterations of global search algorithm were performed. 
-Afterwards, the algorithm employing the approximation with the neural network was started. 
-A total of $K_1 + K_2 = 65$ iterations of the algorithm were performed, after that the algorithm stopped on accuracy. 
-As a result, the best value  of the objective function 0.375 was found. 
-The total search time was reduced to 16 h, which ensured a more accurate solution for the problem in a reasonable amount of time.
-
-The trial points and the approximating function plotted according to these points using the neural network are presented in Figure~\ref{NN_100_point} (the parameters $\beta^*$ and $a_1$ were varied). Several local minima are clearly visible.
-Our analysis showed good agreement between the regression model and experimental data.
-The $R^2$ score and the RMSE between the model predictions and the simulated results are equal to 0.976 and 0.098, respectively.
+Точки испытаний и аппроксимирующая функция, построенная по этим точкам с помощью нейронной сети, представлены на рис.~\ref{NN_100_point} (параметры $\beta^*$ и $a_1$ варьировались). Отчетливо видны несколько локальных минимумов.
+Наш анализ показал хорошее соответствие между регрессионной моделью и экспериментальными данными.
+Оценка $R^2$ и среднеквадратичное отклонение между прогнозами модели и результатами моделирования равны 0,976 и 0,098 соответственно.
 
 
 \begin{figure}[H]
  
 \includegraphics[width=0.6\linewidth]{NN_100_point_.pdf}
-\caption{Objective 
-%MDPI: please check if different colors need explanation, if yes, please add.
-%Authors: Different colors does not need explanation
-function values (red points) and the approximation plot constructed using the neural network (parameters $\beta^*$ and $a_1$ were varied).\label{NN_100_point}}
+\caption{Задача значения функции (красные точки) и график аппроксимации, построенный с помощью нейронной сети (параметры $\beta^*$ и $a_1$ варьировались).\label{NN_100_point}}
  
 \end{figure}   
  
 
-The best values of parameters $\beta^*$ and $a_1$ found were fixed, and then optimization in parameters $\alpha_{k1}, \alpha_{\omega1}$, and $\alpha_{k2}, \alpha_{\omega2}$ was performed. 
-However, no significant improvement of the objective function by optimizing on these parameters was achieved: the value of 0.365 was obtained.
+Найденные лучшие значения параметров $\beta^*$ и $a_1$ были зафиксированы, после чего проводилась оптимизация по параметрам $\alpha_{k1}, \alpha_{\omega1}$ и $\alpha_{k2}, \alpha_{ \omega2}$.
+Однако существенного улучшения целевой функции за счет оптимизации по этим параметрам добиться не удалось: было получено значение 0,365.
 
 
 %На рисунках ~\ref{NN_100_point1} и ~\ref{NN_100_point2} приведены изображение функций, полученные с помощью аппроксимации задачи нейросетью, обученной на 100 точках испытания, варьировались соответсвенно пары параметров $\alpha_{k1} $,  $\alpha_{\omega1} $ и $\alpha_{k2} $, $\alpha_{\omega2} $.
@@ -871,7 +798,7 @@ However, no significant improvement of the objective function by optimizing on t
 
 %После калибровки значения коэффициентов стали следующими:
 %The optimized values of the coefficients:
-As a final result, the following values of the coefficients of the model were obtained:
+В итоге были получены следующие значения коэффициентов модели:
 
 \begin{linenomath}
 \begin{equation}
@@ -883,21 +810,18 @@ As a final result, the following values of the coefficients of the model were ob
 \end{linenomath}
 
 %Были получены следующие профили скорости на выходной плоскости для различных углов наклона лотка, как показано на рис.~\ref{NIIMexUProfilesKWSSTGlob}
-Figure~\ref{NIIMexUProfilesKWSSTGlob} shows the resulting velocity profiles $\bar{ {u_x}}$ as a function of flow depth $h$ on the exit plane for various slope angles.
+На рис.~\ref{NIIMexUProfilesKWSSTGlob} показаны результирующие профили скорости $\bar{ {u_x}}$ в зависимости от глубины потока $h$ на выходной плоскости для различных углов наклона.
 
 \begin{figure}[H]
 \begin{adjustwidth}{-\extralength}{0cm}
 \centering
 \includegraphics[width=18 cm]{UProfilesKWSSTGlob1.png}
 \end{adjustwidth}
-\caption{The 
-%MDPI: please check if the blue diamond need explanation, if yes, please add.
-%Authors: Blue diamond does not need explanation.
-comparison graphs of the experimental velocity profile and the calculated velocity profile using the standard values of the $k-\omega\ SST$ turbulence model coefficients and the calculated velocity profile with calibrated values of the coefficients for different slope inclination angles.\label{NIIMexUProfilesKWSSTGlob}}
+\caption{Графики сравнения экспериментального профиля скорости и расчетного профиля скорости с использованием стандартных значений коэффициентов модели турбулентности $k-\omega\ SST$ и расчетного профиля скорости с калиброванными значениями коэффициентов для различных углов наклона склона.\label{NIIMexUProfilesKWSSTGlob}}
 \end{figure}  
 
 %Калибровка привела к следующей минимизации функции потерь~\eqref{LossFunction}, показанной в таб.~\ref{tabLossFunctionMinimize}
-During the process of calibration, the minimization of the loss function~\eqref{LossFunction} was achieved, as shown in Table~\ref{tabLossFunctionMinimize}.
+В процессе калибровки была достигнута минимизация функции потерь~\eqref{LossFunction}, как показано в таблице~\ref{tabLossFunctionMinimize}.
 
 %\begin{table}[H]
 %	\caption{Минимизация функции потерь}
@@ -917,11 +841,11 @@ During the process of calibration, the minimization of the loss function~\eqref{
 %	\end{center}
 %\end{table}
 \begin{table}[H] 
-\caption{Loss function values obtained during the minimization process.\label{tabLossFunctionMinimize}}
+\caption{Значения функции потерь, полученные в процессе минимизации.\label{tabLossFunctionMinimize}}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{CCC}
 \toprule
-    \textbf{Slope Inclination Angle} & \textbf{Initial Loss Function Value} & \textbf{Minimized Loss Function Value}\\
+    \textbf{Угол наклона склона} & \textbf{Начальное значение функции потерь} & \textbf{Значение функции минимальных потерь}\\
 \midrule
     25$^\circ$ & 0.165 & 0.155\\
     28$^\circ$ & 0.085 & 0.128\\
@@ -931,10 +855,11 @@ During the process of calibration, the minimization of the loss function~\eqref{
 \end{table}
  
 
-%На рисунке \ref{NIIMexUProfilesKWSSTGlob} и в таблице \ref{tabLossFunctionMinimizeKE} можем видеть, что для двух углов наклона из трёх мы видим уменьшение расхождения расчётного профиля скорости с экспериментальным. Оптимизация по трём экспериментам одновременно (их функции потерь суммировались) использовалась с целью избежать переобучения модели, так как при использовании одного эксперимента, может быть достигнуто почти идеальное совпадение расчётного профиля скорости с экспериментальным, которое не воспроизводится на других экспериментах. Так же стоит отметить, что расхождение профиля скорости в области вблизи дна обусловлено погрешностью измерений в эксперименте, так как замер скорости с помощью трубки Пито, используемой в данном эксперименте, в непосредственной близости ото дна затруднён.
-Figure~\ref{NIIMexUProfilesKWSSTGlob} and Table~\ref{tabLossFunctionMinimize} show a decrease in the discrepancy between the calculated velocity profile and the experimental one for two out of three experiments. Optimization for the three experiments combined (their loss functions were summarized) was used in order to avoid the model overfitting. In one experiment, an almost perfect coincidence of the calculated velocity profile with the experimental one was achieved, which was not reproduced in other experiments. It should also be noted that the divergence of the velocity profile in the region near the chute bottom is due to the measurement error in the experiment, since it is difficult to measure the velocity with the Pitot tube used in this experiment in the immediate vicinity of the bottom.
+На рисунке \ref{NIIMexUProfilesKWSSTGlob} и в таблице \ref{tabLossFunctionMinimizeKE} можем видеть, что для двух углов наклона из трёх мы видим уменьшение расхождения расчётного профиля скорости с экспериментальным. Оптимизация по трём экспериментам одновременно (их функции потерь суммировались) использовалась с целью избежать переобучения модели, так как при использовании одного эксперимента, может быть достигнуто почти идеальное совпадение расчётного профиля скорости с экспериментальным, которое не воспроизводится на других экспериментах. Так же стоит отметить, что расхождение профиля скорости в области вблизи дна обусловлено погрешностью измерений в эксперименте, так как замер скорости с помощью трубки Пито, используемой в данном эксперименте, в непосредственной близости ото дна затруднён.
 
-The minimum value for the objective function was obtained in the case of the slope angle of 33 degrees. One calculation of the objective function for the given parameters took 15 min in average using 8 MPI processes on a node of the Lobachevsky University supercomputer. Total computation time was 24 h.
+
+Минимальное значение целевой функции было получено при угле наклона 33 градуса. Одно вычисление целевой функции для заданных параметров занимало в среднем 15 минут с использованием 8 процессов MPI на узле суперкомпьютера Университета Лобачевского. Общее время расчета составило 24 часа.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}\label{sec6}
